@@ -3,54 +3,122 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Aionel — Aplicaciones</title>
+<title>Aionel · Aplicaciones</title>
 <meta name="description" content="Aplicaciones desarrolladas por Aionel. VPREX: tasas del dólar en Venezuela en tiempo real." />
+<meta name="theme-color" content="#0B1220" />
+<link rel="icon" href="vprex/logo.png" />
 <style>
-  :root { --verde:#00C853; --texto:#0F172A; --gris:#64748b; --fondo:#F8FAFC; }
-  * { box-sizing:border-box; }
-  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; background:var(--fondo); color:var(--texto); line-height:1.6; }
-  .wrap { max-width:720px; margin:0 auto; padding:48px 20px 80px; }
-  .dev { font-size:14px; color:var(--gris); margin:0 0 4px; }
-  h1 { font-size:32px; font-weight:900; letter-spacing:2px; margin:0 0 6px; }
-  .sub { color:var(--gris); margin:0 0 32px; }
-  .card { background:#fff; border:1px solid #E5E7EB; border-radius:16px; padding:24px; margin-bottom:16px; }
-  h2 { font-size:18px; margin:0 0 8px; }
-  p { margin:0 0 10px; }
-  a { color:var(--verde); font-weight:700; text-decoration:none; }
-  a:hover { text-decoration:underline; }
-  .btn { display:inline-block; margin-top:8px; background:var(--verde); color:#fff !important; padding:12px 18px; border-radius:999px; font-weight:800; }
-  footer { color:var(--gris); font-size:13px; margin-top:40px; text-align:center; }
+  :root{
+    --verde:#00C853; --verde2:#00E676;
+    --tinta:#0B1220; --texto:#111827; --gris:#6B7280;
+    --linea:#E7EAEE; --tarjeta:#ffffff; --fondo:#F6F8FA;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Helvetica,Arial,sans-serif;background:var(--fondo);color:var(--texto);line-height:1.6;-webkit-font-smoothing:antialiased}
+
+  /* HERO */
+  .hero{position:relative;overflow:hidden;background:radial-gradient(1200px 500px at 50% -200px,#123 40%,var(--tinta));color:#fff;padding:88px 20px 120px;text-align:center}
+  .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(600px 220px at 50% 0,rgba(0,200,83,.28),transparent 70%);pointer-events:none}
+  .badge{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#9fe8bd;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05);padding:7px 14px;border-radius:999px;margin-bottom:22px}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--verde2);box-shadow:0 0 10px var(--verde2)}
+  .hero h1{margin:0;font-size:clamp(38px,7vw,64px);font-weight:900;letter-spacing:-.02em}
+  .hero h1 span{background:linear-gradient(90deg,var(--verde),var(--verde2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{margin:14px auto 0;max-width:560px;color:#AEB6C2;font-size:clamp(15px,2.4vw,18px)}
+
+  /* CONTENIDO */
+  .wrap{max-width:880px;margin:-64px auto 0;padding:0 20px 72px;position:relative;z-index:2}
+  .label{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gris);margin:0 0 14px}
+
+  .card{background:var(--tarjeta);border:1px solid var(--linea);border-radius:22px;padding:26px;box-shadow:0 1px 2px rgba(16,24,40,.04),0 12px 32px -12px rgba(16,24,40,.12);transition:transform .18s ease,box-shadow .18s ease}
+  .card:hover{transform:translateY(-3px);box-shadow:0 1px 2px rgba(16,24,40,.05),0 20px 44px -14px rgba(16,24,40,.22)}
+
+  .app{display:flex;gap:20px;align-items:flex-start;margin-bottom:18px}
+  .app img{width:78px;height:78px;border-radius:20px;border:1px solid var(--linea);background:#fff;flex:0 0 auto;object-fit:contain}
+  .app h2{margin:2px 0 6px;font-size:22px;font-weight:800;letter-spacing:-.01em}
+  .app .tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#0a7d3c;background:#e7f8ee;border:1px solid #c9f0d8;padding:3px 9px;border-radius:999px;margin-left:8px;vertical-align:middle}
+  .app p{margin:0;color:var(--gris);font-size:15px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0}
+  .chip{font-size:12px;font-weight:600;color:#374151;background:#F3F4F6;border:1px solid var(--linea);padding:5px 11px;border-radius:999px}
+
+  .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:20px}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(180deg,var(--verde),#00B84C);color:#fff !important;padding:12px 20px;border-radius:999px;font-weight:800;font-size:14px;text-decoration:none;box-shadow:0 8px 20px -8px rgba(0,200,83,.7)}
+  .btn:hover{filter:brightness(1.05)}
+  .link{color:#0a7d3c;font-weight:700;text-decoration:none;font-size:14px}
+  .link:hover{text-decoration:underline}
+
+  .grid{display:grid;grid-template-columns:1fr;gap:18px}
+  @media(min-width:680px){.grid{grid-template-columns:1fr 1fr}}
+
+  .mini h3{margin:0 0 6px;font-size:16px;font-weight:800}
+  .mini p{margin:0;color:var(--gris);font-size:14px}
+  .mini a{color:#0a7d3c;font-weight:700;text-decoration:none}
+
+  footer{text-align:center;color:var(--gris);font-size:13px;padding:8px 20px 48px}
+  footer .brand{color:var(--tinta);font-weight:800}
 </style>
 </head>
 <body>
-  <div class="wrap">
-    <p class="dev">Desarrollado por</p>
-    <h1>Aionel</h1>
-    <p class="sub">Aplicaciones simples y útiles. 🇻🇪</p>
+
+  <header class="hero">
+    <div class="badge"><span class="dot"></span> Desarrollador independiente · Venezuela 🇻🇪</div>
+    <h1>Aionel<span>.</span></h1>
+    <p>Construyo aplicaciones simples y elegantes, hechas para resolver problemas reales. Empezando por <strong>VPREX</strong>.</p>
+  </header>
+
+  <main class="wrap">
+    <p class="label">Aplicaciones</p>
 
     <div class="card">
-      <h2>📊 VPREX</h2>
-      <p>Tasas del dólar en Venezuela 🇻🇪 — BCV, paralelo, Binance y Euro en tiempo real, con conversor, historial y alertas. <strong>Gratis.</strong></p>
-      <a href="vprex/privacidad.html">Política de Privacidad</a>
+      <div class="app">
+        <img src="vprex/logo.png" alt="VPREX" />
+        <div>
+          <h2>VPREX <span class="tag">Gratis</span></h2>
+          <p>Las tasas del dólar en Venezuela en tiempo real: BCV, paralelo, Binance y Euro. Con conversor, historial, alertas y modo claro/oscuro.</p>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip">BCV Oficial</span>
+        <span class="chip">Paralelo</span>
+        <span class="chip">Binance P2P</span>
+        <span class="chip">Euro</span>
+        <span class="chip">Sin conexión</span>
+      </div>
+      <div class="row">
+        <a class="link" href="vprex/privacidad.html">Política de privacidad</a>
+      </div>
     </div>
 
     <!-- Próximas apps: duplica este bloque y crea su carpeta, ej. /app2/privacidad.html
     <div class="card">
-      <h2>📱 Nombre de la App</h2>
-      <p>Descripción corta.</p>
-      <a href="app2/privacidad.html">Política de Privacidad</a>
+      <div class="app">
+        <img src="app2/logo.png" alt="" />
+        <div>
+          <h2>Nombre de la App</h2>
+          <p>Descripción corta.</p>
+        </div>
+      </div>
+      <div class="row"><a class="link" href="app2/privacidad.html">Política de privacidad</a></div>
     </div>
     -->
 
-    <div class="card">
-      <h2>✉️ Contacto</h2>
-      <p>Soporte y consultas:</p>
-      <p><a href="mailto:abrahamgamargo20alg@gmail.com">abrahamgamargo20alg@gmail.com</a></p>
+    <div class="grid" style="margin-top:18px">
+      <div class="card mini">
+        <h3>✉️ Contacto</h3>
+        <p>Soporte, consultas y sugerencias:<br>
+          <a href="mailto:aionelmindalg@gmail.com">aionelmindalg@gmail.com</a>
+        </p>
+      </div>
+      <div class="card mini">
+        <h3>🔒 Privacidad</h3>
+        <p>Cada aplicación tiene su propia política de privacidad, disponible en su ficha de la tienda.</p>
+      </div>
     </div>
+  </main>
 
-    <footer>
-      © 2026 Aionel · La información mostrada es referencial. VPREX no es una casa de cambio ni realiza transacciones financieras.
-    </footer>
-  </div>
+  <footer>
+    © 2026 <span class="brand">Aionel</span> · Aplicaciones hechas con ❤️ para Venezuela 🇻🇪
+  </footer>
+
 </body>
 </html>
