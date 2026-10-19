@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Aionel — Aplicaciones</title>
-<meta name="description" content="Aplicaciones desarrolladas por Aionel. VPREX: tasas del dólar en Venezuela en tiempo real, conversor y calculadora." />
+<meta name="description" content="Aplicaciones desarrolladas por Aionel. VPREX: consulta de tasas BCV, paralelo y euro, conversor, historial y alertas." />
 <meta name="theme-color" content="#0B1220" />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <style>
@@ -40,6 +40,7 @@
   .app p{margin:0;color:var(--gris);font-size:15px}
   .chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0}
   .chip{font-size:12px;font-weight:600;color:#374151;background:#F3F4F6;border:1px solid var(--linea);padding:5px 11px;border-radius:999px}
+  .app-note{margin:14px 0 0;font-size:12px;line-height:1.5;color:var(--gris);background:#F8FAFC;border:1px dashed var(--linea);border-radius:10px;padding:9px 12px}
 
   .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:20px}
   .btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(180deg,var(--verde),#00B84C);color:#fff !important;padding:12px 20px;border-radius:999px;font-weight:800;font-size:14px;text-decoration:none;box-shadow:0 8px 20px -8px rgba(0,200,83,.7)}
@@ -74,7 +75,7 @@
         <img src="vprex/logo.png" alt="VPREX" />
         <div>
           <h2>VPREX <span class="tag">Gratis</span></h2>
-          <p>Las tasas del dólar en Venezuela en tiempo real: BCV, Paralelo, Euro y cotizaciones de referencia. Con conversor, calculadora de brecha, gráficos históricos y modo claro/oscuro.</p>
+          <p>Las tasas del dólar en Venezuela, claras y al día: BCV, paralelo, euro y referencias. Con conversor, historial y gráficas, alertas y modo claro/oscuro.</p>
         </div>
       </div>
       <div class="chips">
@@ -82,10 +83,12 @@
         <span class="chip">Paralelo</span>
         <span class="chip">Euro</span>
         <span class="chip">Conversor</span>
-        <span class="chip">Calculadora</span>
-        <span class="chip">Mi Patrimonio</span>
+        <span class="chip">Historial</span>
         <span class="chip">Alertas</span>
+        <span class="chip">Buscar por fecha</span>
+        <span class="chip">Modo claro/oscuro</span>
       </div>
+      <p class="app-note">Aplicación informativa. No realiza operaciones de cambio, no gestiona cuentas ni ofrece asesoría financiera.</p>
       <div class="row">
         <a class="btn" href="https://play.google.com/store/apps/details?id=com.vprex.app" target="_blank" rel="noopener">
           Google Play Store
@@ -103,7 +106,7 @@
       </div>
       <div class="card mini">
         <h3>🔒 Privacidad</h3>
-        <p>Cada aplicación cuenta con su propia política de privacidad transparente, accesible antes y después de su instalación.</p>
+        <p>Política transparente: datos locales, anuncios de Google AdMob y control del consentimiento.</p>
       </div>
     </div>
   </main>

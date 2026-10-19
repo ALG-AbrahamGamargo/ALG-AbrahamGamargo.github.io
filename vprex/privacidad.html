@@ -1,24 +1,39 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Política de Privacidad — VPREX</title>
+<meta name="description" content="Política de privacidad de VPREX: aplicación informativa de tasas de cambio. Sin cuentas, datos locales y anuncios con Google AdMob." />
 <link rel="icon" href="logo.png" />
 <style>
-  :root { --verde:#00C853; --texto:#0F172A; --gris:#64748b; --fondo:#F8FAFC; }
+  :root { --verde:#00A844; --verde2:#00C853; --texto:#0F172A; --gris:#64748b; --fondo:#F8FAFC; --linea:#E2E8F0; }
   * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
   body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; background:var(--fondo); color:var(--texto); line-height:1.7; }
-  .wrap { max-width:720px; margin:0 auto; padding:48px 20px 80px; }
-  h1 { font-size:26px; margin:0 0 4px; }
-  .fecha { color:var(--gris); font-size:14px; margin:0 0 28px; }
-  h2 { font-size:17px; margin:26px 0 6px; }
+  .wrap { max-width:760px; margin:0 auto; padding:44px 20px 80px; }
+  h1 { font-size:28px; line-height:1.25; margin:0 0 6px; letter-spacing:-.02em; }
+  .fecha { color:var(--gris); font-size:14px; margin:0 0 8px; }
+  .version { display:inline-block; font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:#067647; background:#DCFCE7; border:1px solid #A7F3D0; padding:3px 10px; border-radius:999px; margin-bottom:24px; }
+  h2 { font-size:18px; line-height:1.35; margin:32px 0 8px; }
+  h3 { font-size:15px; margin:20px 0 4px; }
   p, li { margin:0 0 8px; }
-  ul { padding-left:22px; }
+  ul, ol { padding-left:22px; margin:6px 0 10px; }
   a { color:var(--verde); font-weight:700; text-decoration:none; }
-  .box { background:#fff; border:1px solid #E5E7EB; border-radius:16px; padding:24px; box-shadow:0 4px 12px rgba(0,0,0,0.03); }
+  a:hover { text-decoration:underline; }
+  .box { background:#fff; border:1px solid var(--linea); border-radius:18px; padding:28px; box-shadow:0 4px 16px rgba(15,23,42,.04); }
   .volver { display:inline-block; margin-bottom:18px; font-weight:700; }
-  .legal-box { background:#fef3c7; border:1px solid #f59e0b; border-radius:10px; padding:16px; margin-top:20px; font-size:14px; }
+  .summary { background:#ECFDF5; border:1px solid #A7F3D0; border-radius:14px; padding:16px 18px; margin:0 0 26px; }
+  .summary strong { display:block; margin-bottom:6px; color:#065F46; }
+  .summary ul { margin:0; }
+  .legal-box { background:#FEF3C7; border:1px solid #F59E0B; border-radius:12px; padding:16px; margin-top:14px; font-size:14px; }
+  .note { background:#F1F5F9; border-left:4px solid var(--verde); border-radius:8px; padding:12px 14px; font-size:14px; color:#334155; margin:12px 0; }
+  table { width:100%; border-collapse:collapse; margin:10px 0 14px; font-size:14px; }
+  th, td { text-align:left; vertical-align:top; padding:9px 10px; border-bottom:1px solid var(--linea); }
+  th { background:#F8FAFC; font-size:12px; text-transform:uppercase; letter-spacing:.04em; color:#475569; }
+  .muted { color:var(--gris); font-size:13px; }
+  .en { margin-top:36px; padding-top:22px; border-top:1px solid var(--linea); }
+  @media (max-width:560px) { .box { padding:20px; } h1 { font-size:24px; } }
 </style>
 </head>
 <body>
@@ -27,44 +42,186 @@
     <div class="box">
       <h1>Política de Privacidad — VPREX</h1>
       <p class="fecha">Última actualización: 19 de octubre de 2026</p>
+      <span class="version">Versión 2.0</span>
 
-      <h2>1. Información general</h2>
-      <p>VPREX es una aplicación informativa y de cálculo que muestra tasas de cambio de referencia (BCV, Paralelo, Euro y mercado digital de referencia) en Venezuela. Esta política explica qué datos se procesan y cómo se protegen.</p>
-
-      <h2>2. Datos que NO recopilamos</h2>
-      <p>No requerimos creación de cuenta ni registro. No solicitamos ni recopilamos nombres, correos electrónicos, números de teléfono, documentos de identidad ni credenciales bancarias para usar la aplicación.</p>
-
-      <h2>3. Registro de "Mi Patrimonio" y cálculos locales</h2>
-      <p>La herramienta "Mi Patrimonio" opera exclusivamente de forma local y manual como una libreta de notas para estimación de saldos del propio usuario. <strong>VPREX no recopila, transmite, sincroniza ni almacena información patrimonial, datos bancarios ni números de saldo en ningún servidor externo.</strong> Toda la información introducida se guarda únicamente en la memoria local de tu dispositivo.</p>
-
-      <h2>4. Datos almacenados en tu dispositivo</h2>
-      <p>Tus preferencias generales (tema visual claro/oscuro, configuración de alertas locales y registros manuales) se guardan <strong>únicamente en tu teléfono</strong> mediante almacenamiento local seguro y nunca se comparten.</p>
-
-      <h2>5. Publicidad de terceros (Google AdMob)</h2>
-      <p>Utilizamos <strong>Google AdMob</strong> para mostrar anuncios publicitarios en la versión gratuita. AdMob puede recopilar el identificador de publicidad de tu dispositivo (Advertising ID), información técnica del sistema y dirección IP para fines de medición de impresiones y prevención de fraudes. Google trata estos datos conforme a sus políticas: <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">policies.google.com/technologies/ads</a></p>
-
-      <h2>6. Consentimiento de anuncios</h2>
-      <p>La aplicación solicita tu consentimiento para la personalización de anuncios en las regiones donde la ley lo requiera (por ejemplo, regulaciones GDPR / UMP). Puedes modificar tu elección en cualquier momento.</p>
-
-      <h2>7. Notificaciones y alertas de precio</h2>
-      <p>Las alertas de precio y notificaciones periódicas de actualización se programan de manera <strong>local</strong> en el sistema operativo del teléfono. Son opcionales y pueden desactivarse en cualquier momento desde la pantalla de alertas o en los ajustes del dispositivo.</p>
-
-      <h2>8. Datos de mercado</h2>
-      <p>Las tasas de cambio mostradas se obtienen a partir de fuentes públicas de acceso general. En dichas consultas de actualización no se transmite ninguna información personal del usuario.</p>
-
-      <h2>9. Privacidad de menores</h2>
-      <p>La aplicación no está dirigida a menores de 13 años y no recopila deliberadamente información de niños o adolescentes.</p>
-
-      <h2>10. Aviso Legal y de Transparencia</h2>
-      <div class="legal-box">
-        <strong>Aviso Importante:</strong> La información mostrada por VPREX es de carácter exclusivamente informativo y referencial. VPREX no es una entidad financiera, banco, casa de cambio ni transmisor de dinero. La aplicación no capta, intermedia, transfiere ni custodia dinero en efectivo, divisas ni criptomonedas, ni ejecuta órdenes o pagos financieros.
+      <div class="summary">
+        <strong>En resumen</strong>
+        <ul>
+          <li>No necesitas crear una cuenta ni entregarnos tu nombre, correo o teléfono para usar VPREX.</li>
+          <li>Tus preferencias y alertas se guardan <strong>solo en tu teléfono</strong>.</li>
+          <li>Mostramos anuncios con <strong>Google AdMob</strong>, que puede usar tu identificador de publicidad, tu IP y datos técnicos del dispositivo.</li>
+          <li>Puedes cambiar tu consentimiento en <strong>Información → Privacidad y anuncios → Preferencias de anuncios</strong>.</li>
+          <li>No vendemos datos personales y no realizamos operaciones de cambio ni asesoría financiera.</li>
+        </ul>
       </div>
 
-      <h2>11. Cambios en esta política</h2>
-      <p>Podemos actualizar esta política periódicamente; la fecha indicada al inicio refleja siempre la versión vigente.</p>
+      <h2>1. Responsable del tratamiento</h2>
+      <p>El responsable del tratamiento de los datos descritos en esta política es <strong>Aionel (Abraham Gamargo)</strong>, desarrollador independiente con domicilio en Venezuela.</p>
+      <ul>
+        <li><strong>Aplicación:</strong> VPREX (<code>com.vprex.app</code>)</li>
+        <li><strong>Sitio:</strong> <a href="https://alg-abrahamgamargo.github.io/">alg-abrahamgamargo.github.io</a></li>
+        <li><strong>Contacto de privacidad:</strong> <a href="mailto:aionelmindalg@gmail.com">aionelmindalg@gmail.com</a></li>
+      </ul>
 
-      <h2>12. Contacto</h2>
-      <p>Si tienes preguntas o inquietudes sobre esta política de privacidad, puedes contactarnos directamente al correo: <a href="mailto:aionelmindalg@gmail.com">aionelmindalg@gmail.com</a></p>
+      <h2>2. Qué es VPREX y qué no hace</h2>
+      <p>VPREX es una aplicación <strong>informativa</strong> para consultar y convertir tasas de cambio de referencia en Venezuela: tasa oficial del BCV, paralelo, euro y euro paralelo. También permite ver historial y gráficas, buscar tasas por fecha y configurar alertas locales.</p>
+      <div class="legal-box">
+        <strong>VPREX no es un servicio financiero.</strong> No realiza operaciones de cambio, no abre cuentas, no recibe ni custodia dinero, no procesa pagos, no intermedia divisas ni criptomonedas y no ofrece asesoría financiera, recomendaciones personalizadas ni señales de compra o venta. La información es únicamente de referencia.
+      </div>
+
+      <h2>3. Datos que no te pedimos</h2>
+      <p>Para usar VPREX no solicitamos ni recopilamos:</p>
+      <ul>
+        <li>Nombre, correo electrónico, número de teléfono, documento de identidad ni dirección.</li>
+        <li>Datos de pago, números de tarjeta, cuentas bancarias ni credenciales financieras.</li>
+        <li>Contactos, fotos, cámara, micrófono ni ubicación precisa.</li>
+        <li>Cuentas de usuario, contraseñas o perfiles.</li>
+      </ul>
+      <p>No vendemos, alquilamos ni comercializamos datos personales.</p>
+
+      <h2>4. Datos que se procesan</h2>
+
+      <h3>4.1. Datos guardados localmente en tu dispositivo</h3>
+      <p>VPREX guarda en el almacenamiento local de la app (AsyncStorage):</p>
+      <ul>
+        <li>Tema visual (claro u oscuro) y preferencia de notificaciones.</li>
+        <li>Las alertas de tasa que crees: nombre, fuente, condición, umbral y estado.</li>
+        <li>La última tasa consultada y su marca de tiempo.</li>
+        <li>El estado del pase temporal sin anuncios, si lo obtienes.</li>
+      </ul>
+      <p>Estos datos <strong>no se envían a servidores de VPREX</strong>. Se eliminan cuando borras los datos de la app o la desinstalas.</p>
+      <div class="note">
+        El almacenamiento local está aislado por el sistema operativo, pero VPREX no lo cifra con una clave propia. Te recomendamos usar bloqueo de pantalla y no escribir información sensible en el nombre de tus alertas.
+      </div>
+
+      <h3>4.2. Consultas de tasas por internet</h3>
+      <p>Para actualizar las tasas, la app hace solicitudes HTTPS a fuentes públicas como DolarApi (<a href="https://ve.dolarapi.com" target="_blank" rel="noopener">ve.dolarapi.com</a>) y al BCV. En esas solicitudes se transmite tu dirección IP y datos técnicos estándar (por ejemplo, user agent y fecha). No se envían tus alertas, preferencias ni datos personales.</p>
+      <p>El proveedor de la API puede conservar registros técnicos conforme a su propia política de privacidad. VPREX no controla esos registros ni mantiene una base de datos propia de usuarios.</p>
+      <p>Este sitio web está alojado en GitHub Pages. GitHub puede registrar la dirección IP y datos técnicos de las visitas conforme a su propia política de privacidad.</p>
+
+      <h3>4.3. Publicidad de terceros: Google AdMob</h3>
+      <p>La versión gratuita muestra anuncios mediante el SDK de <strong>Google Mobile Ads / AdMob</strong>. Google puede recopilar y tratar:</p>
+      <ul>
+        <li>Identificador de publicidad del dispositivo (Advertising ID), que puedes restablecer o desactivar en los ajustes.</li>
+        <li>Dirección IP.</li>
+        <li>Información técnica del dispositivo y de la app: modelo, sistema operativo, idioma, versión de la app y tipo de conexión.</li>
+        <li>Interacciones con anuncios, como impresiones y clics.</li>
+        <li>Ubicación aproximada derivada de la dirección IP.</li>
+        <li>Datos de diagnóstico y rendimiento del SDK de anuncios.</li>
+      </ul>
+      <p>Estos datos se usan para mostrar anuncios, medir su rendimiento, limitar la frecuencia, prevenir fraudes y cumplir obligaciones legales. Google puede actuar como responsable independiente de parte de este tratamiento y puede procesar datos en Estados Unidos y otros países con las garantías que Google aplica.</p>
+      <p>Más información:</p>
+      <ul>
+        <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de Privacidad de Google</a></li>
+        <li><a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Cómo utiliza Google la información de sitios y apps</a></li>
+        <li><a href="https://adssettings.google.com/" target="_blank" rel="noopener">Configuración de anuncios de Google</a></li>
+      </ul>
+
+      <h3>4.4. Consentimiento de anuncios</h3>
+      <p>En el Espacio Económico Europeo, Reino Unido y Suiza, los anuncios personalizados solo se muestran si otorgas tu consentimiento mediante la plataforma de consentimiento de Google (UMP). Puedes cambiar o retirar tu elección en cualquier momento desde <strong>Información → Privacidad y anuncios → Preferencias de anuncios</strong> dentro de la app, o desde la configuración de anuncios de Google.</p>
+      <p>En otras regiones, puedes limitar la personalización desde <a href="https://adssettings.google.com/" target="_blank" rel="noopener">Google Ad Settings</a> o desactivando la personalización en los ajustes de tu dispositivo. Si no otorgas consentimiento, la app puede mostrar anuncios no personalizados o no mostrar anuncios.</p>
+
+      <h3>4.5. Notificaciones y alertas</h3>
+      <p>Las alertas y los recordatorios se programan <strong>localmente</strong> en el sistema operativo del teléfono. No utilizamos un servidor de notificaciones ni enviamos tu token a servidores de VPREX. Son opcionales: puedes desactivarlas desde la app o desde los ajustes del dispositivo.</p>
+
+      <h3>4.6. Analítica y reportes de fallos</h3>
+      <p>VPREX no utiliza herramientas propias de analítica, perfilado ni reporte de fallos. Google AdMob puede proporcionar métricas agregadas y diagnósticos relacionados con los anuncios, según se describe arriba.</p>
+
+      <h3>4.7. Permisos que utiliza la app</h3>
+      <ul>
+        <li><strong>Internet y estado de red:</strong> para consultar las tasas.</li>
+        <li><strong>Notificaciones y vibración:</strong> para alertas y recordatorios opcionales.</li>
+        <li><strong>Identificador de publicidad:</strong> para mostrar y medir anuncios.</li>
+        <li><strong>Reactivación tras reiniciar:</strong> para volver a programar alertas locales.</li>
+      </ul>
+      <p>La app no solicita cámara, micrófono, contactos ni ubicación precisa.</p>
+
+      <h2>5. Base legal del tratamiento (EEE, Reino Unido y Suiza)</h2>
+      <ul>
+        <li><strong>Consentimiento:</strong> para anuncios personalizados y notificaciones opcionales. Puedes retirarlo en cualquier momento.</li>
+        <li><strong>Interés legítimo:</strong> para el funcionamiento básico de la app, la seguridad, la prevención de fraude y los anuncios no personalizados.</li>
+        <li><strong>Obligación legal:</strong> cuando debamos responder a autoridades competentes.</li>
+      </ul>
+      <p>No realizamos decisiones automatizadas ni perfilado con efectos legales sobre ti.</p>
+
+      <h2>6. Cuánto tiempo se conservan los datos</h2>
+      <ul>
+        <li><strong>Datos locales:</strong> hasta que borres los datos de la app o la desinstales.</li>
+        <li><strong>Datos de anuncios:</strong> según las políticas y plazos de conservación de Google.</li>
+        <li><strong>Registros de la API de tasas:</strong> según el proveedor de la API; VPREX no los almacena.</li>
+        <li><strong>Correos de soporte:</strong> si nos escribes, conservamos el mensaje para responderte y lo eliminamos cuando ya no sea necesario, con un máximo de 24 meses, salvo obligación legal.</li>
+      </ul>
+
+      <h2>7. Con quién se comparten los datos</h2>
+      <ul>
+        <li><strong>Google AdMob:</strong> para mostrar y medir anuncios, prevenir fraude y cumplir obligaciones legales.</li>
+        <li><strong>DolarApi y BCV:</strong> reciben las solicitudes técnicas de consulta de tasas; no reciben tus alertas ni preferencias.</li>
+        <li><strong>Autoridades:</strong> solo cuando exista una obligación legal válida.</li>
+      </ul>
+      <p>No vendemos datos personales ni los compartimos para fines ajenos a los descritos en esta política.</p>
+
+      <h2>8. Transferencias internacionales</h2>
+      <p>Google puede procesar datos en Estados Unidos y en otros países distintos al tuyo. Estas transferencias se amparan en los mecanismos y garantías que Google aplica, como las cláusulas contractuales tipo y, cuando corresponde, el Marco de Privacidad de Datos UE-EE. UU. Puedes consultar más información en la política de privacidad de Google.</p>
+
+      <h2>9. Tus derechos</h2>
+      <p>Dependiendo de tu país, puedes ejercer los siguientes derechos:</p>
+      <ul>
+        <li>Acceder a los datos que se tratan sobre ti.</li>
+        <li>Solicitar su rectificación o eliminación.</li>
+        <li>Oponerte al tratamiento o solicitar su limitación.</li>
+        <li>Solicitar la portabilidad de los datos.</li>
+        <li>Retirar tu consentimiento en cualquier momento.</li>
+        <li>Presentar una reclamación ante la autoridad de protección de datos competente.</li>
+      </ul>
+      <p>Para ejercerlos, escribe a <a href="mailto:aionelmindalg@gmail.com">aionelmindalg@gmail.com</a> con el asunto “Privacidad VPREX”. Responderemos en un plazo razonable y, cuando la ley lo exija, dentro de los 30 días siguientes. Como no creamos cuentas, es posible que no tengamos datos que permitan identificarte; en ese caso te lo explicaremos.</p>
+
+      <h3>Controles en tu dispositivo</h3>
+      <ul>
+        <li>Borrar los datos de la app o desinstalarla elimina las preferencias y alertas locales.</li>
+        <li>Puedes restablecer o eliminar tu identificador de publicidad desde los ajustes de Android o iOS.</li>
+        <li>Puedes desactivar la personalización de anuncios desde <a href="https://adssettings.google.com/" target="_blank" rel="noopener">Google Ad Settings</a>.</li>
+        <li>Puedes desactivar las notificaciones desde la app o desde los ajustes del sistema.</li>
+      </ul>
+
+      <h3>California (CCPA/CPRA)</h3>
+      <p>No vendemos datos personales. Si la personalización de anuncios se considera “compartición” para publicidad conductual, puedes optar por no participar desde <strong>Información → Privacidad y anuncios → Preferencias de anuncios</strong> o desde Google Ad Settings. También puedes solicitar acceso, corrección o eliminación escribiendo al correo de contacto.</p>
+
+      <h3>Brasil (LGPD)</h3>
+      <p>Puedes solicitar confirmación de tratamiento, acceso, corrección, anonimización, portabilidad, eliminación y revocación del consentimiento escribiendo al correo de contacto.</p>
+
+      <h2>10. Privacidad de menores</h2>
+      <p>VPREX no está dirigida a menores de 13 años (o la edad mínima aplicable en tu país) y no recopila deliberadamente datos de niños. Si eres menor de esa edad, no uses la app. Si un padre, madre o tutor cree que un menor nos proporcionó datos, puede escribirnos para solicitar su eliminación.</p>
+
+      <h2>11. Seguridad</h2>
+      <ul>
+        <li>Las consultas de tasas se realizan mediante HTTPS/TLS.</li>
+        <li>Los datos locales quedan dentro del espacio aislado de la app en tu dispositivo.</li>
+        <li>VPREX no mantiene una base de datos central de usuarios.</li>
+        <li>Ningún sistema es 100 % seguro; te recomendamos mantener tu dispositivo actualizado y protegido con bloqueo de pantalla.</li>
+      </ul>
+
+      <h2>12. Enlaces de terceros</h2>
+      <p>La app y este sitio pueden enlazar a servicios de terceros, como Google, DolarApi o el BCV. No controlamos sus prácticas de privacidad; te recomendamos revisar sus políticas.</p>
+
+      <h2>13. Cambios en esta política</h2>
+      <p>Podemos actualizar esta política para reflejar cambios en la app o en la ley. Publicaremos la versión vigente en esta misma página e indicaremos la fecha de actualización. Si el cambio es relevante, lo comunicaremos de forma visible antes de que entre en vigor.</p>
+
+      <h2>14. Contacto</h2>
+      <p>Para preguntas, solicitudes o reclamos relacionados con privacidad:</p>
+      <ul>
+        <li><strong>Responsable:</strong> Aionel (Abraham Gamargo)</li>
+        <li><strong>Correo:</strong> <a href="mailto:aionelmindalg@gmail.com">aionelmindalg@gmail.com</a></li>
+        <li><strong>País:</strong> Venezuela</li>
+      </ul>
+
+      <h2>15. Aviso legal</h2>
+      <p>La información mostrada por VPREX es de carácter exclusivamente informativo y referencial. Las tasas pueden tener retrasos, errores o variaciones y no constituyen una oferta, una recomendación ni asesoría financiera. Verifica siempre los valores con el BCV u otra fuente oficial antes de tomar cualquier decisión.</p>
+
+      <div class="en">
+        <h2>English summary</h2>
+        <p class="muted">This is a summary; the Spanish version is the binding one.</p>
+        <p>VPREX is an informational currency-exchange-rate app. It does not create accounts, execute exchanges, hold funds, or provide financial advice. Preferences and rate alerts are stored locally on your device and are not sent to our servers. The app displays ads through Google AdMob, which may process your advertising ID, IP address, device/app information, ad interactions, approximate location derived from IP, and diagnostics for advertising, measurement, fraud prevention, and legal compliance. Personalized ads require consent where required by law; you can change your choice in <strong>Information → Ad preferences</strong>. We do not sell personal data. Contact: <a href="mailto:aionelmindalg@gmail.com">aionelmindalg@gmail.com</a>.</p>
+      </div>
     </div>
   </div>
 </body>
