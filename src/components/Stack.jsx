@@ -62,6 +62,7 @@ export function Stack() {
               Un buen producto resuelve el problema de la persona sin que tenga
               que pensar en cómo está construido.
             </p>
+          
             <span className="stack__quote-author">Decisión de diseño</span>
           </motion.div>
         </div>

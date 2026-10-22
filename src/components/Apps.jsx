@@ -95,7 +95,7 @@ function VprexCard() {
         histórico con gráficas, alertas y modo claro/oscuro.
       </p>
 
-      <Shots shots={APPS.vprex.shots} tone="vprex" />
+      <Shots shots={APPS.vprex.shots} tone="vprex" appName="VPREX" />
 
       <FeatureList
         items={[
@@ -154,7 +154,7 @@ function WprexCard() {
         impuestos, abonos, clientes y mensajes editables. Todo en tu navegador.
       </p>
 
-      <Shots shots={APPS.wprex.shots} tone="wprex" />
+      <Shots shots={APPS.wprex.shots} tone="wprex" appName="Wprex" />
 
       <FeatureList
         items={[

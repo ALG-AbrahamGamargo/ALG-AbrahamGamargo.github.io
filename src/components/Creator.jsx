@@ -1,5 +1,6 @@
-import { useRef } from 'react'
-import { motion, useReducedMotion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { SOCIALS } from '../data/site.js'
 import { SectionHead, viewport } from './Section.jsx'
 
@@ -59,7 +60,7 @@ export function Creator() {
                 <span className="serif accent-text">explicadas en simple</span>.
               </>
             }
-            lead="En YouTube, Instagram y TikTok hablo de ciencia y tecnología: inventos, avances, datos curiosos y cómo funciona todo lo que usamos a diario. No enseño a programar: explico el mundo tecnológico y científico que hay detrás."
+            lead="En YouTube, Instagram y TikTok hablo de ciencia y tecnología: inventos, avances, datos curiosos y cómo funciona todo lo que usamos a diario."
           />
 
           <motion.div
@@ -120,15 +121,34 @@ export function Creator() {
   )
 }
 
-/** Carrusel horizontal de capturas reales con scroll-snap y flechas. */
-export function Shots({ shots, tone = 'vprex' }) {
+/** Carrusel horizontal de capturas reales con scroll-snap, flechas y visor ampliado. */
+export function Shots({ shots, tone = 'vprex', appName = '' }) {
   const trackRef = useRef(null)
+  const [open, setOpen] = useState(null)
+  const reduce = useReducedMotion()
 
   const scrollBy = (dir) => {
     const el = trackRef.current
     if (!el) return
     el.scrollBy({ left: dir * (el.clientWidth * 0.8), behavior: 'smooth' })
   }
+
+  // Navegación del visor con teclado y bloqueo del scroll de fondo
+  useEffect(() => {
+    if (open === null) return
+    const onKey = (e) => {
+      if (e.key === 'Escape') setOpen(null)
+      if (e.key === 'ArrowRight') setOpen((i) => (i + 1) % shots.length)
+      if (e.key === 'ArrowLeft') setOpen((i) => (i - 1 + shots.length) % shots.length)
+    }
+    window.addEventListener('keydown', onKey)
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      document.body.style.overflow = prev
+    }
+  }, [open, shots.length])
 
   return (
     <div className={`shots shots--${tone}`}>
@@ -154,17 +174,98 @@ export function Shots({ shots, tone = 'vprex' }) {
       <div className="shots__track" ref={trackRef}>
         {shots.map((s, i) => (
           <figure key={s.src} className="shot">
-            <img
-              src={s.src}
-              alt={s.alt}
-              loading="lazy"
-              decoding="async"
-              draggable="false"
-            />
+            <button
+              type="button"
+              className="shot__btn"
+              onClick={() => setOpen(i)}
+              aria-label={`Ampliar captura ${i + 1}${appName ? ` de ${appName}` : ''}`}
+            >
+              <img src={s.src} alt={s.alt} loading="lazy" decoding="async" draggable="false" />
+              <span className="shot__zoom" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="11" cy="11" r="7" />
+                  <path d="M20 20l-3.5-3.5M11 8v6M8 11h6" />
+                </svg>
+              </span>
+            </button>
             <figcaption>{String(i + 1).padStart(2, '0')}</figcaption>
           </figure>
         ))}
       </div>
+
+      {createPortal(
+        <AnimatePresence>
+          {open !== null && (
+            <motion.div
+              className={`lightbox lightbox--${tone}`}
+              role="dialog"
+              aria-modal="true"
+              aria-label={`Captura ampliada${appName ? ` de ${appName}` : ''}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              onClick={() => setOpen(null)}
+            >
+              <motion.div
+                className="lightbox__panel"
+                initial={reduce ? false : { scale: 0.94, opacity: 0, y: 18 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={reduce ? undefined : { scale: 0.96, opacity: 0 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button className="lightbox__close" onClick={() => setOpen(null)} aria-label="Cerrar captura">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M6 6l12 12M18 6L6 18" />
+                  </svg>
+                </button>
+
+                {shots.length > 1 && (
+                  <>
+                    <button
+                      className="lightbox__nav lightbox__nav--prev"
+                      onClick={() => setOpen((i) => (i - 1 + shots.length) % shots.length)}
+                      aria-label="Captura anterior"
+                    >
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M15 6l-6 6 6 6" />
+                      </svg>
+                    </button>
+                    <button
+                      className="lightbox__nav lightbox__nav--next"
+                      onClick={() => setOpen((i) => (i + 1) % shots.length)}
+                      aria-label="Captura siguiente"
+                    >
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M9 6l6 6-6 6" />
+                      </svg>
+                    </button>
+                  </>
+                )}
+
+                <motion.img
+                  key={shots[open].src}
+                  src={shots[open].src}
+                  alt={shots[open].alt}
+                  className="lightbox__img"
+                  initial={reduce ? false : { opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+
+                <div className="lightbox__bar">
+                  <p>{shots[open].alt}</p>
+                  <span>
+                    {open + 1} / {shots.length}
+                  </span>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body,
+      )}
     </div>
   )
 }
