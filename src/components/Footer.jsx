@@ -1,0 +1,100 @@
+import { useState } from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
+import { LogoMark } from './LogoMark.jsx'
+import { viewport } from './Section.jsx'
+
+const EMAIL = 'aionelmindalg@gmail.com'
+
+export function Footer() {
+  const [copied, setCopied] = useState(false)
+  const reduce = useReducedMotion()
+
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2200)
+    } catch {
+      window.location.href = `mailto:${EMAIL}`
+    }
+  }
+
+  return (
+    <>
+      <section id="contacto" className="cta">
+        <div className="container">
+          <motion.div
+            className="cta__card"
+            initial={reduce ? false : { opacity: 0, y: 40, scale: 0.98 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={viewport}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="cta__aurora" aria-hidden="true" />
+            <div className="cta__grain" aria-hidden="true" />
+
+            <span className="eyebrow cta__eyebrow">Contacto</span>
+            <h2 className="cta__title display">
+              ¿Tienes una idea <br />
+              <span className="serif accent-text">en mente?</span>
+            </h2>
+            <p className="cta__lead">
+              Soporte, consultas o sugerencias sobre VPREX y Wprex. Respondo en
+              español, siempre que puedo el mismo día.
+            </p>
+
+            <div className="cta__actions">
+              <a className="btn" href={`mailto:${EMAIL}`}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="5" width="18" height="14" rx="2.5" />
+                  <path d="M3.5 7l8.5 6 8.5-6" />
+                </svg>
+                Escribirme
+              </a>
+              <button className="btn btn--ghost" onClick={copy} type="button">
+                {copied ? (
+                  <>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M20 6L9 17l-5-5" />
+                    </svg>
+                    Copiado
+                  </>
+                ) : (
+                  <>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="9" y="9" width="12" height="12" rx="2.5" />
+                      <path d="M15 5.5A2.5 2.5 0 0 0 12.5 3H5.5A2.5 2.5 0 0 0 3 5.5v7A2.5 2.5 0 0 0 5.5 15" />
+                    </svg>
+                    {EMAIL}
+                  </>
+                )}
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <footer className="footer">
+        <div className="container footer__inner">
+          <div className="footer__brand">
+            <LogoMark size={26} breathe={false} />
+            <span>Aionel</span>
+          </div>
+
+          <nav className="footer__links" aria-label="Enlaces del pie">
+            <a href="#apps">Aplicaciones</a>
+            <a href="/vprex-privacidad.html">Privacidad VPREX</a>
+            <a href="/wprex-privacidad.html">Privacidad Wprex</a>
+            <a href={`mailto:${EMAIL}`}>Correo</a>
+          </nav>
+
+          <p className="footer__legal">
+            Â© {new Date().getFullYear()} Aionel · Aplicaciones hechas con cuidado para
+            Venezuela
+          </p>
+        </div>
+      </footer>
+    </>
+  )
+}
+
