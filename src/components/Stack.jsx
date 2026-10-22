@@ -5,25 +5,31 @@ const STEPS = [
   {
     n: '01',
     title: 'Entender el problema',
-    desc: 'Antes de escribir la primera línea trabajo el flujo completo: qué recibe la persona, qué decide y qué resultado necesita. El marketing enseña a pensar en resultados, no en funciones.',
+    desc: 'Antes de la primera línea defino el flujo completo: qué recibe la persona, qué decide y qué resultado necesita. Primero el objetivo, después la técnica.',
     tag: 'Producto',
   },
   {
     n: '02',
-    title: 'Web con React y Vite',
-    desc: 'Interfaces rápidas y accesibles, con animaciones cuidadas y un bundle ligero. La web es la primera puerta de entrada y tiene que cargar bien incluso con mala conexión.',
+    title: 'Frontend: React, Next.js y Angular',
+    desc: 'Interfaces rápidas, accesibles y responsivas. Next.js para web con SEO y Angular para aplicaciones empresariales de mayor escala.',
     tag: 'Frontend',
   },
   {
     n: '03',
-    title: 'Java y PostgreSQL en el servidor',
-    desc: 'Lógica de negocio clara, APIs estables y una base de datos relacional bien modelada. Datos que no se pierden y consultas que responden con el tráfico real.',
+    title: 'Backend: Java, PHP y PostgreSQL',
+    desc: 'APIs estables y lógica de negocio clara sobre Java y PHP, con PostgreSQL como base de datos relacional bien modelada.',
     tag: 'Backend',
   },
   {
     n: '04',
+    title: 'Móvil y escritorio',
+    desc: 'React Native para llevar el mismo producto al teléfono y aplicaciones de escritorio preparadas para trabajar sin fricción.',
+    tag: 'Plataformas',
+  },
+  {
+    n: '05',
     title: 'Privacidad y confianza',
-    desc: 'Cada dato tiene una razón para existir. Lo mínimo necesario, cifrado cuando corresponde y políticas escritas sin letra pequeña.',
+    desc: 'Solo los datos necesarios, protegidos y explicados con claridad. Una base sólida para cualquier producto.',
     tag: 'Confianza',
   },
 ]
@@ -37,11 +43,11 @@ export function Stack() {
             eyebrow="Cómo trabajo"
             title={
               <>
-                Web, Java y datos.<br />
-                <span className="serif accent-text">Bien hechos.</span>
+                Tecnología web<br />
+                <span className="serif accent-text">de punta a punta.</span>
               </>
             }
-            lead="Construyo aplicaciones que hacen que tu equipo se vea profesional: la misma base con la que trabaja un especialista en marketing —claridad, consistencia y cada detalle pensado para generar confianza— aplicada a un producto que corre en web con Java y PostgreSQL."
+            lead="Construyo productos digitales sobre una base técnica probada: React y Next.js en la web, Angular para proyectos empresariales, Java y PHP en el servidor y PostgreSQL como fuente de verdad."
           />
 
           <motion.div
@@ -53,10 +59,10 @@ export function Stack() {
           >
             <span className="stack__quote-mark">“</span>
             <p>
-              Una buena función no se nota: simplemente hace que la persona
-              llegue a su resultado sin preguntarse cómo.
+              Un buen producto resuelve el problema de la persona sin que tenga
+              que pensar en cómo está construido.
             </p>
-            <span className="stack__quote-author">Filosofía de construcción</span>
+            <span className="stack__quote-author">Decisión de diseño</span>
           </motion.div>
         </div>
 

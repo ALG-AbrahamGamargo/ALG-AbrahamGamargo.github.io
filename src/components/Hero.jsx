@@ -93,9 +93,9 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.5, ease }}
           >
-            Construyo aplicaciones web y móviles para Latinoamérica —con Java y
-            PostgreSQL detrás— y explico ciencia y tecnología en video para que
-            cualquiera entienda el mundo que viene.
+            Construyo aplicaciones web y móviles para Latinoamérica y creo
+            contenido de ciencia y tecnología: la misma curiosidad, aplicada al
+            software y al video.
           </motion.p>
 
           <motion.div
