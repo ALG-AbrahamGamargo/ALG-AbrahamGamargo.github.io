@@ -4,6 +4,7 @@ import { Hero } from './components/Hero.jsx'
 import { Stats } from './components/Section.jsx'
 import { Apps } from './components/Apps.jsx'
 import { Stack } from './components/Stack.jsx'
+import { Creator } from './components/Creator.jsx'
 import { Principles } from './components/Principles.jsx'
 import { Footer } from './components/Footer.jsx'
 
@@ -23,10 +24,10 @@ export default function App() {
         <Stats />
         <Apps />
         <Stack />
+        <Creator />
         <Principles />
       </main>
       <Footer />
     </>
   )
 }
-

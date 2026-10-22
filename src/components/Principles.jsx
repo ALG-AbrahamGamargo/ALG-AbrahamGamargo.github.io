@@ -57,7 +57,7 @@ export function Principles() {
               Lo que no <span className="serif accent-text">negocio</span>.
             </>
           }
-          lead="Cuatro reglas simples que aplico en todas las apps, sin importar lo pequeña que sea la función."
+          lead="Cuatro reglas simples que aplico en las apps y también en cada video, sin importar lo pequeño que sea el tema."
         />
 
         <div className="principles__grid">

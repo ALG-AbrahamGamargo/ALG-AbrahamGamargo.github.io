@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
 import { SectionHead } from './Section.jsx'
 import { SpotlightCard } from './SpotlightCard.jsx'
+import { Shots } from './Creator.jsx'
+import { APPS } from '../data/site.js'
 
 export function Apps() {
   return (
@@ -87,31 +89,13 @@ function VprexCard() {
       kind="Aplicación para Android"
       logo="/vprex/logo.png"
     >
-      <div className="mock mock--rate">
-        <div className="mock__row">
-          <span className="mock__label">Tasa BCV</span>
-          <span className="mock__live"><i />Hoy</span>
-        </div>
-        <div className="mock__value">
-          <small>Bs.</small>182,44
-          <span className="mock__delta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M7 17l10-10M9 7h8v8" />
-            </svg>
-            +0,42%
-          </span>
-        </div>
-        <div className="mock__chips">
-          <span>Paralelo · <b>191,20</b></span>
-          <span>Euro · <b>211,06</b></span>
-        </div>
-      </div>
-
       <p className="app-card__headline">Las tasas del día, claras y sin ruido.</p>
       <p className="app-card__desc">
         BCV, paralelo, euro y referencias en una sola pantalla. Conversor,
         historial con gráficas, alertas de tasa y modo claro/oscuro.
       </p>
+
+      <Shots shots={APPS.vprex.shots} tone="vprex" />
 
       <FeatureList
         items={[
@@ -164,29 +148,13 @@ function WprexCard() {
       kind="Extensión para Chrome"
       logo="/wprex/icono.png"
     >
-      <div className="mock mock--order">
-        <div className="mock__row">
-          <span className="mock__label">Pedido #128</span>
-          <span className="mock__pill">WhatsApp</span>
-        </div>
-        <div className="mock__lines">
-          <div><span>2 × Camisa</span><b>Bs. 620,00</b></div>
-          <div><span>Envío</span><b>Bs. 45,00</b></div>
-          <div className="mock__lines-total"><span>Total</span><b>Bs. 665,00</b></div>
-        </div>
-        <div className="mock__send">
-          <span>Mensaje listo</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z" />
-          </svg>
-        </div>
-      </div>
-
       <p className="app-card__headline">Tu tienda dentro de WhatsApp.</p>
       <p className="app-card__desc">
         Catálogo con fotos, cotizador con tasas BCV / P2P / EUR, pedidos con
         envío e IVA, abonos, clientes y mensajes editables. Todo en tu navegador.
       </p>
+
+      <Shots shots={APPS.wprex.shots} tone="wprex" />
 
       <FeatureList
         items={[

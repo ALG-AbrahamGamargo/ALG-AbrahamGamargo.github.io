@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { LogoMark } from './LogoMark.jsx'
+import { SocialIcon } from './Creator.jsx'
 import { viewport } from './Section.jsx'
-
-const EMAIL = 'aionelmindalg@gmail.com'
+import { EMAIL, SOCIALS } from '../data/site.js'
 
 export function Footer() {
   const [copied, setCopied] = useState(false)
@@ -39,8 +39,8 @@ export function Footer() {
               <span className="serif accent-text">en mente?</span>
             </h2>
             <p className="cta__lead">
-              Soporte, consultas o sugerencias sobre VPREX y Wprex. Respondo en
-              español, siempre que puedo el mismo día.
+              Soporte, consultas o sugerencias sobre VPREX y Wprex, o propuestas
+              para contenido de ciencia y tecnología. Respondo en español.
             </p>
 
             <div className="cta__actions">
@@ -70,6 +70,22 @@ export function Footer() {
                 )}
               </button>
             </div>
+
+            <div className="cta__socials" aria-label="Redes sociales">
+              {SOCIALS.map((s) => (
+                <a
+                  key={s.id}
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`cta__social cta__social--${s.id}`}
+                  aria-label={`${s.name}: ${s.handle}`}
+                >
+                  <SocialIcon id={s.id} size={17} />
+                  <span>{s.handle}</span>
+                </a>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
@@ -83,18 +99,34 @@ export function Footer() {
 
           <nav className="footer__links" aria-label="Enlaces del pie">
             <a href="#apps">Aplicaciones</a>
+            <a href="#creador">Contenido</a>
             <a href="/vprex-privacidad.html">Privacidad VPREX</a>
             <a href="/wprex-privacidad.html">Privacidad Wprex</a>
-            <a href={`mailto:${EMAIL}`}>Correo</a>
           </nav>
 
+          <div className="footer__socials" aria-label="Redes sociales">
+            {SOCIALS.map((s) => (
+              <a
+                key={s.id}
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer__social"
+                aria-label={`${s.name} de Aionel`}
+                title={`${s.name} · ${s.handle}`}
+              >
+                <SocialIcon id={s.id} size={16} />
+                <span>{s.name}</span>
+              </a>
+            ))}
+          </div>
+
           <p className="footer__legal">
-            Â© {new Date().getFullYear()} Aionel · Aplicaciones hechas con cuidado para
-            Venezuela
+            © {new Date().getFullYear()} Aionel · Desarrollador y creador de
+            contenido · Hecho en Venezuela
           </p>
         </div>
       </footer>
     </>
   )
 }
-
