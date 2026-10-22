@@ -9,14 +9,14 @@ export function Apps() {
     <section id="apps" className="section apps">
       <div className="container">
         <SectionHead
-          eyebrow="El catálogo"
+          eyebrow="Aplicaciones"
           title={
             <>
-              Dos aplicaciones<br />
-              <span className="serif accent-text">un mismo criterio</span>
+              Dos apps.<br />
+              <span className="serif accent-text">Un mismo criterio</span>.
             </>
           }
-          lead="Poco peso, cero fricción y datos que se entienden a la primera. Cada app resuelve un problema concreto del día a día venezolano."
+          lead="Herramientas claras y rápidas, pensadas para Latinoamérica: resuelven problemas concretos sin complicarle la vida a quien las usa."
         />
 
         <div className="apps__grid">
@@ -89,20 +89,20 @@ function VprexCard() {
       kind="Aplicación para Android"
       logo="/vprex/logo.png"
     >
-      <p className="app-card__headline">Las tasas del día, claras y sin ruido.</p>
+      <p className="app-card__headline">El tipo de cambio, claro y al día.</p>
       <p className="app-card__desc">
-        BCV, paralelo, euro y referencias en una sola pantalla. Conversor,
-        historial con gráficas, alertas de tasa y modo claro/oscuro.
+        Tasas oficiales y de referencia en una sola pantalla, con conversor,
+        histórico con gráficas, alertas y modo claro/oscuro.
       </p>
 
       <Shots shots={APPS.vprex.shots} tone="vprex" />
 
       <FeatureList
         items={[
-          'BCV oficial y paralelo',
-          'Euro y euro paralelo',
+          'Tasa oficial del dólar',
+          'Referencias del mercado',
           'Conversor instantáneo',
-          'Historial y gráficas',
+          'Histórico con gráficas',
           'Alertas de tasa',
           'Buscar por fecha',
         ]}
@@ -150,8 +150,8 @@ function WprexCard() {
     >
       <p className="app-card__headline">Tu tienda dentro de WhatsApp.</p>
       <p className="app-card__desc">
-        Catálogo con fotos, cotizador con tasas BCV / P2P / EUR, pedidos con
-        envío e IVA, abonos, clientes y mensajes editables. Todo en tu navegador.
+        Catálogo con fotos, cotizador con tasas del día, pedidos con envío e
+        impuestos, abonos, clientes y mensajes editables. Todo en tu navegador.
       </p>
 
       <Shots shots={APPS.wprex.shots} tone="wprex" />
@@ -159,8 +159,8 @@ function WprexCard() {
       <FeatureList
         items={[
           'Catálogo con fotos',
-          'BCV / P2P / EUR',
-          'Pedidos con IVA',
+          'Cotizador con tasas',
+          'Pedidos con impuestos',
           'Abonos y clientes',
           'Mensajes editables',
           'Reportes',

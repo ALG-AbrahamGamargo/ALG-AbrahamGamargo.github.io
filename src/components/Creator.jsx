@@ -55,11 +55,11 @@ export function Creator() {
             eyebrow="También creo contenido"
             title={
               <>
-                Así como construyo <br />
-                <span className="serif accent-text">también explico</span>.
+                Ciencia y tecnología, <br />
+                <span className="serif accent-text">explicadas en simple</span>.
               </>
             }
-            lead="Comparto ciencia y tecnología en video: cómo funcionan las cosas, cómo se construye software y qué hay detrás de cada proyecto. Si te gusta Aionel, este es el otro lado."
+            lead="En YouTube, Instagram y TikTok hablo de ciencia y tecnología: inventos, avances, datos curiosos y cómo funciona todo lo que usamos a diario. No enseño a programar: explico el mundo tecnológico y científico que hay detrás."
           />
 
           <motion.div
@@ -76,7 +76,7 @@ export function Creator() {
             </div>
             <div className="creator__live">
               <span className="creator__live-dot" />
-              Aionel Mind
+              Aionel Mind · Ciencia y tecnología
             </div>
           </motion.div>
         </div>

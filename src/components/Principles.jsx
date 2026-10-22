@@ -5,22 +5,22 @@ const PRINCIPLES = [
   {
     icon: 'bolt',
     title: 'Rápido por defecto',
-    desc: 'Carga ligera, sin dependencias innecesarias y con interacciones que responden al instante.',
+    desc: 'Carga ligera y respuestas inmediatas. La velocidad también es parte de la experiencia y del posicionamiento.',
   },
   {
     icon: 'eye',
     title: 'Claro a la primera',
-    desc: 'Interfaces legibles, números alineados y jerarquía visual que evita dudas.',
+    desc: 'Interfaces legibles, jerarquía visual sólida y mensajes que no obligan a pensar dos veces.',
   },
   {
     icon: 'lock',
     title: 'Privado por diseño',
-    desc: 'Tus datos se quedan en tu dispositivo. Sin cuentas que no necesitas, sin rastreadores.',
+    desc: 'Solo se piden los datos necesarios, con protección real y políticas explicadas sin letra pequeña.',
   },
   {
     icon: 'heart',
-    title: 'Hecho para Venezuela',
-    desc: 'Bolívares, BCV, WhatsApp y negocios reales: las apps nacen del contexto local.',
+    title: 'Hecho para Latinoamérica',
+    desc: 'Español neutro, contextos locales y problemas reales de la región: desde Venezuela hasta donde llegue la necesidad.',
   },
 ]
 
@@ -57,7 +57,7 @@ export function Principles() {
               Lo que no <span className="serif accent-text">negocio</span>.
             </>
           }
-          lead="Cuatro reglas simples que aplico en las apps y también en cada video, sin importar lo pequeño que sea el tema."
+          lead="Cuatro reglas que aplico igual en una aplicación, en un backend o en un video de ciencia y tecnología."
         />
 
         <div className="principles__grid">
@@ -93,4 +93,3 @@ function Principle({ item, index }) {
     </motion.div>
   )
 }
-

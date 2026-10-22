@@ -39,8 +39,9 @@ export function Footer() {
               <span className="serif accent-text">en mente?</span>
             </h2>
             <p className="cta__lead">
-              Soporte, consultas o sugerencias sobre VPREX y Wprex, o propuestas
-              para contenido de ciencia y tecnología. Respondo en español.
+              Soporte, consultas o propuestas sobre las aplicaciones, el
+              desarrollo de tu producto o contenido de ciencia y tecnología.
+              Respondo en español.
             </p>
 
             <div className="cta__actions">
@@ -122,8 +123,8 @@ export function Footer() {
           </div>
 
           <p className="footer__legal">
-            © {new Date().getFullYear()} Aionel · Desarrollador y creador de
-            contenido · Hecho en Venezuela
+            © {new Date().getFullYear()} Aionel · Desarrollo web y contenido de
+            ciencia y tecnología
           </p>
         </div>
       </footer>

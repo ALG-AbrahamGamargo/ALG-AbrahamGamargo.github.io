@@ -15,7 +15,6 @@ export function Hero() {
 
   return (
     <section id="top" className="hero" ref={ref}>
-      {/* Aurora de fondo con parallax */}
       <motion.div
         className="hero__bg"
         style={reduce ? undefined : { y, scale, opacity }}
@@ -28,7 +27,6 @@ export function Hero() {
       </motion.div>
 
       <div className="container hero__inner">
-        {/* Columna de texto */}
         <div className="hero__body">
           <motion.a
             className="hero__brand"
@@ -50,7 +48,7 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.08, ease }}
           >
             <span className="hero__dot" />
-            Desarrollador y creador de contenido · Venezuela
+            Desarrollo web · Ciencia y tecnología · LATAM
             <span className="hero__badge-arrow">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M7 17 17 7M9 7h8v8" />
@@ -95,9 +93,9 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.5, ease }}
           >
-            Construyo aplicaciones claras y rápidas para Venezuela —VPREX y
-            Wprex— y explico ciencia y tecnología en video para quien quiera
-            entender cómo funciona el mundo.
+            Construyo aplicaciones web y móviles para Latinoamérica —con Java y
+            PostgreSQL detrás— y explico ciencia y tecnología en video para que
+            cualquiera entienda el mundo que viene.
           </motion.p>
 
           <motion.div
@@ -122,7 +120,6 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Captura real de VPREX flotando */}
         <motion.div
           className="hero__showcase"
           initial={reduce ? false : { opacity: 0, y: 60, rotateX: 10 }}
@@ -136,7 +133,7 @@ export function Hero() {
               <img
                 className="phone__img"
                 src="/shots/vprex/vprex-1.webp"
-                alt="Pantalla real de VPREX con la tasa oficial del BCV y su tendencia"
+                alt="Pantalla real de VPREX con la tasa del día y su tendencia"
                 width="1080"
                 height="2400"
                 fetchPriority="high"
@@ -150,11 +147,11 @@ export function Hero() {
                 <path d="M20 6L9 17l-5-5" />
               </svg>
             </span>
-            Captura real de VPREX
+            Captura real de la app
           </div>
           <div className="float-chip float-chip--2">
             <span className="float-chip__ico float-chip__ico--pulse" />
-            Tasas en vivo
+            Datos en vivo
           </div>
         </motion.div>
       </div>

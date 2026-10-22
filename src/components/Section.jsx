@@ -6,9 +6,9 @@ export const viewport = { once: true, margin: '-90px' }
 export function Stats() {
   const items = [
     { value: '2', label: 'aplicaciones publicadas' },
-    { value: '0', label: 'cuentas necesarias' },
-    { value: '100%', label: 'datos en tu dispositivo' },
-    { value: 'VE', label: 'hecho para Venezuela' },
+    { value: '3', label: 'plataformas de contenido' },
+    { value: 'Web + Java', label: 'con PostgreSQL de base' },
+    { value: 'LATAM', label: 'pensado para la región' },
   ]
 
   return (

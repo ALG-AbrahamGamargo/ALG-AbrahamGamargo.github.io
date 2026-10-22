@@ -4,26 +4,26 @@ import { SectionHead, viewport } from './Section.jsx'
 const STEPS = [
   {
     n: '01',
-    title: 'Interfaz primero',
-    desc: 'Empiezo por la pantalla que resuelve el problema, no por la arquitectura. Si el flujo no se entiende en cinco segundos, se rediseña.',
+    title: 'Entender el problema',
+    desc: 'Antes de escribir la primera línea trabajo el flujo completo: qué recibe la persona, qué decide y qué resultado necesita. El marketing enseña a pensar en resultados, no en funciones.',
     tag: 'Producto',
   },
   {
     n: '02',
-    title: 'React, Vite y motion',
-    desc: 'Componentes pequeños y predecibles, animaciones con framer-motion y un build estático que carga rápido en cualquier teléfono.',
+    title: 'Web con React y Vite',
+    desc: 'Interfaces rápidas y accesibles, con animaciones cuidadas y un bundle ligero. La web es la primera puerta de entrada y tiene que cargar bien incluso con mala conexión.',
     tag: 'Frontend',
   },
   {
     n: '03',
-    title: 'Extensiones y Android',
-    desc: 'Manifest V3 en Chrome, almacenamiento local y apps nativas ligeras. El rendimiento es un requisito, no un extra.',
-    tag: 'Plataformas',
+    title: 'Java y PostgreSQL en el servidor',
+    desc: 'Lógica de negocio clara, APIs estables y una base de datos relacional bien modelada. Datos que no se pierden y consultas que responden con el tráfico real.',
+    tag: 'Backend',
   },
   {
     n: '04',
-    title: 'Privacidad por defecto',
-    desc: 'Sin cuentas innecesarias ni servidores propios: los datos viven en el dispositivo y las políticas lo explican sin letra pequeña.',
+    title: 'Privacidad y confianza',
+    desc: 'Cada dato tiene una razón para existir. Lo mínimo necesario, cifrado cuando corresponde y políticas escritas sin letra pequeña.',
     tag: 'Confianza',
   },
 ]
@@ -37,11 +37,11 @@ export function Stack() {
             eyebrow="Cómo trabajo"
             title={
               <>
-                Menos capas.<br />
-                <span className="serif accent-text">Más producto.</span>
+                Web, Java y datos.<br />
+                <span className="serif accent-text">Bien hechos.</span>
               </>
             }
-            lead="Elijo herramientas aburridas y confiables para que lo interesante sea la experiencia de quien usa la app."
+            lead="Construyo aplicaciones que hacen que tu equipo se vea profesional: la misma base con la que trabaja un especialista en marketing —claridad, consistencia y cada detalle pensado para generar confianza— aplicada a un producto que corre en web con Java y PostgreSQL."
           />
 
           <motion.div
@@ -53,10 +53,10 @@ export function Stack() {
           >
             <span className="stack__quote-mark">“</span>
             <p>
-              Si una función no ayuda a hacer algo más rápido o más claro,
-              probablemente no debería existir.
+              Una buena función no se nota: simplemente hace que la persona
+              llegue a su resultado sin preguntarse cómo.
             </p>
-            <span className="stack__quote-author">Criterio de producto</span>
+            <span className="stack__quote-author">Filosofía de construcción</span>
           </motion.div>
         </div>
 
