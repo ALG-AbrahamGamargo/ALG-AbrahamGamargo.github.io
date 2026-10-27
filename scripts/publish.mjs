@@ -23,6 +23,16 @@ copyFileSync('dist/favicon.svg', 'favicon.svg')
 if (existsSync('shots')) rmSync('shots', { recursive: true, force: true })
 cpSync('public/shots', 'shots', { recursive: true, filter: (src) => !src.includes('..') })
 
+// Logos de las aplicaciones: el JS los pide como /wprex/icono.png y
+// /vprex/logo.png, así que tienen que existir en la RAÍZ del repo, no solo
+// dentro de public/ (GitHub Pages sirve la raíz).
+for (const carpeta of ['wprex', 'vprex']) {
+  const origen = `public/${carpeta}`
+  if (!existsSync(origen)) continue
+  if (existsSync(carpeta)) rmSync(carpeta, { recursive: true, force: true })
+  cpSync(origen, carpeta, { recursive: true })
+}
+
 // index.html: se mantiene el HTML fuente (meta tags, fuentes, SEO) y solo se
 // sustituye el script de desarrollo por el bundle compilado.
 const html = readFileSync('index.html', 'utf8')

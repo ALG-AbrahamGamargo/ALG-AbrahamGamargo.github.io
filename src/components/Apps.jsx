@@ -150,8 +150,9 @@ function WprexCard() {
     >
       <p className="app-card__headline">Tu tienda dentro de WhatsApp.</p>
       <p className="app-card__desc">
-        Catálogo con fotos, tasas del día, pedidos con envío e impuestos, abonos,
-        clientes y catálogos listos para enviar. Todo en tu navegador.
+        Catálogo con fotos, tasas BCV, P2P y euro del día, pedidos con envío e
+        IVA, abonos, clientes y catálogos listos para compartir. Todo en el panel
+        lateral de Chrome.
       </p>
 
       <Shots shots={APPS.wprex.shots} tone="wprex" appName="Whatprex" />
@@ -161,13 +162,14 @@ function WprexCard() {
           'Catálogo con fotos',
           'Catálogo para compartir',
           'Tasas BCV, P2P y EUR',
-          'Pedidos con impuestos',
+          'Pedidos con IVA',
           'Abonos y clientes',
         ]}
       />
 
       <p className="app-card__note">
-        Sin cuentas y sin servidores propios. Gratis. Tus datos se quedan en tu navegador.
+        Gratis, sin cuentas y sin servidores propios. Tus datos se quedan en tu
+        navegador; solo se consultan las tasas del día.
       </p>
 
       <div className="app-card__actions">
