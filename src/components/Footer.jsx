@@ -102,7 +102,7 @@ export function Footer() {
             <a href="#apps">Aplicaciones</a>
             <a href="#creador">Contenido</a>
             <a href="/vprex-privacidad.html">Privacidad VPREX</a>
-            <a href="/wprex-privacidad.html">Privacidad Wprex</a>
+            <a href="/wprex-privacidad.html">Privacidad Whatprex</a>
           </nav>
 
           <div className="footer__socials" aria-label="Redes sociales">

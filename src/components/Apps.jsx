@@ -136,39 +136,38 @@ function VprexCard() {
   )
 }
 
-/* ---------------- WPREX ---------------- */
+/* ---------------- WHATPREX ---------------- */
 function WprexCard() {
   return (
     <Card
       id="wprex"
       accent="var(--wprex)"
       index={1}
-      name="Wprex"
+      name="Whatprex"
       tag="Extensión"
       kind="Extensión para Chrome"
       logo="/wprex/icono.png"
     >
       <p className="app-card__headline">Tu tienda dentro de WhatsApp.</p>
       <p className="app-card__desc">
-        Catálogo con fotos, cotizador con tasas del día, pedidos con envío e
-        impuestos, abonos, clientes y mensajes editables. Todo en tu navegador.
+        Catálogo con fotos, tasas del día, pedidos con envío e impuestos, abonos,
+        clientes y catálogos listos para enviar. Todo en tu navegador.
       </p>
 
-      <Shots shots={APPS.wprex.shots} tone="wprex" appName="Wprex" />
+      <Shots shots={APPS.wprex.shots} tone="wprex" appName="Whatprex" />
 
       <FeatureList
         items={[
           'Catálogo con fotos',
-          'Cotizador con tasas',
+          'Catálogo para compartir',
+          'Tasas BCV, P2P y EUR',
           'Pedidos con impuestos',
           'Abonos y clientes',
-          'Mensajes editables',
-          'Reportes',
         ]}
       />
 
       <p className="app-card__note">
-        Sin cuentas y sin servidores propios. Tus datos se quedan en tu navegador.
+        Sin cuentas y sin servidores propios. Gratis. Tus datos se quedan en tu navegador.
       </p>
 
       <div className="app-card__actions">
