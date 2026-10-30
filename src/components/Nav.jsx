@@ -7,7 +7,7 @@ const LINKS = [
   { href: '#creador', label: 'Contenido' },
   { href: '#stack', label: 'Cómo construyo' },
   { href: '#principios', label: 'Principios' },
-  { href: '#contacto', label: 'Contacto' },
+  { href: '#contacto', label: 'Sígueme' },
 ]
 
 export function Nav() {

@@ -33,45 +33,16 @@ export function Footer() {
             <div className="cta__aurora" aria-hidden="true" />
             <div className="cta__grain" aria-hidden="true" />
 
-            <span className="eyebrow cta__eyebrow">Contacto</span>
+            <span className="eyebrow cta__eyebrow">Sígueme</span>
             <h2 className="cta__title display">
-              Hablemos de <br />
-              <span className="serif accent-text">tu proyecto.</span>
+              Ciencia y tecnología, <br />
+              <span className="serif accent-text">todos los días.</span>
             </h2>
             <p className="cta__lead">
-              ¿Necesitas una app, una página web o una extensión para tu
-              negocio? Cuéntame qué tienes en mente y te digo cómo lo podemos
-              construir. También respondo dudas sobre VPREX y Whatprex.
-              Respondo en español.
+              En mis redes comparto contenido de ciencia y tecnología, y novedades
+              de mis aplicaciones. Sígueme por ahí. Para soporte de VPREX o
+              Whatprex, escríbeme al correo. Respondo en español.
             </p>
-
-            <div className="cta__actions">
-              <a className="btn" href={`mailto:${EMAIL}`}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="3" y="5" width="18" height="14" rx="2.5" />
-                  <path d="M3.5 7l8.5 6 8.5-6" />
-                </svg>
-                Escribirme
-              </a>
-              <button className="btn btn--ghost" onClick={copy} type="button">
-                {copied ? (
-                  <>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M20 6L9 17l-5-5" />
-                    </svg>
-                    Copiado
-                  </>
-                ) : (
-                  <>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="9" y="9" width="12" height="12" rx="2.5" />
-                      <path d="M15 5.5A2.5 2.5 0 0 0 12.5 3H5.5A2.5 2.5 0 0 0 3 5.5v7A2.5 2.5 0 0 0 5.5 15" />
-                    </svg>
-                    {EMAIL}
-                  </>
-                )}
-              </button>
-            </div>
 
             <div className="cta__socials" aria-label="Redes sociales">
               {SOCIALS.map((s) => (
@@ -87,6 +58,34 @@ export function Footer() {
                   <span>{s.handle}</span>
                 </a>
               ))}
+            </div>
+
+            <div className="cta__actions">
+              <a className="btn btn--ghost" href={`mailto:${EMAIL}`}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="5" width="18" height="14" rx="2.5" />
+                  <path d="M3.5 7l8.5 6 8.5-6" />
+                </svg>
+                Soporte de las apps
+              </a>
+              <button className="btn btn--ghost" onClick={copy} type="button">
+                {copied ? (
+                  <>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M20 6L9 17l-5-5" />
+                    </svg>
+                    Copiado
+                  </>
+                ) : (
+                  <>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="9" y="9" width="12" height="12" rx="2.5" />
+                      <path d="M15 5.5A2.5 2.5 0 0 0 12.5 3H5.5A2.5 2.5 0 0 0 3 5.5v7A2.5 2.5 0 0 0 5.5 15" />
+                    </svg>
+                    Copiar correo
+                  </>
+                )}
+              </button>
             </div>
           </motion.div>
         </div>
