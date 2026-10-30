@@ -129,6 +129,28 @@
   .heroe__acciones { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
   .heroe__nota { margin: 16px 0 0; font-size: 12.5px; color: #7b8794; }
 
+  /* estado de publicación */
+  .heroe__estado {
+    display: flex; align-items: flex-start; gap: 9px;
+    margin: 20px 0 0; padding: 11px 14px;
+    border-radius: 12px; font-size: 13px; line-height: 1.5;
+    color: #cfd8e3;
+    border: 1px solid rgba(255, 178, 84, 0.32);
+    background: rgba(255, 178, 84, 0.08);
+  }
+  .heroe__estado b { color: #ffd8a0; font-weight: 700; }
+  .heroe__estado-punto {
+    flex-shrink: 0; margin-top: 5px;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #ffb254; box-shadow: 0 0 0 4px rgba(255, 178, 84, 0.16);
+  }
+  .btn--pronto {
+    background: rgba(255, 178, 84, 0.14) !important;
+    border: 1px solid rgba(255, 178, 84, 0.42) !important;
+    color: #ffd8a0 !important;
+    cursor: default;
+  }
+
   /* teléfono con captura */
   .movil {
     position: relative; width: min(300px, 82%); margin: 0 auto;
@@ -216,6 +238,15 @@
   .cierre p { margin: 0 auto 26px; max-width: 52ch; color: var(--muted); font-size: 15.5px; }
   .cierre__acciones { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
   .cierre__pies { margin-top: 22px; font-size: 12.5px; color: #7b8794; }
+.cierre__estado {
+  max-width: 56ch !important; margin: 0 auto 24px !important;
+  padding: 12px 16px; border-radius: 12px;
+  font-size: 13.5px !important; line-height: 1.55;
+  color: #cfd8e3 !important;
+  border: 1px solid rgba(255, 178, 84, 0.32);
+  background: rgba(255, 178, 84, 0.08);
+}
+.cierre__estado b { color: #ffd8a0; }
   .enlaces { display: flex; flex-wrap: wrap; gap: 6px 20px; justify-content: center; margin-top: 10px; }
   .enlaces a { color: #b8c6d1; font-size: 12.5px; font-weight: 600; text-decoration: none; }
   .enlaces a:hover { color: var(--acento); }
@@ -259,7 +290,7 @@
         <img src="/vprex/logo.png" alt="" width="30" height="30" />
         <span>VPREX</span>
       </a>
-      <a class="btn btn--chico" href="https://play.google.com/store/apps/details?id=com.vprex.app" target="_blank" rel="noopener noreferrer">Descargar</a>
+      <a class="btn btn--chico btn--pronto" href="#disponibilidad">Próximamente</a>
     </div>
   </header>
 
@@ -284,17 +315,23 @@
           </p>
 
           <div class="heroe__acciones">
-            <a class="btn" href="https://play.google.com/store/apps/details?id=com.vprex.app" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M3.6 2.3c-.3.3-.5.8-.5 1.4v16.6c0 .6.2 1.1.5 1.4l.1.1 9.3-9.3v-.2L3.7 2.2l-.1.1ZM16 15.3l-3.1-3.1v-.2L16 8.9l.1.1 3.7 2.1c1 .6 1 1.6 0 2.2L16 15.4l0-.1ZM15 16.4l-3.1-3.1-9.2 9.2c.4.4 1 .4 1.7 0l10.6-6.1ZM15 7.6 4.4 1.5c-.7-.4-1.3-.4-1.7 0l9.2 9.2L15 7.6Z" />
+            <a class="btn btn--pronto" href="#disponibilidad">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" />
               </svg>
-              Google Play
+              Próximamente en Google Play
             </a>
             <a class="btn btn--fantasma" href="#funciones">
               Qué incluye
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6" /></svg>
             </a>
           </div>
+
+          <p class="heroe__estado">
+            <span class="heroe__estado-punto" aria-hidden="true"></span>
+            <b>Todavía no está publicada.</b> Sigue en pruebas y aún no puede
+            descargarla el público general.
+          </p>
 
           <p class="heroe__nota">Aplicación informativa · no realiza operaciones de cambio</p>
         </div>
@@ -421,16 +458,17 @@
       <div class="wrap">
         <div class="cierre">
           <img class="logo" src="/vprex/logo.png" alt="Logo de VPREX" width="68" height="68" loading="lazy" />
-          <h2>La tasa, <span class="serif" style="color:#cdd8ff">sin complicaciones</span></h2>
-          <p>Descarga VPREX en tu teléfono Android y consulta el tipo de cambio cuando lo necesites.</p>
+          <h2 id="disponibilidad">La tasa, <span class="serif" style="color:#cdd8ff">sin complicaciones</span></h2>
+          <p class="cierre__estado">
+            <b>VPREX todavía no está publicada en Google Play.</b>
+            Está en pruebas cerradas: solo un grupo de personas puede instalarla.
+            Cuando salga para todo el público, el enlace aparecerá aquí.
+          </p>
           <div class="cierre__acciones">
-            <a class="btn" href="https://play.google.com/store/apps/details?id=com.vprex.app" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M3.6 2.3c-.3.3-.5.8-.5 1.4v16.6c0 .6.2 1.1.5 1.4l.1.1 9.3-9.3v-.2L3.7 2.2l-.1.1ZM16 15.3l-3.1-3.1v-.2L16 8.9l.1.1 3.7 2.1c1 .6 1 1.6 0 2.2L16 15.4l0-.1ZM15 16.4l-3.1-3.1-9.2 9.2c.4.4 1 .4 1.7 0l10.6-6.1ZM15 7.6 4.4 1.5c-.7-.4-1.3-.4-1.7 0l9.2 9.2L15 7.6Z" />
-              </svg>
-              Google Play
+            <a class="btn btn--pronto" href="#top">
+              Próximamente en Google Play
             </a>
-            <a class="btn btn--fantasma" href="mailto:aionelmindalg@gmail.com">Pedir soporte</a>
+            <a class="btn btn--fantasma" href="mailto:aionelmindalg@gmail.com?subject=Quiero%20probar%20VPREX">Pedir acceso a la prueba</a>
           </div>
           <p class="cierre__pies">Aplicación para Android · informativa</p>
           <div class="enlaces">
