@@ -85,7 +85,7 @@ function VprexCard() {
       accent="var(--vprex)"
       index={0}
       name="VPREX"
-      tag="Gratis"
+      tag="En pruebas"
       kind="Aplicación para Android"
       logo="/vprex/logo.png"
       fuente="/vprex.html"
