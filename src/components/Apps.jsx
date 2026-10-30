@@ -28,7 +28,7 @@ export function Apps() {
   )
 }
 
-function Card({ id, accent, index, children, name, tag, kind, logo }) {
+function Card({ id, accent, index, children, name, tag, kind, logo, fuente }) {
   return (
     <motion.article
       className={`app-card app-card--${id}`}
@@ -42,12 +42,12 @@ function Card({ id, accent, index, children, name, tag, kind, logo }) {
         <div className="app-card__glow" aria-hidden="true" />
 
         <header className="app-card__head">
-          <div className="app-card__logo">
+          <a className="app-card__logo" href={fuente} aria-label={`Conocer ${name} en detalle`}>
             <img src={logo} alt={`Logo de ${name}`} width="72" height="72" loading="lazy" />
-          </div>
+          </a>
           <div className="app-card__title">
             <div className="app-card__top">
-              <h3>{name}</h3>
+              <h3><a href={fuente}>{name}</a></h3>
               <span className="app-card__tag">{tag}</span>
             </div>
             <p className="app-card__kind">{kind}</p>
@@ -88,6 +88,7 @@ function VprexCard() {
       tag="Gratis"
       kind="Aplicación para Android"
       logo="/vprex/logo.png"
+      fuente="/vprex.html"
     >
       <p className="app-card__headline">El tipo de cambio, claro y al día.</p>
       <p className="app-card__desc">
@@ -147,6 +148,7 @@ function WprexCard() {
       tag="Extensión"
       kind="Extensión para Chrome"
       logo="/wprex/icono.png"
+      fuente="/whatprex.html"
     >
       <p className="app-card__headline">Tu tienda dentro de WhatsApp.</p>
       <p className="app-card__desc">
@@ -186,8 +188,8 @@ function WprexCard() {
           </svg>
           Añadir a Chrome
         </a>
-        <a className="link-arrow" href="/wprex-privacidad.html">
-          Política de privacidad
+        <a className="link-arrow" href="/whatprex.html">
+          Conocer Whatprex
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M5 12h14M13 6l6 6-6 6" />
           </svg>

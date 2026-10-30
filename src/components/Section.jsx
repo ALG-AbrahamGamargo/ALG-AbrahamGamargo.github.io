@@ -7,7 +7,7 @@ export function Stats() {
   const items = [
     { value: '2', label: 'aplicaciones publicadas' },
     { value: '3', label: 'plataformas de contenido' },
-    { value: 'Gratis', label: 'sin cuentas ni comisiones' },
+    { value: 'Venezuela', label: 'hecho por un creador local' },
     { value: 'LATAM', label: 'pensado para la región' },
   ]
 

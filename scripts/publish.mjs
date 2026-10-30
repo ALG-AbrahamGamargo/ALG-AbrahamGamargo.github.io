@@ -40,4 +40,13 @@ const html = readFileSync('index.html', 'utf8')
   .replace('<link rel="icon" type="image/svg+xml" href="/favicon.svg" />', '<link rel="icon" type="image/svg+xml" href="favicon.svg" />')
 
 writeFileSync('index.html', html, 'utf8')
+
+// Páginas informativas de cada app: HTML estático e independiente (como las
+// políticas). Viven en src/paginas/ y se copian a la raíz en cada publicación.
+for (const pagina of ['whatprex.html', 'vprex.html']) {
+  if (existsSync(`src/paginas/${pagina}`)) {
+    cpSync(`src/paginas/${pagina}`, pagina)
+  }
+}
+
 console.log('ok: raiz del repo lista para GitHub Pages')

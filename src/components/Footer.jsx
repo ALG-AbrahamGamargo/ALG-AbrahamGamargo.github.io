@@ -102,6 +102,7 @@ export function Footer() {
             <a href="#apps">Aplicaciones</a>
             <a href="#creador">Contenido</a>
             <a href="https://chromewebstore.google.com/detail/omnjhpioicbgfhejkkppajjoifcaceaf?utm_source=item-share-cb" target="_blank" rel="noopener noreferrer">Whatprex en Chrome</a>
+            <a href="/whatprex.html">Sobre Whatprex</a>
             <a href="/vprex-privacidad.html">Privacidad VPREX</a>
             <a href="/wprex-privacidad.html">Privacidad Whatprex</a>
           </nav>

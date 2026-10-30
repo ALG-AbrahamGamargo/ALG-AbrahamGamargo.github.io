@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VPREX — el tipo de cambio, claro y al día</title>
+<meta name="description" content="VPREX es una aplicación para Android que muestra la tasa oficial del dólar y las referencias del mercado en una sola pantalla: conversor, histórico con gráficas, alertas y modo claro/oscuro." />
+<link rel="canonical" href="https://alg-abrahamgamargo.github.io/vprex.html" />
+<meta name="theme-color" content="#05070a" />
+
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="es_VE" />
+<meta property="og:site_name" content="Aionel" />
+<meta property="og:title" content="VPREX — el tipo de cambio, claro y al día" />
+<meta property="og:description" content="Tasa oficial y referencias del mercado, conversor, histórico con gráficas y alertas." />
+<meta property="og:url" content="https://alg-abrahamgamargo.github.io/vprex.html" />
+<meta property="og:image" content="https://alg-abrahamgamargo.github.io/shots/vprex/vprex-1.webp" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" />
+
+<style>
+  :root {
+    --bg: #05070a;
+    --bg-soft: #0b1117;
+    --line: rgba(255, 255, 255, 0.09);
+    --line-strong: rgba(255, 255, 255, 0.16);
+    --text: #f4f7f5;
+    --muted: #98a4b1;
+    --acento: #8aa4ff;
+    --acento-borde: rgba(138, 164, 255, 0.32);
+    --acento-fondo: rgba(138, 164, 255, 0.1);
+    --sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  .wrap { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 clamp(18px, 5vw, 40px); }
+
+  /* barra */
+  .barra {
+    position: sticky; top: 0; z-index: 20;
+    backdrop-filter: blur(14px);
+    background: rgba(5, 7, 10, 0.78);
+    border-bottom: 1px solid var(--line);
+  }
+  .barra__in { display: flex; align-items: center; gap: 14px; height: 62px; }
+  .barra__volver {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 13.5px; font-weight: 600; color: var(--muted);
+    text-decoration: none; transition: color 0.18s var(--ease);
+  }
+  .barra__volver:hover { color: var(--text); }
+  .barra__volver svg { width: 16px; height: 16px; }
+  .barra__separador { flex: 1; }
+  .marca { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; text-decoration: none; }
+  .marca img { width: 30px; height: 30px; border-radius: 9px; box-shadow: 0 8px 20px rgba(138, 164, 255, 0.28); }
+
+  /* botones */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 14px 22px; border-radius: 14px; border: 1px solid transparent;
+    background: linear-gradient(150deg, var(--acento), #6a83e6);
+    color: #08122e; font-weight: 700; font-size: 15px;
+    text-decoration: none; cursor: pointer;
+    box-shadow: 0 16px 38px -14px rgba(138, 164, 255, 0.6);
+    transition: transform 0.16s var(--ease), box-shadow 0.16s var(--ease), background 0.16s var(--ease);
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 22px 46px -14px rgba(138, 164, 255, 0.7); }
+  .btn svg { width: 19px; height: 19px; flex-shrink: 0; }
+  .btn--fantasma {
+    background: rgba(255, 255, 255, 0.04); border-color: var(--line-strong);
+    color: var(--text); box-shadow: none;
+  }
+  .btn--fantasma:hover { background: rgba(255, 255, 255, 0.08); }
+  .btn--chico { padding: 10px 16px; font-size: 13.5px; border-radius: 11px; }
+
+  /* portada */
+  .heroe { position: relative; padding: clamp(46px, 7vw, 86px) 0 clamp(40px, 6vw, 70px); overflow: hidden; }
+  .heroe::before {
+    content: ""; position: absolute; inset: -20% -10% auto; height: 620px;
+    background:
+      radial-gradient(48% 60% at 50% 0%, rgba(138, 164, 255, 0.2), transparent 70%),
+      radial-gradient(40% 50% at 80% 20%, rgba(47, 214, 162, 0.1), transparent 70%);
+    pointer-events: none;
+  }
+  .heroe__grid {
+    position: relative; display: grid; grid-template-columns: 1.05fr 0.95fr;
+    gap: clamp(28px, 5vw, 60px); align-items: center;
+  }
+  .etiqueta {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 13px 6px 9px; border-radius: 999px;
+    border: 1px solid var(--acento-borde); background: var(--acento-fondo);
+    color: #cfdaff; font-size: 12.5px; font-weight: 600;
+  }
+  .etiqueta__punto {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--acento); box-shadow: 0 0 0 4px rgba(138, 164, 255, 0.16);
+  }
+  .heroe__marca { display: flex; align-items: center; gap: 14px; margin: 22px 0 12px; }
+  .heroe__marca img { width: 60px; height: 60px; border-radius: 17px; box-shadow: 0 20px 44px -16px rgba(138, 164, 255, 0.7); }
+  h1.heroe__titulo { margin: 0; font-size: clamp(34px, 5.4vw, 56px); line-height: 1.06; letter-spacing: -0.03em; font-weight: 800; }
+  .serif { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+  .heroe__lema { margin: 0 0 14px; font-size: clamp(22px, 3vw, 30px); line-height: 1.2; letter-spacing: -0.02em; color: #eaf2ee; }
+  .heroe__texto { margin: 0 0 26px; max-width: 46ch; font-size: 16px; color: var(--muted); }
+  .heroe__texto b { color: var(--text); font-weight: 600; }
+  .heroe__acciones { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .heroe__nota { margin: 16px 0 0; font-size: 12.5px; color: #7b8794; }
+
+  /* teléfono con captura */
+  .movil {
+    position: relative; width: min(300px, 82%); margin: 0 auto;
+    padding: 12px; border-radius: 40px;
+    background: linear-gradient(180deg, #1a2029, #0c1116);
+    border: 1px solid var(--line-strong);
+    box-shadow: 0 50px 110px -50px rgba(0, 0, 0, 1), 0 0 0 1px rgba(138, 164, 255, 0.1);
+  }
+  .movil__notch {
+    position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
+    width: 92px; height: 20px; border-radius: 999px; background: #05070a; z-index: 2;
+  }
+  .movil img { border-radius: 30px; }
+  .flotante {
+    position: absolute; left: max(-4%, 0px); bottom: 12%;
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 15px 10px 11px; border-radius: 14px;
+    border: 1px solid var(--line-strong); background: rgba(12, 18, 24, 0.94);
+    backdrop-filter: blur(10px); font-size: 12.5px; font-weight: 600;
+    box-shadow: 0 20px 44px -22px rgba(0, 0, 0, 1);
+  }
+  .flotante__ico {
+    width: 26px; height: 26px; display: grid; place-items: center;
+    border-radius: 8px; background: var(--acento-fondo); color: var(--acento);
+  }
+  .flotante__ico svg { width: 15px; height: 15px; }
+
+  /* secciones */
+  .seccion { padding: clamp(52px, 7vw, 84px) 0; }
+  .seccion--borde { border-top: 1px solid var(--line); }
+  .seccion__cabecera { max-width: 640px; margin: 0 0 40px; }
+  .seccion__ojal { display: block; margin-bottom: 12px; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--acento); }
+  h2.seccion__titulo { margin: 0 0 12px; font-size: clamp(26px, 3.6vw, 38px); line-height: 1.12; letter-spacing: -0.025em; font-weight: 800; }
+  .seccion__lead { margin: 0; font-size: 16px; color: var(--muted); }
+
+  .funciones { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .funcion {
+    padding: 22px 20px; border-radius: 18px; border: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012));
+    transition: border-color 0.2s var(--ease), transform 0.2s var(--ease);
+  }
+  .funcion:hover { border-color: var(--acento-borde); transform: translateY(-3px); }
+  .funcion__ico {
+    width: 38px; height: 38px; display: grid; place-items: center; margin-bottom: 14px;
+    border-radius: 11px; background: var(--acento-fondo); color: var(--acento);
+    border: 1px solid rgba(138, 164, 255, 0.2);
+  }
+  .funcion__ico svg { width: 19px; height: 19px; }
+  .funcion h3 { margin: 0 0 6px; font-size: 15.5px; font-weight: 700; letter-spacing: -0.01em; }
+  .funcion p { margin: 0; font-size: 13.8px; color: var(--muted); line-height: 1.55; }
+
+  /* galería */
+  .galeria { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .laminas {
+    border-radius: 16px; overflow: hidden; border: 1px solid var(--line);
+    background: var(--bg-soft);
+    transition: transform 0.25s var(--ease), border-color 0.25s var(--ease);
+  }
+  .laminas:hover { transform: translateY(-4px); border-color: var(--acento-borde); }
+  .laminas img { width: 100%; height: auto; }
+  .laminas figcaption { padding: 11px 14px; font-size: 12.5px; font-weight: 600; color: var(--muted); border-top: 1px solid var(--line); }
+
+  /* aviso */
+  .aviso {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding: 18px 20px; border-radius: 16px;
+    border: 1px solid rgba(254, 188, 46, 0.26); background: rgba(254, 188, 46, 0.07);
+    font-size: 13.8px; color: #e8dfc9; line-height: 1.55;
+  }
+  .aviso svg { width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px; color: #febc2e; }
+  .aviso b { color: #fff; }
+
+  /* cierre */
+  .cierre {
+    position: relative; padding: clamp(36px, 5vw, 56px); border-radius: 26px;
+    border: 1px solid var(--acento-borde);
+    background:
+      radial-gradient(90% 130% at 50% -10%, rgba(138, 164, 255, 0.16), transparent 62%),
+      linear-gradient(180deg, #0b1018, #070b0f);
+    text-align: center; overflow: hidden;
+  }
+  .cierre img.logo { width: 68px; height: 68px; margin: 0 auto 18px; border-radius: 19px; box-shadow: 0 22px 50px -18px rgba(138, 164, 255, 0.7); }
+  .cierre h2 { margin: 0 0 10px; font-size: clamp(25px, 3.4vw, 36px); line-height: 1.12; letter-spacing: -0.025em; }
+  .cierre p { margin: 0 auto 26px; max-width: 52ch; color: var(--muted); font-size: 15.5px; }
+  .cierre__acciones { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .cierre__pies { margin-top: 22px; font-size: 12.5px; color: #7b8794; }
+  .enlaces { display: flex; flex-wrap: wrap; gap: 6px 20px; justify-content: center; margin-top: 10px; }
+  .enlaces a { color: #b8c6d1; font-size: 12.5px; font-weight: 600; text-decoration: none; }
+  .enlaces a:hover { color: var(--acento); }
+
+  /* pie */
+  .pie { border-top: 1px solid var(--line); padding: 26px 0 40px; font-size: 12.5px; color: #6c7a87; }
+  .pie__in { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; justify-content: space-between; }
+
+  /* responsive */
+  @media (max-width: 900px) {
+    .heroe__grid { grid-template-columns: 1fr; }
+    .heroe__grid > div:first-child { order: 1; }
+    .heroe__grid > div:last-child { order: -1; }
+    .flotante { left: 6%; bottom: 14%; }
+    .funciones { grid-template-columns: repeat(2, 1fr); }
+    .galeria { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 620px) {
+    .funciones, .galeria { grid-template-columns: 1fr; }
+    .barra__in { height: 56px; }
+    .marca span { display: none; }
+    .heroe__acciones .btn { width: 100%; }
+    .flotante { position: static; margin: 14px auto 0; width: fit-content; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="barra">
+    <div class="wrap barra__in">
+      <a class="barra__volver" href="/">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6" /></svg>
+        Aionel
+      </a>
+      <span class="barra__separador"></span>
+      <a class="marca" href="/vprex.html">
+        <img src="/vprex/logo.png" alt="" width="30" height="30" />
+        <span>VPREX</span>
+      </a>
+      <a class="btn btn--chico" href="https://play.google.com/store/apps/details?id=com.vprex.app" target="_blank" rel="noopener noreferrer">Descargar</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="heroe">
+      <div class="wrap heroe__grid">
+        <div>
+          <span class="etiqueta"><span class="etiqueta__punto"></span> Aplicación para Android</span>
+
+          <div class="heroe__marca">
+            <img src="/vprex/logo.png" alt="Logo de VPREX" width="60" height="60" />
+            <h1 class="heroe__titulo">VPREX</h1>
+          </div>
+
+          <p class="heroe__lema">El tipo de cambio,<br /><span class="serif" style="color:#cdd8ff">claro y al día.</span></p>
+
+          <p class="heroe__texto">
+            Las tasas oficiales y de referencia del mercado en <b>una sola pantalla</b>,
+            con conversor instantáneo, histórico con gráficas y alertas para no
+            perderte un cambio importante.
+          </p>
+
+          <div class="heroe__acciones">
+            <a class="btn" href="https://play.google.com/store/apps/details?id=com.vprex.app" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M3.6 2.3c-.3.3-.5.8-.5 1.4v16.6c0 .6.2 1.1.5 1.4l.1.1 9.3-9.3v-.2L3.7 2.2l-.1.1ZM16 15.3l-3.1-3.1v-.2L16 8.9l.1.1 3.7 2.1c1 .6 1 1.6 0 2.2L16 15.4l0-.1ZM15 16.4l-3.1-3.1-9.2 9.2c.4.4 1 .4 1.7 0l10.6-6.1ZM15 7.6 4.4 1.5c-.7-.4-1.3-.4-1.7 0l9.2 9.2L15 7.6Z" />
+              </svg>
+              Google Play
+            </a>
+            <a class="btn btn--fantasma" href="#funciones">
+              Qué incluye
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6" /></svg>
+            </a>
+          </div>
+
+          <p class="heroe__nota">Aplicación informativa · no realiza operaciones de cambio</p>
+        </div>
+
+        <div style="position:relative">
+          <div class="movil">
+            <div class="movil__notch" aria-hidden="true"></div>
+            <img src="/shots/vprex/vprex-1.webp" alt="Pantalla de VPREX con la tasa del día y la tendencia de 7 días" width="1080" height="2400" fetchpriority="high" />
+          </div>
+          <div class="flotante">
+            <span class="flotante__ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+            </span>
+            Datos al día
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion seccion--borde" id="funciones">
+      <div class="wrap">
+        <div class="seccion__cabecera">
+          <span class="seccion__ojal">Qué incluye</span>
+          <h2 class="seccion__titulo">Todo lo importante, <span class="serif" style="color:#cdd8ff">sin ruido</span></h2>
+          <p class="seccion__lead">Pensada para consultar la tasa en segundos y seguir con lo tuyo.</p>
+        </div>
+
+        <div class="funciones">
+          <article class="funcion">
+            <div class="funcion__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 9 11l4 4 8-8" /><path d="M15 7h6v6" /></svg></div>
+            <h3>Tasa oficial</h3>
+            <p>El valor oficial del dólar, actualizado y con la fecha de referencia a la vista.</p>
+          </article>
+
+          <article class="funcion">
+            <div class="funcion__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16" /><path d="m7 15 4-4 3 3 5-6" /></svg></div>
+            <h3>Referencias del mercado</h3>
+            <p>Las tasas de referencia del mercado en paralelo con la oficial, para comparar.</p>
+          </article>
+
+          <article class="funcion">
+            <div class="funcion__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h11M4 17h11M9 3v18M20 3v8l-3-2-3 2V3" /></svg></div>
+            <h3>Conversor instantáneo</h3>
+            <p>Escribe el monto y ve el valor al momento, sin calcular a mano.</p>
+          </article>
+
+          <article class="funcion">
+            <div class="funcion__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16" /><rect x="7" y="12" width="3" height="7" /><rect x="12" y="9" width="3" height="10" /><rect x="17" y="6" width="3" height="13" /></svg></div>
+            <h3>Histórico con gráficas</h3>
+            <p>Consulta los últimos días en una gráfica clara y busca una fecha concreta.</p>
+          </article>
+
+          <article class="funcion">
+            <div class="funcion__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 6-2 7-2 7h16s-2-1-2-7" /><path d="M10.5 20a2 2 0 0 0 3 0" /></svg></div>
+            <h3>Alertas de tasa</h3>
+            <p>Configura un valor y avísate cuando la tasa lo alcance.</p>
+          </article>
+
+          <article class="funcion">
+            <div class="funcion__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5" /><path d="M12 3.5v17" /><path d="M12 3.5a8.5 8.5 0 0 1 0 17" fill="currentColor" stroke="none" opacity=".28" /></svg></div>
+            <h3>Modo claro y oscuro</h3>
+            <p>Se adapta a tu teléfono, de día o de noche.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion seccion--borde" id="capturas">
+      <div class="wrap">
+        <div class="seccion__cabecera">
+          <span class="seccion__ojal">Capturas reales</span>
+          <h2 class="seccion__titulo">Así se ve <span class="serif" style="color:#cdd8ff">la app</span></h2>
+        </div>
+
+        <div class="galeria">
+          <figure class="laminas">
+            <img src="/shots/vprex/vprex-2.webp" alt="Conversor de VPREX con 150 dólares a bolívares" loading="lazy" />
+            <figcaption>Conversor de montos</figcaption>
+          </figure>
+          <figure class="laminas">
+            <img src="/shots/vprex/vprex-3.webp" alt="Histórico de 30 días con gráfica en VPREX" loading="lazy" />
+            <figcaption>Histórico de 30 días</figcaption>
+          </figure>
+          <figure class="laminas">
+            <img src="/shots/vprex/vprex-4.webp" alt="Alertas de tasa configuradas en VPREX" loading="lazy" />
+            <figcaption>Alertas de tasa</figcaption>
+          </figure>
+          <figure class="laminas">
+            <img src="/shots/vprex/vprex-5.webp" alt="Buscador histórico por fecha de VPREX" loading="lazy" />
+            <figcaption>Buscar por fecha</figcaption>
+          </figure>
+          <figure class="laminas">
+            <img src="/shots/vprex/vprex-1.webp" alt="Pantalla principal de VPREX con la tasa del día" loading="lazy" />
+            <figcaption>Tasa del día</figcaption>
+          </figure>
+          <figure class="laminas" style="display:grid;place-items:center;padding:28px;text-align:center;background:radial-gradient(80% 100% at 50% 0%, rgba(138,164,255,.12), transparent 70%)">
+            <div>
+              <img src="/vprex/logo.png" alt="" width="56" height="56" style="border-radius:15px;margin:0 auto 14px" loading="lazy" />
+              <p style="margin:0;font-size:14.5px;color:#c3d2e0;line-height:1.5;max-width:24ch">
+                Descárgala gratis en Google Play.
+              </p>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion seccion--borde">
+      <div class="wrap">
+        <div class="aviso">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" /><path d="M12 8v.01M11 12h1v4h1" />
+          </svg>
+          <span>
+            <b>VPREX es una aplicación informativa.</b> No realiza operaciones de
+            cambio, no gestiona cuentas, no mueve dinero y no ofrece asesoría
+            financiera. Las tasas las publican terceros y pueden variar.
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion">
+      <div class="wrap">
+        <div class="cierre">
+          <img class="logo" src="/vprex/logo.png" alt="Logo de VPREX" width="68" height="68" loading="lazy" />
+          <h2>La tasa, <span class="serif" style="color:#cdd8ff">sin complicaciones</span></h2>
+          <p>Descarga VPREX en tu teléfono Android y consulta el tipo de cambio cuando lo necesites.</p>
+          <div class="cierre__acciones">
+            <a class="btn" href="https://play.google.com/store/apps/details?id=com.vprex.app" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M3.6 2.3c-.3.3-.5.8-.5 1.4v16.6c0 .6.2 1.1.5 1.4l.1.1 9.3-9.3v-.2L3.7 2.2l-.1.1ZM16 15.3l-3.1-3.1v-.2L16 8.9l.1.1 3.7 2.1c1 .6 1 1.6 0 2.2L16 15.4l0-.1ZM15 16.4l-3.1-3.1-9.2 9.2c.4.4 1 .4 1.7 0l10.6-6.1ZM15 7.6 4.4 1.5c-.7-.4-1.3-.4-1.7 0l9.2 9.2L15 7.6Z" />
+              </svg>
+              Google Play
+            </a>
+            <a class="btn btn--fantasma" href="mailto:aionelmindalg@gmail.com">Pedir soporte</a>
+          </div>
+          <p class="cierre__pies">Aplicación para Android · informativa</p>
+          <div class="enlaces">
+            <a href="/">Volver a Aionel</a>
+            <a href="/vprex-privacidad.html">Política de privacidad</a>
+            <a href="mailto:aionelmindalg@gmail.com">aionelmindalg@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="pie">
+    <div class="wrap pie__in">
+      <span>© <span id="anio">2026</span> Aionel · VPREX</span>
+      <span>Hecho en Venezuela</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('anio').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

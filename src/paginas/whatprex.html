@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Whatprex — vende por WhatsApp desde Chrome</title>
+<meta name="description" content="Whatprex es una extensión de Chrome para vender por WhatsApp: catálogo con fotos, tasas BCV, P2P y euro, pedidos con envío e IVA, abonos, clientes e historial. Gratis, sin cuentas y con tus datos en tu navegador." />
+<link rel="canonical" href="https://alg-abrahamgamargo.github.io/whatprex.html" />
+<meta name="theme-color" content="#0f1720" />
+
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="es_VE" />
+<meta property="og:site_name" content="Aionel" />
+<meta property="og:title" content="Whatprex — vende por WhatsApp desde Chrome" />
+<meta property="og:description" content="Catálogo, pedidos y cobros por WhatsApp en el panel lateral de Chrome. Gratis, sin cuentas." />
+<meta property="og:url" content="https://alg-abrahamgamargo.github.io/whatprex.html" />
+<meta property="og:image" content="https://alg-abrahamgamargo.github.io/shots/wprex/wprex-1.webp" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="48x48" href="/wprex/icono.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" />
+
+<style>
+  :root {
+    --bg: #05070a;
+    --bg-soft: #0b1117;
+    --card: #0f161d;
+    --line: rgba(255, 255, 255, 0.09);
+    --line-strong: rgba(255, 255, 255, 0.16);
+    --text: #f4f7f5;
+    --muted: #98a4b1;
+    --verde: #2fd6a2;
+    --verde-deep: #0f9c76;
+    --verde-ink: #052a20;
+    --sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+
+  .wrap { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 clamp(18px, 5vw, 40px); }
+
+  /* ---------- barra superior ---------- */
+
+  .barra {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: blur(14px);
+    background: rgba(5, 7, 10, 0.78);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .barra__in {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    height: 62px;
+  }
+
+  .barra__volver {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.18s var(--ease);
+  }
+
+  .barra__volver:hover { color: var(--text); }
+  .barra__volver svg { width: 16px; height: 16px; }
+
+  .barra__separador { flex: 1; }
+
+  .marca {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+  }
+
+  .marca img {
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    box-shadow: 0 8px 20px rgba(47, 214, 162, 0.28);
+  }
+
+  /* ---------- botones ---------- */
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 22px;
+    border-radius: 14px;
+    border: 1px solid transparent;
+    background: linear-gradient(150deg, var(--verde), #22bb8d);
+    color: var(--verde-ink);
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 16px 38px -14px rgba(47, 214, 162, 0.6);
+    transition: transform 0.16s var(--ease), box-shadow 0.16s var(--ease), background 0.16s var(--ease);
+  }
+
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 22px 46px -14px rgba(47, 214, 162, 0.7); }
+  .btn svg { width: 19px; height: 19px; flex-shrink: 0; }
+
+  .btn--fantasma {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--line-strong);
+    color: var(--text);
+    box-shadow: none;
+  }
+
+  .btn--fantasma:hover { background: rgba(255, 255, 255, 0.08); box-shadow: 0 12px 28px -18px rgba(0, 0, 0, 0.9); }
+
+  .btn--chico { padding: 10px 16px; font-size: 13.5px; border-radius: 11px; }
+
+  /* ---------- portada ---------- */
+
+  .heroe {
+    position: relative;
+    padding: clamp(46px, 7vw, 86px) 0 clamp(40px, 6vw, 70px);
+    overflow: hidden;
+  }
+
+  .heroe::before {
+    content: "";
+    position: absolute;
+    inset: -20% -10% auto;
+    height: 620px;
+    background:
+      radial-gradient(48% 60% at 50% 0%, rgba(47, 214, 162, 0.22), transparent 70%),
+      radial-gradient(40% 50% at 82% 18%, rgba(138, 164, 255, 0.14), transparent 70%);
+    pointer-events: none;
+  }
+
+  .heroe__grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: clamp(28px, 5vw, 60px);
+    align-items: center;
+  }
+
+  .etiqueta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 13px 6px 9px;
+    border-radius: 999px;
+    border: 1px solid rgba(47, 214, 162, 0.32);
+    background: rgba(47, 214, 162, 0.09);
+    color: #bff3e3;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+
+  .etiqueta__punto {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--verde);
+    box-shadow: 0 0 0 4px rgba(47, 214, 162, 0.16);
+  }
+
+  .heroe__marca {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 22px 0 12px;
+  }
+
+  .heroe__marca img {
+    width: 60px;
+    height: 60px;
+    border-radius: 17px;
+    box-shadow: 0 20px 44px -16px rgba(47, 214, 162, 0.7);
+  }
+
+  h1.heroe__titulo {
+    margin: 0;
+    font-size: clamp(34px, 5.4vw, 56px);
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+    font-weight: 800;
+  }
+
+  .serif { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+
+  .heroe__lema {
+    margin: 0 0 14px;
+    font-size: clamp(22px, 3vw, 30px);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: #eaf2ee;
+  }
+
+  .heroe__texto {
+    margin: 0 0 26px;
+    max-width: 46ch;
+    font-size: 16px;
+    color: var(--muted);
+  }
+
+  .heroe__texto b { color: var(--text); font-weight: 600; }
+
+  .heroe__acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .heroe__nota {
+    margin: 16px 0 0;
+    font-size: 12.5px;
+    color: #7b8794;
+  }
+
+  /* ---------- captura principal ---------- */
+
+  .captura {
+    position: relative;
+    border-radius: 20px;
+    border: 1px solid var(--line-strong);
+    background: var(--bg-soft);
+    overflow: hidden;
+    box-shadow: 0 50px 110px -50px rgba(0, 0, 0, 1), 0 0 0 1px rgba(47, 214, 162, 0.08);
+    transform: rotate(-0.6deg);
+    transition: transform 0.4s var(--ease);
+  }
+
+  .captura:hover { transform: rotate(0deg) translateY(-4px); }
+
+  .captura__barra {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .captura__barra i {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.16);
+  }
+
+  .captura__barra i:first-child { background: #ff5f57; }
+  .captura__barra i:nth-child(2) { background: #febc2e; }
+  .captura__barra i:nth-child(3) { background: #28c840; }
+
+  .captura__barra span {
+    margin-left: 8px;
+    font-size: 11.5px;
+    color: #7b8794;
+  }
+
+  .captura img { width: 100%; height: auto; }
+
+  .flotante {
+    position: absolute;
+    left: -14px;
+    bottom: 34px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px 10px 11px;
+    border-radius: 14px;
+    border: 1px solid var(--line-strong);
+    background: rgba(12, 18, 24, 0.94);
+    backdrop-filter: blur(10px);
+    font-size: 12.5px;
+    font-weight: 600;
+    box-shadow: 0 20px 44px -22px rgba(0, 0, 0, 1);
+  }
+
+  .flotante__ico {
+    width: 26px;
+    height: 26px;
+    display: grid;
+    place-items: center;
+    border-radius: 8px;
+    background: rgba(47, 214, 162, 0.16);
+    color: var(--verde);
+  }
+
+  .flotante__ico svg { width: 15px; height: 15px; }
+
+  /* ---------- secciones ---------- */
+
+  .seccion { padding: clamp(52px, 7vw, 84px) 0; }
+
+  .seccion--borde { border-top: 1px solid var(--line); }
+
+  .seccion__cabecera { max-width: 640px; margin: 0 0 40px; }
+
+  .seccion__ojal {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--verde);
+  }
+
+  h2.seccion__titulo {
+    margin: 0 0 12px;
+    font-size: clamp(26px, 3.6vw, 38px);
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    font-weight: 800;
+  }
+
+  .seccion__lead { margin: 0; font-size: 16px; color: var(--muted); }
+
+  /* ---------- funciones ---------- */
+
+  .funciones {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .funcion {
+    padding: 22px 20px;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012));
+    transition: border-color 0.2s var(--ease), transform 0.2s var(--ease);
+  }
+
+  .funcion:hover { border-color: rgba(47, 214, 162, 0.34); transform: translateY(-3px); }
+
+  .funcion__ico {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 14px;
+    border-radius: 11px;
+    background: rgba(47, 214, 162, 0.12);
+    color: var(--verde);
+    border: 1px solid rgba(47, 214, 162, 0.2);
+  }
+
+  .funcion__ico svg { width: 19px; height: 19px; }
+
+  .funcion h3 { margin: 0 0 6px; font-size: 15.5px; font-weight: 700; letter-spacing: -0.01em; }
+
+  .funcion p { margin: 0; font-size: 13.8px; color: var(--muted); line-height: 1.55; }
+
+  /* ---------- pasos ---------- */
+
+  .pasos { display: grid; gap: 12px; counter-reset: paso; }
+
+  .paso {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 18px 20px;
+    border-radius: 16px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.022);
+  }
+
+  .paso__num {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    border-radius: 9px;
+    background: rgba(47, 214, 162, 0.14);
+    border: 1px solid rgba(47, 214, 162, 0.26);
+    color: #bff3e3;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .paso h3 { margin: 3px 0 4px; font-size: 15px; }
+  .paso p { margin: 0; font-size: 14px; color: var(--muted); }
+  .paso code {
+    padding: 1px 6px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid var(--line);
+    font-size: 12.5px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    color: #cfe6dd;
+  }
+
+  /* ---------- galería ---------- */
+
+  .galeria {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .laminas {
+    grid-column: span 1;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--bg-soft);
+    transition: transform 0.25s var(--ease), border-color 0.25s var(--ease);
+  }
+
+  .laminas:hover { transform: translateY(-4px); border-color: rgba(47, 214, 162, 0.3); }
+  .laminas img { width: 100%; height: auto; }
+
+  .laminas figcaption {
+    padding: 11px 14px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+  }
+
+  /* ---------- bloque de descarga ---------- */
+
+  .cierre {
+    position: relative;
+    padding: clamp(36px, 5vw, 56px);
+    border-radius: 26px;
+    border: 1px solid rgba(47, 214, 162, 0.22);
+    background:
+      radial-gradient(90% 130% at 50% -10%, rgba(47, 214, 162, 0.16), transparent 62%),
+      linear-gradient(180deg, #0b1418, #070b0f);
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .cierre img.logo {
+    width: 68px;
+    height: 68px;
+    margin: 0 auto 18px;
+    border-radius: 19px;
+    box-shadow: 0 22px 50px -18px rgba(47, 214, 162, 0.7);
+  }
+
+  .cierre h2 {
+    margin: 0 0 10px;
+    font-size: clamp(25px, 3.4vw, 36px);
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+  }
+
+  .cierre p { margin: 0 auto 26px; max-width: 52ch; color: var(--muted); font-size: 15.5px; }
+
+  .cierre__acciones { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+
+  .cierre__pies {
+    margin-top: 22px;
+    font-size: 12.5px;
+    color: #7b8794;
+  }
+
+  .enlaces { display: flex; flex-wrap: wrap; gap: 6px 20px; justify-content: center; margin-top: 10px; }
+  .enlaces a { color: #b8c6d1; font-size: 12.5px; font-weight: 600; text-decoration: none; }
+  .enlaces a:hover { color: var(--verde); }
+
+  /* ---------- pie ---------- */
+
+  .pie {
+    border-top: 1px solid var(--line);
+    padding: 26px 0 40px;
+    font-size: 12.5px;
+    color: #6c7a87;
+  }
+
+  .pie__in { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; justify-content: space-between; }
+
+  /* ---------- aviso teléfono ---------- */
+
+  .telefono-aviso {
+    display: none;
+    gap: 10px;
+    align-items: flex-start;
+    margin: 18px 0 0;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(138, 164, 255, 0.28);
+    background: rgba(138, 164, 255, 0.08);
+    font-size: 13.5px;
+    color: #cdd8e6;
+    line-height: 1.5;
+  }
+
+  .telefono-aviso svg { width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; color: #a9bcff; }
+  .telefono-aviso b { color: #fff; }
+
+  /* ---------- responsive ---------- */
+
+  @media (max-width: 900px) {
+    .heroe__grid { grid-template-columns: 1fr; }
+    .captura { transform: none; order: -1; }
+    .heroe__grid > div:first-child { order: 1; }
+    .captura:hover { transform: none; }
+    .flotante { left: 12px; bottom: 12px; }
+    .funciones { grid-template-columns: repeat(2, 1fr); }
+    .galeria { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 620px) {
+    .funciones, .galeria { grid-template-columns: 1fr; }
+    .barra__in { height: 56px; }
+    .marca span { display: none; }
+    .telefono-aviso { display: flex; }
+    .heroe__acciones .btn { width: 100%; }
+    .flotante { position: static; margin-top: 12px; justify-self: start; display: inline-flex; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============ barra ============ -->
+  <header class="barra">
+    <div class="wrap barra__in">
+      <a class="barra__volver" href="/">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6" /></svg>
+        Aionel
+      </a>
+      <span class="barra__separador"></span>
+      <a class="marca" href="/whatprex.html">
+        <img src="/wprex/icono.png" alt="" width="30" height="30" />
+        <span>Whatprex</span>
+      </a>
+      <a class="btn btn--chico" href="https://chromewebstore.google.com/detail/omnjhpioicbgfhejkkppajjoifcaceaf" target="_blank" rel="noopener noreferrer">
+        Instalar
+      </a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ portada ============ -->
+    <section class="heroe">
+      <div class="wrap heroe__grid">
+        <div>
+          <span class="etiqueta"><span class="etiqueta__punto"></span> Extensión para Chrome · Gratis</span>
+
+          <div class="heroe__marca">
+            <img src="/wprex/icono.png" alt="Logo de Whatprex" width="60" height="60" />
+            <h1 class="heroe__titulo">Whatprex</h1>
+          </div>
+
+          <p class="heroe__lema">Vende por WhatsApp.<br /><span class="serif" style="color:#9ff0d6">Cobra a tiempo.</span></p>
+
+          <p class="heroe__texto">
+            Un panel al lado de tu <b>WhatsApp Web</b> con el catálogo, los pedidos y
+            los cobros de tu negocio. Armas el pedido completo y lo envías con un
+            toque, con los datos de pago ya escritos.
+          </p>
+
+          <div class="heroe__acciones">
+            <a class="btn" href="https://chromewebstore.google.com/detail/omnjhpioicbgfhejkkppajjoifcaceaf" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="3.4" />
+                <path d="M12 8.6h8.2M9 13.7 4.9 6.7M15 13.7l-4.1 7.1" />
+              </svg>
+              Instalar la extensión
+            </a>
+            <a class="btn btn--fantasma" href="#como-funciona">
+              Cómo funciona
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6" /></svg>
+            </a>
+          </div>
+
+          <p class="heroe__nota">Chrome Web Store · sin cuentas ni suscripción</p>
+
+          <div class="telefono-aviso">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2.5" y="4" width="19" height="12.5" rx="2" /><path d="M8 20.5h8M12 16.5v4" />
+            </svg>
+            <span><b>Estás en el teléfono.</b> Whatprex es una extensión de Chrome: ábrela desde tu computadora para instalar.</span>
+          </div>
+        </div>
+
+        <div style="position:relative">
+          <div class="captura">
+            <div class="captura__barra" aria-hidden="true">
+              <i></i><i></i><i></i>
+              <span>web.whatsapp.com · panel de Whatprex</span>
+            </div>
+            <img src="/shots/wprex/wprex-1.webp" alt="Catálogo de Whatprex generado como imagen, con productos y precios en bolívares" width="676" height="741" fetchpriority="high" />
+          </div>
+          <div class="flotante">
+            <span class="flotante__ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+            </span>
+            Catálogo listo para compartir
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ funciones ============ -->
+    <section class="seccion seccion--borde" id="funciones">
+      <div class="wrap">
+        <div class="seccion__cabecera">
+          <span class="seccion__ojal">Qué hace</span>
+          <h2 class="seccion__titulo">Todo lo que necesitas para vender, <span class="serif" style="color:#9ff0d6">en una sola pantalla</span></h2>
+          <p class="seccion__lead">Deja de llevar el inventario en la cabeza y los pedidos en notas sueltas.</p>
+        </div>
+
+        <div class="funciones">
+          <article class="funcion">
+            <div class="funcion__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5" /><circle cx="9.5" cy="10" r="1.8" /><path d="m4.5 18 5-5 3.5 3.5L16 13l4 4" /></svg></div>
+            <h3>Catálogo con fotos</h3>
+            <p>Sube una imagen por producto; se comprime y se guarda en tu equipo. Genera el catálogo como imagen lista para estados o chat.</p>
+          </article>
+
+          <article class="funcion">
+            <div class="funcion__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 9 11l4 4 8-8" /><path d="M15 7h6v6" /></svg></div>
+            <h3>Tres tasas al día</h3>
+            <p>BCV, paralelo y euro oficial con actualización automática, más una tasa manual aparte. Si la tasa tiene más de 6 horas, te avisa antes de cobrar.</p>
+          </article>
+
+          <article class="funcion">
+            <div class="funcion__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l1.5 13h-15L6 7Z" /><path d="M9 7a3 3 0 0 1 6 0" /></svg></div>
+            <h3>Pedido completo</h3>
+            <p>Productos, cantidades, envío, IVA y total en dólares y bolívares. Precios al mayor con cantidad mínima y variantes con stock propio.</p>
+          </article>
+
+          <article class="funcion">
+            <div class="funcion__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5a8 8 0 1 1-3.1-6.3" /><path d="M20 4v7h-7" /><path d="M12 8v4.5l3 1.8" /></svg></div>
+            <h3>Envío por WhatsApp</h3>
+            <p>Un toque guarda el pedido y abre el chat con el mensaje listo para revisar y enviar. También puedes copiar el texto o las imágenes.</p>
+          </article>
+
+          <article class="funcion">
+            <div class="funcion__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4" /><path d="M5 20a7 7 0 0 1 14 0" /></svg></div>
+            <h3>Abonos y clientes</h3>
+            <p>Registra pagos parciales con método y referencia; el pedido muestra abonado y saldo. Clientes con cédula o RIF, búsqueda y fusión de duplicados.</p>
+          </article>
+
+          <article class="funcion">
+            <div class="funcion__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16" /><rect x="7" y="12" width="3" height="7" /><rect x="12" y="9" width="3" height="10" /><rect x="17" y="6" width="3" height="13" /></svg></div>
+            <h3>Hoy, historial y reportes</h3>
+            <p>Por cobrar, por entregar y entregados. Historial con estado, exportación a CSV y reportes de ventas, ticket promedio y deudas por período.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ cómo funciona ============ -->
+    <section class="seccion seccion--borde" id="como-funciona">
+      <div class="wrap">
+        <div class="seccion__cabecera">
+          <span class="seccion__ojal">Cómo funciona</span>
+          <h2 class="seccion__titulo">Lista en <span class="serif" style="color:#9ff0d6">un minuto</span></h2>
+          <p class="seccion__lead">No hay que registrar cuentas ni configurar servidores.</p>
+        </div>
+
+        <div class="pasos">
+          <div class="paso">
+            <span class="paso__num">1</span>
+            <div>
+              <h3>Instala la extensión</h3>
+              <p>Pulsa <b>Instalar la extensión</b> y confirma en la Chrome Web Store. Es gratis.</p>
+            </div>
+          </div>
+          <div class="paso">
+            <span class="paso__num">2</span>
+            <div>
+              <h3>Abre WhatsApp Web</h3>
+              <p>Entra a <code>web.whatsapp.com</code> y toca el ícono de Whatprex en la barra de Chrome: el panel se abre al costado.</p>
+            </div>
+          </div>
+          <div class="paso">
+            <span class="paso__num">3</span>
+            <div>
+              <h3>Carga tu catálogo</h3>
+              <p>Agrega productos con foto, precio, stock y variantes. También puedes importarlos desde Excel o CSV.</p>
+            </div>
+          </div>
+          <div class="paso">
+            <span class="paso__num">4</span>
+            <div>
+              <h3>Arma y envía el pedido</h3>
+              <p>Elige el cliente, los productos y el envío. Toca <b>Enviar por WhatsApp</b>, revisa el mensaje y envíalo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ galería ============ -->
+    <section class="seccion seccion--borde" id="capturas">
+      <div class="wrap">
+        <div class="seccion__cabecera">
+          <span class="seccion__ojal">Capturas reales</span>
+          <h2 class="seccion__titulo">Así se ve <span class="serif" style="color:#9ff0d6">trabajando</span></h2>
+          <p class="seccion__lead">Tienda de ejemplo con datos inventados.</p>
+        </div>
+
+        <div class="galeria">
+          <figure class="laminas">
+            <img src="/shots/wprex/wprex-2.webp" alt="Lista de productos de Whatprex con precios en dólares y bolívares, stock y variantes" loading="lazy" width="676" height="741" />
+            <figcaption>Productos con precio, stock y variantes</figcaption>
+          </figure>
+          <figure class="laminas">
+            <img src="/shots/wprex/wprex-3.webp" alt="Pedido en Whatprex con el total en bolívares y el botón Enviar por WhatsApp" loading="lazy" width="676" height="741" />
+            <figcaption>Pedido listo para enviar</figcaption>
+          </figure>
+          <figure class="laminas">
+            <img src="/shots/wprex/wprex-4.webp" alt="Panel Hoy de Whatprex con lo que falta cobrar y entregar" loading="lazy" width="676" height="741" />
+            <figcaption>Hoy: por cobrar y por entregar</figcaption>
+          </figure>
+          <figure class="laminas">
+            <img src="/shots/wprex/wprex-5.webp" alt="Historial de ventas de Whatprex con estado, abonos y exportación a CSV" loading="lazy" width="676" height="741" />
+            <figcaption>Historial con abonos y estado</figcaption>
+          </figure>
+          <figure class="laminas">
+            <img src="/shots/wprex/wprex-1.webp" alt="Catálogo de Whatprex generado como imagen con productos y precios en bolívares" loading="lazy" width="676" height="741" />
+            <figcaption>Catálogo como imagen para compartir</figcaption>
+          </figure>
+          <figure class="laminas" style="display:grid;place-items:center;padding:28px;text-align:center;background:radial-gradient(80% 100% at 50% 0%, rgba(47,214,162,.12), transparent 70%)">
+            <div>
+              <img src="/wprex/icono.png" alt="" width="56" height="56" style="border-radius:15px;margin:0 auto 14px" loading="lazy" />
+              <p style="margin:0;font-size:14.5px;color:#c3d2e0;line-height:1.5;max-width:24ch">
+                Más en la extensión: mensajes rápidos, respaldos, PIN de acceso y modo claro/oscuro.
+              </p>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ cierre ============ -->
+    <section class="seccion">
+      <div class="wrap">
+        <div class="cierre">
+          <img class="logo" src="/wprex/icono.png" alt="Logo de Whatprex" width="68" height="68" loading="lazy" />
+          <h2>Tu tienda, dentro de <span class="serif" style="color:#9ff0d6">Chrome</span></h2>
+          <p>
+            Gratis, sin cuentas y sin servidores propios. Tus productos, pedidos y
+            clientes se quedan en tu navegador; solo se consultan las tasas del día.
+          </p>
+          <div class="cierre__acciones">
+            <a class="btn" href="https://chromewebstore.google.com/detail/omnjhpioicbgfhejkkppajjoifcaceaf" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="3.4" />
+                <path d="M12 8.6h8.2M9 13.7 4.9 6.7M15 13.7l-4.1 7.1" />
+              </svg>
+              Añadir a Chrome
+            </a>
+            <a class="btn btn--fantasma" href="mailto:aionelmindalg@gmail.com">Pedir soporte</a>
+          </div>
+          <p class="cierre__pies">
+            Extensión de Chrome para computadora · Tus datos se quedan en tu equipo
+          </p>
+          <div class="enlaces">
+            <a href="/">Volver a Aionel</a>
+            <a href="/wprex-privacidad.html">Política de privacidad</a>
+            <a href="mailto:aionelmindalg@gmail.com">aionelmindalg@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="pie">
+    <div class="wrap pie__in">
+      <span>© <span id="anio">2026</span> Aionel · Whatprex</span>
+      <span>Hecho en Venezuela · Gratis, sin cuentas ni comisiones</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('anio').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
