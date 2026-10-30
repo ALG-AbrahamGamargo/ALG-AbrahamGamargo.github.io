@@ -48,7 +48,7 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.08, ease }}
           >
             <span className="hero__dot" />
-            Desarrollo de software · Creador de contenido · LATAM
+            Creador de apps · Contenido · LATAM
             <span className="hero__badge-arrow">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M7 17 17 7M9 7h8v8" />
@@ -93,8 +93,8 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.5, ease }}
           >
-            Construyo aplicaciones web y móviles para Latinoamérica y creo
-            contenido de ciencia y tecnología.
+            Creo aplicaciones para Latinoamérica y contenido de ciencia y
+            tecnología.
           </motion.p>
 
           <motion.div

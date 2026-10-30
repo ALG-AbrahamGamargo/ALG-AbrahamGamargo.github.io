@@ -5,8 +5,6 @@ import { LogoMark, ScrollProgress } from './LogoMark.jsx'
 const LINKS = [
   { href: '#apps', label: 'Aplicaciones' },
   { href: '#creador', label: 'Contenido' },
-  { href: '#stack', label: 'Cómo construyo' },
-  { href: '#principios', label: 'Principios' },
   { href: '#contacto', label: 'Sígueme' },
 ]
 

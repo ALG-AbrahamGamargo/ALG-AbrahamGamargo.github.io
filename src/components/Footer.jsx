@@ -124,7 +124,7 @@ export function Footer() {
           </div>
 
           <p className="footer__legal">
-            © {new Date().getFullYear()} Aionel · Desarrollo web y contenido de
+            © {new Date().getFullYear()} Aionel · Aplicaciones y contenido de
             ciencia y tecnología
           </p>
         </div>
