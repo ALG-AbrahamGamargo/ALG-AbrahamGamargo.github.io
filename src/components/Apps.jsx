@@ -115,16 +115,12 @@ function VprexCard() {
       </p>
 
       <div className="app-card__actions">
-        <a
-          className="btn app-card__btn"
-          href="https://play.google.com/store/apps/details?id=com.vprex.app"
-          target="_blank"
-          rel="noopener"
-        >
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M3.6 2.3c-.3.3-.5.8-.5 1.4v16.6c0 .6.2 1.1.5 1.4l.1.1 9.3-9.3v-.2L3.7 2.2l-.1.1ZM16 15.3l-3.1-3.1v-.2L16 8.9l.1.1 3.7 2.1c1 .6 1 1.6 0 2.2L16 15.4l0-.1ZM15 16.4l-3.1-3.1-9.2 9.2c.4.4 1 .4 1.7 0l10.6-6.1ZM15 7.6 4.4 1.5c-.7-.4-1.3-.4-1.7 0l9.2 9.2L15 7.6Z" />
+        <a className="btn app-card__btn" href="/vprex.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M12 8h.01M11 12h1v4h1" />
           </svg>
-          Google Play
+          Conocer VPREX
         </a>
         <a className="link-arrow" href="/vprex-privacidad.html">
           Política de privacidad
@@ -133,6 +129,9 @@ function VprexCard() {
           </svg>
         </a>
       </div>
+      <p className="app-card__note app-card__note--estado">
+        Próximamente en Google Play · todavía en pruebas cerradas.
+      </p>
     </Card>
   )
 }

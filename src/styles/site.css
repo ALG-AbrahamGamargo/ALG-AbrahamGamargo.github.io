@@ -748,6 +748,14 @@ a.app-card__logo:focus-visible { outline: 2px solid var(--app-accent); outline-o
   background: rgba(0, 0, 0, 0.22);
 }
 
+.app-card__note--estado {
+  margin-top: 12px;
+  border-style: solid;
+  border-color: rgba(255, 178, 84, 0.3);
+  background: rgba(255, 178, 84, 0.08);
+  color: #ffd8a0;
+}
+
 .app-card__actions {
   margin-top: auto;
   padding-top: 26px;
