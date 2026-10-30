@@ -173,8 +173,21 @@ function WprexCard() {
       </p>
 
       <div className="app-card__actions">
-        <a className="link-arrow link-arrow--primary" href="/wprex-privacidad.html">
-          Ver política de privacidad
+        <a
+          className="btn app-card__btn"
+          href="https://chromewebstore.google.com/detail/omnjhpioicbgfhejkkppajjoifcaceaf?utm_source=item-share-cb"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" />
+            <circle cx="12" cy="12" r="3.4" />
+            <path d="M12 8.6h8.2M9 13.7 4.9 6.7M15 13.7l-4.1 7.1" />
+          </svg>
+          Añadir a Chrome
+        </a>
+        <a className="link-arrow" href="/wprex-privacidad.html">
+          Política de privacidad
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M5 12h14M13 6l6 6-6 6" />
           </svg>

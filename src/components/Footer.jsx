@@ -35,12 +35,13 @@ export function Footer() {
 
             <span className="eyebrow cta__eyebrow">Contacto</span>
             <h2 className="cta__title display">
-              ¿Tienes una idea <br />
-              <span className="serif accent-text">en mente?</span>
+              Hablemos de <br />
+              <span className="serif accent-text">tu proyecto.</span>
             </h2>
             <p className="cta__lead">
-              Soporte, consultas o propuestas sobre las aplicaciones, el
-              desarrollo de tu producto o contenido de ciencia y tecnología.
+              ¿Necesitas una app, una página web o una extensión para tu
+              negocio? Cuéntame qué tienes en mente y te digo cómo lo podemos
+              construir. También respondo dudas sobre VPREX y Whatprex.
               Respondo en español.
             </p>
 
@@ -101,6 +102,7 @@ export function Footer() {
           <nav className="footer__links" aria-label="Enlaces del pie">
             <a href="#apps">Aplicaciones</a>
             <a href="#creador">Contenido</a>
+            <a href="https://chromewebstore.google.com/detail/omnjhpioicbgfhejkkppajjoifcaceaf?utm_source=item-share-cb" target="_blank" rel="noopener noreferrer">Whatprex en Chrome</a>
             <a href="/vprex-privacidad.html">Privacidad VPREX</a>
             <a href="/wprex-privacidad.html">Privacidad Whatprex</a>
           </nav>
