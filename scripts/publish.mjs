@@ -49,4 +49,27 @@ for (const pagina of ['whatprex.html', 'vprex.html']) {
   }
 }
 
+// Versión publicada de la extensión Whatprex.
+//
+// La extensión consulta este archivo cuando el usuario abre el panel lateral:
+// https://alg-abrahamgamargo.github.io/whatprex-latest.json
+// Si la versión de aquí es mayor que la instalada, la extensión muestra el
+// aviso de "hay una versión nueva" y enlaza a la Chrome Web Store.
+//
+// La fuente vive en src/data/whatprex-latest.json para que quede versionada
+// con el sitio y se publique SIEMPRE, sin depender de acordarse de copiarla.
+const LATEST = 'src/data/whatprex-latest.json'
+if (existsSync(LATEST)) {
+  const datos = JSON.parse(readFileSync(LATEST, 'utf8'))
+  // Validación mínima: si el JSON está mal, se avisa en vez de publicar basura.
+  if (!/^\d+\.\d+\.\d+$/.test(String(datos.version || ''))) {
+    console.error(`whatprex-latest.json: version invalida -> "${datos.version}"`)
+    process.exit(1)
+  }
+  cpSync(LATEST, 'whatprex-latest.json')
+  console.log(`  · whatprex-latest.json (v${datos.version})`)
+} else {
+  console.warn('  ! falta src/data/whatprex-latest.json: la extension no podra avisar de versiones nuevas')
+}
+
 console.log('ok: raiz del repo lista para GitHub Pages')
