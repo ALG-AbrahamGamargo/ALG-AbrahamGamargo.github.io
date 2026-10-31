@@ -61,15 +61,17 @@ for (const pagina of ['whatprex.html', 'vprex.html']) {
 const LATEST = 'src/data/whatprex-latest.json'
 if (existsSync(LATEST)) {
   const datos = JSON.parse(readFileSync(LATEST, 'utf8'))
-  // Validación mínima: si el JSON está mal, se avisa en vez de publicar basura.
-  if (!/^\d+\.\d+\.\d+$/.test(String(datos.version || ''))) {
-    console.error(`whatprex-latest.json: version invalida -> "${datos.version}"`)
+  // Validación mínima: sobre OFUSCADO y FIRMADO con "p" (contenido) y "f" (firma).
+  if (!datos.p || !datos.f) {
+    console.error('whatprex-latest.json: falta el contenido ("p") o la firma ("f")')
     process.exit(1)
   }
-  cpSync(LATEST, 'whatprex-latest.json')
-  console.log(`  · whatprex-latest.json (v${datos.version})`)
+  // La extensión lo busca en /assets/wprex/v.json (ruta menos obvia).
+  mkdirSync('assets/wprex', { recursive: true })
+  cpSync(LATEST, 'assets/wprex/v.json')
+  console.log('  · assets/wprex/v.json (firmado)')
 } else {
-  console.warn('  ! falta src/data/whatprex-latest.json: la extension no podra avisar de versiones nuevas')
+  console.warn('  ! falta src/data/whatprex-latest.json: la extensión no podrá avisar de versiones nuevas')
 }
 
 console.log('ok: raiz del repo lista para GitHub Pages')
