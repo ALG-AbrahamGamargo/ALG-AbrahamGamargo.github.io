@@ -85,7 +85,7 @@ function VprexCard() {
       accent="var(--vprex)"
       index={0}
       name="VPREX"
-      tag="En pruebas"
+      tag="Android"
       kind="Aplicación para Android"
       logo="/vprex/logo.png"
       fuente="/vprex.html"
@@ -115,22 +115,26 @@ function VprexCard() {
       </p>
 
       <div className="app-card__actions">
-        <a className="btn app-card__btn" href="/vprex.html">
+        <a
+          className="btn app-card__btn"
+          href="https://play.google.com/store/apps/details?id=com.vprex.app&pcampaignid=web_share"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="9" />
-            <path d="M12 8h.01M11 12h1v4h1" />
+            <path d="M20 6 9 17l-5-5" />
           </svg>
-          Conocer VPREX
+          Descargar en Google Play
         </a>
-        <a className="link-arrow" href="/vprex-privacidad.html">
-          Política de privacidad
+        <a className="link-arrow" href="/vprex.html">
+          Conocer VPREX
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M5 12h14M13 6l6 6-6 6" />
           </svg>
         </a>
       </div>
       <p className="app-card__note app-card__note--estado">
-        Próximamente en Google Play · todavía en pruebas cerradas.
+        <a href="/vprex-privacidad.html">Política de privacidad</a>
       </p>
     </Card>
   )
