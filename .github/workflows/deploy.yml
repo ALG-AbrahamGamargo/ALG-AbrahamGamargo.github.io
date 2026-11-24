@@ -23,9 +23,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
-      # El sitio ya viene compilado en la raíz (index.html + assets/).
-      - uses: actions/upload-pages-artifact@v3
+
+      # El sitio ya viene compilado en la raiz (index.html + assets/).
+      #
+      # AVISO: este paso DEBE ser v4. Con v3 el artefacto se sube con otro
+      # nombre y `deploy-pages@v4` no lo encuentra, con el error:
+      #   "No artifacts named github-pages were found for this workflow run"
+      # El cambio a Node 24 (septiembre 2025) dejo de emparejar la v3 con la
+      # v4. Sin esto, TODO push a main falla el deploy.
+      - uses: actions/upload-pages-artifact@v4
         with:
           path: .
+
       - id: deployment
         uses: actions/deploy-pages@v4
