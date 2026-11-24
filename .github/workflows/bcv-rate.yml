@@ -1,0 +1,61 @@
+name: BCV Rate
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Lee la tasa oficial (dólar y euro) de bcv.org.ve y la publica como JSON.
+#
+# ¿Por qué existe?
+# DolarApi.com tarda horas en publicar la tasa del día siguiente que el BCV ya
+# tiene publicada. Este workflow la copia directamente de la fuente oficial y
+# la deja disponible en:
+#
+#     https://alg-abrahamgamargo.github.io/vprex/bcv.json
+#
+# ⚠️ Solo AÑADE dos archivos (este workflow y vprex/bcv.json).
+#    NO modifica nada de lo que ya existe en el sitio.
+#
+# Si el BCV cambia su página, el JSON pasa a tener `"status": "error"` y la
+# app sigue usando DolarApi.com como siempre. Nunca rompe nada.
+# ─────────────────────────────────────────────────────────────────────────────
+
+on:
+  schedule:
+    # Cada 30 minutos. El BCV publica una vez al día (entre 4 y 6 p. m.),
+    # así que la tasa llega a la app menos de 30 min después.
+    # GitHub puede retrasar el cron unos minutos si hay mucha carga.
+    - cron: '*/30 * * * *'
+  workflow_dispatch: # permite lanzarlo a mano desde la pestaña Actions
+
+permissions:
+  contents: write # necesario para el commit automático del JSON
+
+concurrency:
+  group: bcv-rate
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Leer la tasa del BCV
+        id: bcv
+        shell: bash
+        run: node .github/scripts/bcv-rate.mjs
+
+      # El commit lleva [skip ci] para no disparar el despliegue del sitio.
+      # Aun así el commit actualiza el JSON en la rama, y el siguiente
+      # despliegue (o el propio Pages) lo publica.
+      - name: Publicar el JSON
+        shell: bash
+        run: |
+          set -e
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add vprex/bcv.json
+          if git diff --cached --quiet; then
+            echo "Sin cambios en el JSON."
+            exit 0
+          fi
+          git commit -m "chore(bcv): actualizar tasa $(date -u +%Y-%m-%dT%H:%M)Z [skip ci]"
+          git push
