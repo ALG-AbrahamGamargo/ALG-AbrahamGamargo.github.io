@@ -43,8 +43,19 @@ import { fileURLToPath } from 'node:url';
 import https from 'node:https';
 
 const BCV_URL = 'https://www.bcv.org.ve/';
-const OUT_FILE = 'vprex/bcv.json';
 const TIMEOUT_MS = 20_000;
+/**
+ * ⚠️ El JSON se escribe en DOS sitios:
+ *
+ *  · `public/vprex/bcv.json` → la FUENTE. `scripts/publish.mjs` copia
+ *    `public/vprex/` a la raíz, así que este sobrevive a cada publicación.
+ *    Si solo se escribiera en `vprex/`, el próximo `npm run publish` lo
+ *    BORRARÍA (rmSync de la carpeta completa).
+ *
+ *  · `vprex/bcv.json` → lo que sirve GitHub Pages AHORA MISMO, sin esperar
+ *    a una publicación.
+ */
+const OUT_FILES = ['public/vprex/bcv.json', 'vprex/bcv.json'];
 
 /**
  * ⚠️ CERTIFICADO INTERMEDIO
@@ -91,9 +102,12 @@ function writeJson(payload) {
     fuente: 'bcv.org.ve',
     ...payload,
   };
-  mkdirSync(dirname(OUT_FILE), { recursive: true });
-  writeFileSync(OUT_FILE, `${JSON.stringify(body, null, 2)}\n`, 'utf8');
-  console.log(JSON.stringify(body, null, 2));
+  const json = `${JSON.stringify(body, null, 2)}\n`;
+  for (const file of OUT_FILES) {
+    mkdirSync(dirname(file), { recursive: true });
+    writeFileSync(file, json, 'utf8');
+  }
+  console.log(json);
 }
 
 /**

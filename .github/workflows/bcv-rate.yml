@@ -52,7 +52,7 @@ jobs:
           set -e
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add vprex/bcv.json
+          git add public/vprex/bcv.json vprex/bcv.json
           if git diff --cached --quiet; then
             echo "Sin cambios en el JSON."
             exit 0
