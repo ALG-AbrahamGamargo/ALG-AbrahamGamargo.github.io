@@ -140,33 +140,33 @@ function VprexCard() {
   )
 }
 
-/* ---------------- WHATPREX ---------------- */
+/* ---------------- PORESTOCK ---------------- */
 function WprexCard() {
   return (
     <Card
       id="wprex"
       accent="var(--wprex)"
       index={1}
-      name="Whatprex"
+      name="PorEstock"
       tag="Extensión"
       kind="Extensión para Chrome"
-      logo="/wprex/icono.png"
+      logo="/porestock/icono.png"
       fuente="/whatprex.html"
     >
-      <p className="app-card__headline">Tu tienda dentro de WhatsApp.</p>
+      <p className="app-card__headline">Tu tienda dentro de tus mensajes.</p>
       <p className="app-card__desc">
-        Catálogo con fotos, tasas BCV, P2P y euro del día, pedidos con envío e
-        IVA, abonos, clientes y catálogos listos para compartir. Todo en el panel
-        lateral de Chrome.
+        Catálogo con fotos, tasas BCV, Paralelo y euro del día, pedidos con envío
+        e IVA, abonos, clientes y catálogos listos para compartir. Todo en el
+        panel lateral de Chrome.
       </p>
 
-      <Shots shots={APPS.wprex.shots} tone="wprex" appName="Whatprex" />
+      <Shots shots={APPS.wprex.shots} tone="wprex" appName="PorEstock" />
 
       <FeatureList
         items={[
           'Catálogo con fotos',
           'Catálogo para compartir',
-          'Tasas BCV, P2P y EUR',
+          'Tasas BCV, Paralelo y EUR',
           'Pedidos con IVA',
           'Abonos y clientes',
         ]}
@@ -192,7 +192,7 @@ function WprexCard() {
           Añadir a Chrome
         </a>
         <a className="link-arrow" href="/whatprex.html">
-          Conocer Whatprex
+          Conocer PorEstock
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M5 12h14M13 6l6 6-6 6" />
           </svg>

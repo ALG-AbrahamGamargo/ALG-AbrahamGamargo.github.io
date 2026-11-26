@@ -39,11 +39,11 @@ export const APPS = {
   },
   wprex: {
     shots: [
-      { src: '/shots/wprex/wprex-1.webp', alt: 'Catálogo de Whatprex generado como imagen con productos y precios en bolívares' },
-      { src: '/shots/wprex/wprex-2.webp', alt: 'Lista de productos de Whatprex con precio en dólares y bolívares, stock y variantes' },
-      { src: '/shots/wprex/wprex-3.webp', alt: 'Pedido en Whatprex con el total en bolívares y el botón Enviar por WhatsApp' },
-      { src: '/shots/wprex/wprex-4.webp', alt: 'Panel Hoy de Whatprex con lo que falta cobrar y entregar' },
-      { src: '/shots/wprex/wprex-5.webp', alt: 'Historial de ventas de Whatprex con estado y abonos' },
+      { src: '/shots/wprex/wprex-1.webp', alt: 'Catálogo de PorEstock generado como imagen con productos y precios en bolívares' },
+      { src: '/shots/wprex/wprex-2.webp', alt: 'Lista de productos de PorEstock con precio en dólares y bolívares, stock y variantes' },
+      { src: '/shots/wprex/wprex-3.webp', alt: 'Pedido en PorEstock con el total en bolívares y el botón Enviar por WhatsApp' },
+      { src: '/shots/wprex/wprex-4.webp', alt: 'Panel Atender de PorEstock con lo que falta cobrar y entregar' },
+      { src: '/shots/wprex/wprex-5.webp', alt: 'Historial de ventas de PorEstock con estado y abonos' },
     ],
   },
 }
