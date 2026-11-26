@@ -313,6 +313,37 @@
   max-width: 860px;
   margin-top: clamp(48px, 7vw, 84px);
 }
+
+/* La tarjeta del creador: sobria, sin teléfono ni capturas de apps. */
+.hero__creador {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: clamp(26px, 4vw, 40px);
+  border-radius: var(--r-xl);
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.012));
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(16px);
+}
+.hero__creador-etiqueta {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.hero__creador-texto {
+  margin: 0;
+  max-width: 46ch;
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.hero__creador .btn {
+  align-self: flex-start;
+}
+
 .showcase {
   --mx: 50; --my: 50;
   position: relative;

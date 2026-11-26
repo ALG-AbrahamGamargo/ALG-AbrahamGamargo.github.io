@@ -39,9 +39,9 @@ export function Footer() {
               <span className="serif accent-text">todos los días.</span>
             </h2>
             <p className="cta__lead">
-              En mis redes comparto contenido de ciencia y tecnología, y novedades
-              de mis aplicaciones. Sígueme por ahí. Para soporte de VPREX,
-              escríbeme al correo. Respondo en español.
+              En mis redes comparto ciencia, tecnología y las curiosidades que
+              voy encontrando. Sígueme por ahí. Para escribirme, el correo.
+              Respondo en español.
             </p>
 
             <div className="cta__socials" aria-label="Redes sociales">
@@ -99,9 +99,12 @@ export function Footer() {
           </div>
 
           <nav className="footer__links" aria-label="Enlaces del pie">
-            <a href="#apps">Aplicaciones</a>
             <a href="#creador">Contenido</a>
-            <a href="/vprex-privacidad.html">Privacidad VPREX</a>
+            {/*
+              LA PRIVACIDAD SIGUE VIVA (decisión de Abraham: *"la privacidad
+              sigue existiendo"*). Solo se fue lo de las aplicaciones del sitio.
+            */}
+            <a href="/vprex-privacidad.html">Privacidad</a>
           </nav>
 
           <div className="footer__socials" aria-label="Redes sociales">
@@ -122,8 +125,7 @@ export function Footer() {
           </div>
 
           <p className="footer__legal">
-            © {new Date().getFullYear()} Aionel · Aplicaciones y contenido de
-            ciencia y tecnología
+            © {new Date().getFullYear()} Aionel · Ciencia, tecnología y curiosidades
           </p>
         </div>
       </footer>

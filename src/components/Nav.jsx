@@ -3,7 +3,6 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { LogoMark, ScrollProgress } from './LogoMark.jsx'
 
 const LINKS = [
-  { href: '#apps', label: 'Aplicaciones' },
   { href: '#creador', label: 'Contenido' },
   { href: '#contacto', label: 'Sígueme' },
 ]
@@ -52,8 +51,8 @@ export function Nav() {
           </nav>
 
           <div className="nav__actions">
-            <a className="btn btn--ghost nav__cta" href="#apps">
-              Ver apps
+            <a className="btn btn--ghost nav__cta" href="#creador">
+              Mi contenido
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
