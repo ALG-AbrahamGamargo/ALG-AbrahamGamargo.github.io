@@ -21,7 +21,6 @@ export function Apps() {
 
         <div className="apps__grid">
           <VprexCard />
-          <WprexCard />
         </div>
       </div>
     </section>
@@ -140,64 +139,9 @@ function VprexCard() {
   )
 }
 
-/* ---------------- PORESTOCK ---------------- */
-function WprexCard() {
-  return (
-    <Card
-      id="wprex"
-      accent="var(--wprex)"
-      index={1}
-      name="PorEstock"
-      tag="Extensión"
-      kind="Extensión para Chrome"
-      logo="/porestock/icono.png"
-      fuente="/whatprex.html"
-    >
-      <p className="app-card__headline">Tu tienda dentro de tus mensajes.</p>
-      <p className="app-card__desc">
-        Catálogo con fotos, tasas BCV, Paralelo y euro del día, pedidos con envío
-        e IVA, abonos, clientes y catálogos listos para compartir. Todo en el
-        panel lateral de Chrome.
-      </p>
-
-      <Shots shots={APPS.wprex.shots} tone="wprex" appName="PorEstock" />
-
-      <FeatureList
-        items={[
-          'Catálogo con fotos',
-          'Catálogo para compartir',
-          'Tasas BCV, Paralelo y EUR',
-          'Pedidos con IVA',
-          'Abonos y clientes',
-        ]}
-      />
-
-      <p className="app-card__note">
-        Gratis, sin cuentas y sin servidores propios. Tus datos se quedan en tu
-        navegador; solo se consultan las tasas del día.
-      </p>
-
-      <div className="app-card__actions">
-        <a
-          className="btn app-card__btn"
-          href="https://chromewebstore.google.com/detail/omnjhpioicbgfhejkkppajjoifcaceaf?utm_source=item-share-cb"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="9" />
-            <circle cx="12" cy="12" r="3.4" />
-            <path d="M12 8.6h8.2M9 13.7 4.9 6.7M15 13.7l-4.1 7.1" />
-          </svg>
-          Añadir a Chrome
-        </a>
-        <a className="link-arrow" href="/whatprex.html">
-          Conocer PorEstock
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M5 12h14M13 6l6 6-6 6" />
-          </svg>
-        </a>
-      </div>
-    </Card>
-  )
-}
+/*
+ * La tarjeta de PorEstock SE QUITÓ de la página principal (decisión de
+ * Abraham: *"quiero que en mi página principal desaparezca todo lo que tenga
+ * que ver con este producto; sácalo de aquí"*). La página queda con VPREX.
+ * El producto sigue en su página propia (`/whatprex.html`).
+ */

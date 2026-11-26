@@ -37,13 +37,9 @@ export const APPS = {
       { src: '/shots/vprex/vprex-5.webp', alt: 'Buscador histórico por fecha de VPREX' },
     ],
   },
-  wprex: {
-    shots: [
-      { src: '/shots/wprex/wprex-1.webp', alt: 'Catálogo de PorEstock generado como imagen con productos y precios en bolívares' },
-      { src: '/shots/wprex/wprex-2.webp', alt: 'Lista de productos de PorEstock con precio en dólares y bolívares, stock y variantes' },
-      { src: '/shots/wprex/wprex-3.webp', alt: 'Pedido en PorEstock con el total en bolívares y el botón Enviar por WhatsApp' },
-      { src: '/shots/wprex/wprex-4.webp', alt: 'Panel Atender de PorEstock con lo que falta cobrar y entregar' },
-      { src: '/shots/wprex/wprex-5.webp', alt: 'Historial de ventas de PorEstock con estado y abonos' },
-    ],
-  },
+  /*
+   * Las capturas de PorEstock se quitaron junto con su tarjeta (decisión de
+   * Abraham: *"sácalo de aquí"*). Si el producto vuelve a la página principal,
+   * sus imágenes siguen en `/shots/wprex/`.
+   */
 }

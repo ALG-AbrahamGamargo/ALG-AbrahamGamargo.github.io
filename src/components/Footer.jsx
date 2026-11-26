@@ -40,8 +40,8 @@ export function Footer() {
             </h2>
             <p className="cta__lead">
               En mis redes comparto contenido de ciencia y tecnología, y novedades
-              de mis aplicaciones. Sígueme por ahí. Para soporte de VPREX o
-              PorEstock, escríbeme al correo. Respondo en español.
+              de mis aplicaciones. Sígueme por ahí. Para soporte de VPREX,
+              escríbeme al correo. Respondo en español.
             </p>
 
             <div className="cta__socials" aria-label="Redes sociales">
@@ -101,10 +101,7 @@ export function Footer() {
           <nav className="footer__links" aria-label="Enlaces del pie">
             <a href="#apps">Aplicaciones</a>
             <a href="#creador">Contenido</a>
-            <a href="https://chromewebstore.google.com/detail/omnjhpioicbgfhejkkppajjoifcaceaf?utm_source=item-share-cb" target="_blank" rel="noopener noreferrer">PorEstock en Chrome</a>
-            <a href="/whatprex.html">Sobre PorEstock</a>
             <a href="/vprex-privacidad.html">Privacidad VPREX</a>
-            <a href="/wprex-privacidad.html">Privacidad PorEstock</a>
           </nav>
 
           <div className="footer__socials" aria-label="Redes sociales">
