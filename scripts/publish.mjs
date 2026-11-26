@@ -43,7 +43,11 @@ writeFileSync('index.html', html, 'utf8')
 
 // Páginas informativas de cada app: HTML estático e independiente (como las
 // políticas). Viven en src/paginas/ y se copian a la raíz en cada publicación.
-for (const pagina of ['whatprex.html', 'vprex.html']) {
+//
+// POR EL MOMENTO SOLO VPREX (decisión de Abraham: *"PorEstock, quiero
+// eliminarla por ahora"*). La de PorEstock se quitó de aquí para que no vuelva
+// a aparecer en cada publicación. Si un día se publica, se agrega otra vez.
+for (const pagina of ['vprex.html']) {
   if (existsSync(`src/paginas/${pagina}`)) {
     cpSync(`src/paginas/${pagina}`, pagina)
   }
