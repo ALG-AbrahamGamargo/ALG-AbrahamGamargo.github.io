@@ -3,38 +3,46 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Política de Privacidad — Whatprex</title>
-<meta name="description" content="Política de privacidad de Whatprex (antes Wprex): extensión de Chrome para vender por WhatsApp en Venezuela. Sin cuentas, sin servidores y con todos los datos guardados en tu navegador." />
+<title>Política de Privacidad — PorEstock</title>
+<meta name="description" content="Política de privacidad de PorEstock, el negocio de software de Aionel: tu catálogo, tus pedidos y tus clientes se quedan en tu equipo. Te decimos exactamente qué se guarda, dónde y quién puede verlo." />
 <link rel="icon" type="image/png" href="/favicon-32.png" />
 <style>
-  :root { --verde:#0a6552; --verde2:#12a37f; --texto:#0f1b17; --gris:#5d6f67; --fondo:#f4f7f5; --linea:#dfe7e3; }
+  :root {
+    --tinta:#0f1b17; --verde:#0a6552; --verde2:#12a37f; --gris:#5d6f67;
+    --fondo:#f4f7f5; --linea:#dfe7e3; --papel:#ffffff; --ambar:#8a5a00; --ambar-fondo:#fdf3dc;
+  }
   * { box-sizing:border-box; }
   html { scroll-behavior:smooth; }
-  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; background:var(--fondo); color:var(--texto); line-height:1.7; }
-  .wrap { max-width:760px; margin:0 auto; padding:44px 20px 80px; }
-  h1 { font-size:28px; line-height:1.25; margin:0 0 6px; letter-spacing:-.02em; }
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; background:var(--fondo); color:var(--tinta); line-height:1.7; }
+  .wrap { max-width:780px; margin:0 auto; padding:44px 20px 80px; }
+  h1 { font-size:29px; line-height:1.22; margin:0 0 6px; letter-spacing:-.02em; }
   .fecha { color:var(--gris); font-size:14px; margin:0 0 8px; }
   .version { display:inline-block; font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:#0a6552; background:#d6efe7; border:1px solid #a9dfd0; padding:3px 10px; border-radius:999px; margin-bottom:24px; }
-  h2 { font-size:18px; line-height:1.35; margin:32px 0 8px; }
+  h2 { font-size:18px; line-height:1.35; margin:34px 0 8px; padding-top:6px; border-top:1px solid var(--linea); }
+  h2:first-of-type { border-top:0; }
   h3 { font-size:15px; margin:20px 0 4px; }
   p, li { margin:0 0 8px; }
   ul, ol { padding-left:22px; margin:6px 0 10px; }
   a { color:var(--verde); font-weight:700; text-decoration:none; }
   a:hover { text-decoration:underline; }
-  .box { background:#fff; border:1px solid var(--linea); border-radius:18px; padding:28px; box-shadow:0 4px 16px rgba(15,27,23,.04); }
+  .box { background:var(--papel); border:1px solid var(--linea); border-radius:18px; padding:30px; box-shadow:0 4px 16px rgba(15,27,23,.04); }
   .volver { display:inline-block; margin-bottom:18px; font-weight:700; }
   .summary { background:#edf8f4; border:1px solid #a9dfd0; border-radius:14px; padding:16px 18px; margin:0 0 26px; }
   .summary strong { display:block; margin-bottom:6px; color:#075243; }
   .summary ul { margin:0; }
   .summary li strong { display:inline; margin:0; }
   .note { background:#f1f5f2; border-left:4px solid var(--verde2); border-radius:8px; padding:12px 14px; font-size:14px; color:#33413b; margin:12px 0; }
+  .aviso { background:var(--ambar-fondo); border-left:4px solid #d9a53a; border-radius:8px; padding:12px 14px; font-size:14px; color:#4a3600; margin:12px 0; }
+  .aviso strong { color:var(--ambar); }
   table { width:100%; border-collapse:collapse; margin:10px 0 14px; font-size:14px; }
   th, td { text-align:left; vertical-align:top; padding:9px 10px; border-bottom:1px solid var(--linea); }
   th { background:#f2f6f3; font-size:12px; text-transform:uppercase; letter-spacing:.04em; color:#475953; }
   code { background:#f2f6f3; border:1px solid var(--linea); border-radius:5px; padding:1px 5px; font-size:13px; }
   .muted { color:var(--gris); font-size:13px; }
   .en { margin-top:36px; padding-top:22px; border-top:1px solid var(--linea); }
-  @media (max-width:560px) { .box { padding:20px; } h1 { font-size:24px; } }
+  .indice { columns:2; column-gap:26px; font-size:14px; margin:10px 0 22px; }
+  .nuevo { display:inline-block; font-size:10px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:#8a5a00; background:#fdf3dc; border:1px solid #e8cd8e; padding:1px 7px; border-radius:999px; vertical-align:middle; margin-left:4px; }
+  @media (max-width:560px) { .box { padding:20px; } h1 { font-size:24px; } .indice { columns:1; } }
 </style>
 </head>
 <body>
@@ -43,147 +51,210 @@
 
     <div class="box">
 
-    <h1>Política de Privacidad — Whatprex</h1>
-    <p class="fecha"><strong>Última actualización:</strong> 27 de octubre de 2026</p>
-    <span class="version">Versión 2.0</span>
+    <h1>Política de Privacidad — PorEstock</h1>
+    <p class="fecha"><strong>Última actualización:</strong> 25 de noviembre de 2026</p>
+    <span class="version">Versión 4.0 · PorEstock 2.0.1</span>
 
     <div class="summary">
-      <strong>En resumen</strong>
+      <strong>En una frase</strong>
+      <p style="margin:0 0 10px">PorEstock es un <strong>negocio de software</strong>: te vendemos una herramienta para trabajar; <strong>no compramos ni vendemos tus datos</strong>, y el negocio que tú construyes (tus productos, tus pedidos, tus clientes) <strong>es tuyo y se queda en tu equipo</strong>.</p>
       <ul>
-        <li>Whatprex <strong>no crea cuentas</strong> ni tiene servidores propios.</li>
-        <li>Tu catálogo, tus pedidos, tus clientes y tus mensajes se guardan <strong>solo en tu navegador</strong>.</li>
-        <li>No hay analítica, ni cookies de seguimiento, ni publicidad, ni venta de datos.</li>
-        <li>Solo se conecta a <code>ve.dolarapi.com</code> para consultar las tasas del día.</li>
-        <li>Las fotos y los archivos que exportas se generan en tu propio equipo.</li>
-        <li><strong>No se procesa ningún pago dentro de la aplicación.</strong></li>
+        <li>PorEstock <strong>trabaja en tu equipo</strong>: guarda todo en Chrome y en una base de datos local del navegador. No hace falta crear una cuenta para usarlo.</li>
+        <li><strong>No hay</strong> analítica, ni cookies de seguimiento, ni publicidad, ni venta de datos.</li>
+        <li>Te conectas a internet <strong>solo</strong> para tres cosas: consultar la tasa del día, abrir un chat de WhatsApp con el pedido escrito y, si <strong>tú</strong> pulsas el botón, abrir WhatsApp Web, Facebook o Instagram en una pestaña.</li>
+        <li><strong>No leemos ninguna conversación.</strong> Ni de WhatsApp, ni de Facebook, ni de Instagram. Tus redes se ABREN; nunca se leen.</li>
+        <li>Las fotos, los Excel, las imágenes de catálogo y los respaldos <strong>se crean en tu equipo</strong>.</li>
+        <li><strong>No se mueve dinero dentro de la aplicación.</strong> PorEstock no cobra, no recibe tus pagos y no pide datos de tarjetas.</li>
       </ul>
     </div>
 
-    <h2>1. Responsable</h2>
-    <p>El responsable de esta aplicación es <strong>Aionel (Abraham Gamargo)</strong>, desarrollador independiente con domicilio en Venezuela.</p>
-    <ul>
-      <li><strong>Aplicación:</strong> Whatprex — vende por WhatsApp (extensión de Chrome)</li>
-      <li><strong>Sitio:</strong> <a href="https://alg-abrahamgamargo.github.io/">alg-abrahamgamargo.github.io</a></li>
-      <li><strong>Contacto de soporte y privacidad:</strong> <a href="mailto:aionelmindalg@gmail.com">aionelmindalg@gmail.com</a></li>
-    </ul>
-    <p class="muted">Nota: la aplicación se llamó anteriormente <strong>Wprex</strong>. Las versiones anteriores conservan este mismo responsable y estas mismas garantías.</p>
+    <p class="muted">Esta página explica, sin tecnicismos, <strong>qué datos se guardan, dónde, quién puede verlos y qué puedes exigirnos</strong>. Si algo no se entiende, escríbenos: es parte de nuestro trabajo.</p>
 
-    <h2>2. Qué es Whatprex</h2>
-    <p>Whatprex es una extensión de Chrome que ayuda a comercios venezolanos a vender por WhatsApp: catálogo con fotos, tasas BCV/P2P/EUR, armado de pedidos con envío e IVA, abonos, clientes, mensajes rápidos, reportes y generación de imágenes de catálogo.</p>
-    <p><strong>Whatprex no es un sistema de facturación fiscal.</strong> Calcula IVA para tus cotizaciones, pero no emite facturas ni sustituye el sistema autorizado por el SENIAT.</p>
-    <p><strong>Whatprex no procesa pagos ni recibe dinero.</strong> No pide datos de tarjetas, cuentas bancarias ni credenciales financieras. Los datos de cobro que puedas configurar (Pago Móvil, Binance, etc.) son datos que tú eliges poner en tus mensajes para que tus clientes te paguen directamente; nunca pasan por nosotros.</p>
-
-    <h2>3. Datos que no te pedimos</h2>
-    <ul>
-      <li>No creamos cuentas ni pedimos contraseñas.</li>
-      <li>No pedimos tu nombre, correo, teléfono ni ubicación para usar la extensión.</li>
-      <li>No pedimos datos de tarjetas, cuentas bancarias ni credenciales financieras.</li>
-      <li>No accedemos a tus contactos, cámara, micrófono ni a otros sitios que visites.</li>
-    </ul>
-    <p>Si nos escribes por soporte, recibiremos el mensaje y tu correo, <strong>únicamente para responderte</strong>.</p>
-
-    <h2>4. Datos que guardas en tu navegador</h2>
-    <p>Todo lo que cargas en Whatprex se guarda <strong>localmente</strong> en el almacenamiento de la extensión (<code>chrome.storage.local</code>) y en una base de datos local del navegador (IndexedDB) para las fotos:</p>
-    <ul>
-      <li><strong>Productos:</strong> nombre, precio, notas, detalles del rubro, variantes, stock y fotografías.</li>
-      <li><strong>Pedidos:</strong> cliente, teléfono, cédula (opcional), productos, totales, tasa de cambio usada, abonos y estado.</li>
-      <li><strong>Clientes:</strong> nombre, teléfono y cédula/RIF (opcional).</li>
-      <li><strong>Ajustes:</strong> nombre de tu negocio, métodos de cobro, plantillas de mensajes e IVA.</li>
-      <li><strong>Seguridad opcional:</strong> un PIN de acceso, si decides activarlo. Se guarda de forma cifrada (hash), nunca en texto plano.</li>
-    </ul>
-    <p>Ninguno de estos datos se envía a nosotros ni a terceros. No tenemos forma de acceder a ellos.</p>
-    <div class="note"><strong>Importante:</strong> si desinstalas o limpias el navegador, esa información se pierde. Usa <strong>Ajustes → Datos → Descargar respaldo</strong> y conserva tu archivo en un lugar seguro. El respaldo contiene datos personales de tus clientes: guárdalo con cuidado.</div>
-
-    <h2>5. Conexiones externas</h2>
-    <p>La extensión realiza <strong>únicamente</strong> estas conexiones:</p>
+    <h2 id="quien">1. Quién te vende el software y quién responde</h2>
+    <p>PorEstock lo publica y lo mantiene <strong>Aionel</strong>, desarrollador independiente con domicilio en Venezuela. Somos los responsables de la aplicación y, también, la persona con quien hablas si algo falla.</p>
     <table>
-      <tr><th>Destino</th><th>Para qué</th><th>Qué se envía</th></tr>
+      <tr><th>Dato</th><th>Quién</th></tr>
+      <tr><td>Producto</td><td>PorEstock — vende, cotiza y cobra por mensaje, en todas tus redes (extensión de Chrome, versión 2.0.1)</td></tr>
+      <tr><td>Sitio</td><td><a href="https://alg-abrahamgamargo.github.io/">alg-abrahamgamargo.github.io</a></td></tr>
+      <tr><td>Soporte, privacidad y reclamos</td><td><a href="mailto:aionelmindalg@gmail.com">aionelmindalg@gmail.com</a></td></tr>
+      <tr><td>País</td><td>Venezuela</td></tr>
+    </table>
+    <p class="muted">La aplicación se llamó antes <strong>Whatprex</strong> y, más atrás, <strong>Wprex</strong>. Todas las versiones pertenecen al mismo responsable y conservan estas mismas garantías.</p>
+
+    <h2 id="quees">2. Qué haces con PorEstock (y qué no)</h2>
+    <p>PorEstock es la caja de tu negocio en el navegador: cargas tu catálogo con fotos, armas el pedido —escribiéndolo, eligiéndolo o <strong>pegando el mensaje de tu clienta con Ctrl&nbsp;+&nbsp;V</strong>—, aplicas envío e IVA si corresponde, anotas abonos, llevas lo que te deben, guardas clientes y preparas el catálogo y la ficha de cada producto para tus estados y chats.</p>
+    <ul>
+      <li><strong>No</strong> es un sistema de facturación fiscal: calcula el IVA de tu cotización, pero no emite facturas ni sustituye el sistema autorizado por el SENIAT.</li>
+      <li><strong>No</strong> procesa pagos ni recibe dinero.</li>
+      <li><strong>No</strong> habla con tus clientes en tu nombre: prepara el texto y tú lo envías.</li>
+      <li><strong>No</strong> es un servicio de contabilidad ni de asesoría legal o tributaria.</li>
+    </ul>
+
+    <h2 id="no-pedimos">3. Lo que no te pedimos para poder usar PorEstock</h2>
+    <ul>
+      <li>No pedimos contraseñas, ni correo, ni número de teléfono, ni ubicación <strong>para usar la aplicación</strong>.</li>
+      <li>No pedimos datos de tarjetas, cuentas bancarias, claves ni credenciales.</li>
+      <li>No accedemos a tus contactos, cámara, micrófono ni a otros sitios que visites.</li>
+      <li><strong>No leemos las conversaciones de ninguna red social.</strong> PorEstock no abre, no lee y no envía mensajes por su cuenta.</li>
+      <li><strong>No pide permisos sobre WhatsApp, Facebook ni Instagram.</strong> Esos botones solo abren la página en una pestaña.</li>
+      <li><strong>No hay inteligencia artificial.</strong> Cuando pegas el mensaje de una clienta, lo entiende con reglas escritas (cantidades, tallas, errores de tecleo, lugares) que funcionan <strong>dentro de tu equipo</strong>. Nada de ese texto sale a ningún servidor.</li>
+    </ul>
+    <p class="muted">Si nos escribes a soporte, recibiremos tu mensaje y tu correo. Los usamos <strong>solo para responderte</strong>.</p>
+
+    <h2 id="local">4. Tus datos del negocio: dónde viven</h2>
+    <p>Todo lo que cargas se guarda en tu propio navegador, en dos sitios que <strong>no salen de tu equipo</strong>:</p>
+    <ul>
+      <li><strong>Almacenamiento de la extensión</strong> (<code>chrome.storage.local</code>): productos, pedidos, clientes, ajustes del negocio, tasas, textos, mensajes que hayas guardado y las copias automáticas.</li>
+      <li><strong>Base de datos local</strong> (<code>IndexedDB</code>): las fotos de los productos, el logo y los respaldos con fotos, que pesan demasiado para el almacenamiento normal.</li>
+    </ul>
+    <table>
+      <tr><th>Qué</th><th>Qué se guarda</th></tr>
+      <tr><td>Productos</td><td>Nombre, precio, precio al mayor, notas, ícono, tallas con su stock, si lleva IVA y las fotografías.</td></tr>
+      <tr><td>Pedidos</td><td>Cliente, teléfono, cédula o RIF si lo escribes, artículos, totales, la tasa que usaste ese día, abonos, estado de entrega y número de pedido.</td></tr>
+      <tr><td>Clientes</td><td>Nombre, teléfono y cédula o RIF si lo escribes.</td></tr>
+      <tr><td>Ajustes</td><td>Nombre y logo de tu negocio, métodos de cobro que decides mostrar, IVA y RIF, el texto del mensaje del pedido y los mensajes rápidos que hayas creado.</td></tr>
+      <tr><td>Acceso</td><td>Si activas el PIN, el PIN <strong>nunca</strong> se guarda: se guarda su derivación con PBKDF2-SHA256 y una sal aleatoria. No se puede recuperar el PIN mirando lo guardado.</td></tr>
+    </table>
+    <div class="aviso">
+      <strong>Ojo con esto:</strong> si desinstalas la extensión o limpias los datos del navegador, <strong>esa información se pierde</strong>. Lo sentimos, pero no tenemos copia: nunca la recibimos. Descarga tu respaldo con frecuencia y guárdalo en un lugar seguro.
+    </div>
+    <p class="muted">Ese respaldo <strong>contiene datos personales de tus clientes</strong> (nombre, teléfono y cédula). Guárdalo como guardarías tu cuaderno de ventas: es tu responsabilidad como dueño del negocio. Si quieres, puedes protegerlo con una contraseña: se cifra con <strong>AES-256-GCM</strong> y sin esa contraseña el archivo no deja ver nada. La contraseña no se guarda en ningún sitio.</p>
+
+    <h2 id="conexiones">5. A qué se conecta (y qué envíamos)</h2>
+    <p>La extensión hace muy pocas conexiones, y cada una tiene un motivo claro:</p>
+    <table>
+      <tr><th>Destino</th><th>Para qué</th><th>Qué viaja</th></tr>
       <tr>
         <td><code>ve.dolarapi.com</code></td>
-        <td>Consultar las tasas BCV, P2P y EUR del día</td>
-        <td>Nada: solo se recibe la tasa. El proveedor puede registrar la IP y datos técnicos según su propia política.</td>
+        <td>Consultar la tasa oficial, la del dólar y la del euro del día.</td>
+        <td><strong>Nada tuyo.</strong> Solo pedimos la tasa. Ese proveedor puede registrar la dirección IP y datos técnicos según su propia política.</td>
       </tr>
       <tr>
-        <td><code>web.whatsapp.com</code></td>
-        <td>Detectar si WhatsApp Web está abierto y abrir el chat con tu pedido</td>
-        <td>El número de teléfono de tu cliente y el texto del pedido, en la dirección que abre tu propio navegador. El mensaje lo envías tú desde tu cuenta de WhatsApp.</td>
+        <td><code>wa.me</code></td>
+        <td>Abrir el chat de WhatsApp con el pedido ya escrito, <strong>solo cuando tú pulsas</strong> “Enviar por WhatsApp”.</td>
+        <td>El número de tu cliente y el texto del pedido, en una dirección que abre <strong>tu propio navegador</strong>. Nosotros no los recibimos ni los guardamos.</td>
+      </tr>
+      <tr>
+        <td><code>web.whatsapp.com</code>, <code>facebook.com</code>, <code>instagram.com</code></td>
+        <td>Abrir tu red en una pestaña, <strong>solo cuando tú pulsas</strong> el botón de redes.</td>
+        <td><strong>Nada.</strong> Es un enlace normal. PorEstock no se conecta a esas páginas, no pide permisos y no lee lo que hay en ellas.</td>
       </tr>
     </table>
-    <p>No hay analítica, ni píxeles, ni cookies de seguimiento, ni publicidad, ni servidores de Whatprex.</p>
-    <p class="muted">Este sitio de privacidad está alojado en GitHub Pages. GitHub puede registrar la dirección IP y datos técnicos de las visitas conforme a su propia política de privacidad.</p>
+    <p>No hay servidores de PorEstock, ni analítica, ni píxeles, ni cookies de seguimiento, ni publicidad. <strong>No usamos tus datos para nada distinto de hacer funcionar la aplicación.</strong></p>
+    <p class="muted">Esta página de privacidad se aloja en GitHub Pages. Como cualquier sitio web, GitHub puede registrar la dirección IP y datos técnicos de quien la visita, según su propia política.</p>
 
-    <h2>6. Fotos y archivos</h2>
+    <h2 id="fotos">6. Fotos y archivos</h2>
     <ul>
-      <li>Las fotos que subes se reducen y comprimen <strong>en tu propio equipo</strong> antes de guardarse. Nunca se suben a un servidor.</li>
-      <li>La función de mejora automática de fotos antiguas también trabaja solo en tu equipo.</li>
-      <li>Los archivos Excel, CSV, PNG y JSON se generan localmente con librerías incluidas en la extensión.</li>
+      <li>Las fotos se <strong>reducen y comprimen en tu equipo</strong> antes de guardarse. Nunca suben a un servidor.</li>
+      <li>Los archivos de Excel, CSV, PNG, la imagen de catálogo, la ficha del producto y el respaldo se generan <strong>en tu equipo</strong> con las herramientas que van dentro de la extensión.</li>
+      <li>Cuando eliges “Guardar” o “Descargar”, el archivo va a <strong>tu carpeta de Descargas</strong>. PorEstock no lee ni modifica ningún otro archivo de tu computadora.</li>
     </ul>
 
-    <h2>7. WhatsApp</h2>
-    <p>Whatprex prepara el texto del pedido y lo copia, o abre WhatsApp Web con el mensaje precargado, para que tú lo revises y lo envíes.</p>
-    <p>Whatprex <strong>no lee tus chats</strong>, no envía mensajes por su cuenta y no accede a tus conversaciones. El uso de WhatsApp se rige por la política de privacidad de WhatsApp.</p>
-
-    <h2>8. Catálogo de WhatsApp</h2>
-    <p>Whatprex <strong>no se conecta al catálogo oficial de WhatsApp Business</strong> ni sube tus productos a Meta. Las imágenes de catálogo que genera son archivos creados en tu equipo que tú decides compartir.</p>
-
-    <h2>9. Permisos y por qué</h2>
+    <h2 id="redes">7. Tus redes sociales: se abren, no se leen</h2>
+    <p>PorEstock tiene botones para abrir <strong>WhatsApp Web, Facebook e Instagram</strong>. Sirven para llegar rápido a tus conversaciones desde el panel.</p>
     <ul>
-      <li><strong>storage / unlimitedStorage:</strong> guardar productos, fotos, pedidos y clientes en tu navegador.</li>
-      <li><strong>sidePanel:</strong> mostrar la interfaz en el panel lateral de Chrome.</li>
-      <li><strong>clipboardWrite:</strong> copiar pedidos, fichas, textos e imágenes para pegarlos en WhatsApp.</li>
-      <li><strong>tabs:</strong> detectar si WhatsApp Web está abierto y enfocar esa pestaña.</li>
-      <li><strong>web.whatsapp.com:</strong> abrir el chat con el mensaje del pedido listo.</li>
-      <li><strong>ve.dolarapi.com:</strong> consultar las tasas del día.</li>
+      <li><strong>Lo único que hacen es abrir la página en una pestaña.</strong> Nada más.</li>
+      <li>PorEstock <strong>no pide permiso</strong> sobre esos sitios, <strong>no se conecta</strong> a ellos y <strong>no lee</strong> tus conversaciones, tus contactos ni tus mensajes.</li>
+      <li>No hay ningún interruptor de “conectar una red”: nunca se conecta ninguna.</li>
+      <li>La conversación es tuya y de tu cliente. El uso de cada red se rige por la <strong>política de privacidad de esa red</strong>.</li>
+    </ul>
+    <div class="note">
+      <strong>Cómo se arma un pedido entonces:</strong> tú copias el mensaje que te escribió la clienta y lo pegas en el Pedido con Ctrl&nbsp;+&nbsp;V. PorEstock lo entiende <strong>en tu equipo</strong> y arma la cuenta. No lee nada por su cuenta: solo entiende lo que tú le pegas.
+    </div>
+
+    <h2 id="permisos">8. Permisos de Chrome y por qué cada uno</h2>
+    <p>Estos son <strong>todos</strong> los permisos que pide la versión 2.0.1. No hay más.</p>
+    <table>
+      <tr><th>Permiso</th><th>Para qué lo usamos</th></tr>
+      <tr><td><code>storage</code> y <code>unlimitedStorage</code></td><td>Guardar productos, pedidos, clientes y ajustes en tu navegador.</td></tr>
+      <tr><td><code>sidePanel</code></td><td>Mostrar PorEstock en el panel lateral de Chrome.</td></tr>
+      <tr><td><code>clipboardWrite</code></td><td>Copiar el pedido, la ficha o el texto para que los pegues en el chat.</td></tr>
+      <tr><td><code>downloads</code></td><td>Guardar en tu carpeta de Descargas los archivos que tú pides: Excel, plantilla, respaldo e imágenes.</td></tr>
+      <tr><td><code>ve.dolarapi.com</code></td><td>Pedir la tasa del día. Es el <strong>único</strong> sitio al que la extensión se conecta sola.</td></tr>
+    </table>
+    <p>PorEstock <strong>solo escribe</strong> los archivos que tú pides. <strong>No lee, no abre ni modifica ningún otro archivo de tu equipo</strong>, y no tiene acceso a ninguna otra página web.</p>
+
+    <h2 id="seguridad">9. Seguridad</h2>
+    <ul>
+      <li>Todas las conexiones externas usan <strong>HTTPS</strong>.</li>
+      <li>La extensión declara una política de seguridad que <strong>prohíbe el código remoto</strong> y no incluye rastreadores.</li>
+      <li><strong>PIN de acceso (opcional):</strong> si lo activas, al abrir el panel se pide antes de mostrar precios, deudas o teléfonos. El PIN no se guarda: se guarda su derivación con sal. <strong>Es una puerta, no un cifrado</strong>: frena a quien pasa por al lado de tu equipo, pero los datos siguen en el disco.</li>
+      <li><strong>Respaldo con contraseña (opcional):</strong> se cifra en tu equipo con AES-256-GCM. Si alguien cambia un solo byte del archivo, no se puede abrir.</li>
+      <li>Ningún sistema es 100&nbsp;% seguro: mantén tu equipo actualizado, usa una cuenta de usuario con contraseña y protege tu sesión de Chrome.</li>
     </ul>
 
-    <h2>10. Menores de edad</h2>
-    <p>Whatprex no está dirigida a menores de 13 años y no recopila datos de ningún usuario de forma remota.</p>
-
-    <h2>11. Seguridad</h2>
+    <h2 id="clientes">10. Datos de tus clientes (tu responsabilidad)</h2>
+    <p>Cuando guardas datos de tus clientes (nombre, teléfono, cédula), <strong>tú eres quien los reúne</strong>. Nosotros solo te damos la herramienta, y la herramienta los guarda en tu equipo, no en el nuestro.</p>
     <ul>
-      <li>Las conexiones externas usan HTTPS.</li>
-      <li>La extensión no ejecuta código remoto ni incluye rastreadores.</li>
-      <li>Los datos quedan en el espacio aislado de Chrome en tu equipo.</li>
-      <li>El PIN de acceso opcional se guarda cifrado, nunca en texto plano.</li>
+      <li>Pide solo lo que necesitas para vender y entregar.</li>
+      <li>Comparte esos datos únicamente con tu cliente, por el canal que usa contigo.</li>
+      <li>Si un cliente te pide borrar sus datos, hazlo tú en la ficha del cliente o en tu respaldo.</li>
     </ul>
-    <p>Ningún sistema es 100 % seguro: mantén tu equipo actualizado y protege tu sesión de Chrome.</p>
 
-    <h2>12. Cuánto tiempo se conservan los datos</h2>
+    <h2 id="cuanto">11. Cuánto tiempo se guardan</h2>
     <ul>
-      <li><strong>Datos locales:</strong> hasta que los borres desde la extensión o desinstales.</li>
-      <li><strong>Correos de soporte:</strong> solo mientras sean necesarios para responderte, con un máximo de 24 meses salvo obligación legal.</li>
+      <li><strong>Tus datos del negocio:</strong> hasta que tú los borres o desinstales la extensión.</li>
+      <li><strong>Papelera:</strong> un producto borrado se conserva 30 días por si te arrepientes, y después se borra del todo.</li>
+      <li><strong>Copias automáticas:</strong> se guardan las últimas 5 en tu equipo y se van reemplazando.</li>
+      <li><strong>Correos de soporte:</strong> solo el tiempo necesario para responderte, con un máximo de 24 meses salvo obligación legal.</li>
       <li><strong>Registros del proveedor de tasas:</strong> según su propia política; nosotros no los almacenamos.</li>
     </ul>
 
-    <h2>13. Eliminación de datos</h2>
-    <p>Puedes borrar todo en cualquier momento:</p>
-    <ol>
-      <li>Desde <strong>Ajustes → Datos → Reiniciar todo</strong>.</li>
-      <li>Desinstalando la extensión (Chrome elimina sus datos locales).</li>
-      <li>Borrando manualmente los datos del sitio en Chrome.</li>
-    </ol>
-    <p>Como no tenemos servidores con tus datos, no hay nada que eliminar de nuestro lado.</p>
-    <p>Si nos escribiste por soporte, puedes pedir la eliminación de tu correo escribiendo a <a href="mailto:aionelmindalg@gmail.com">aionelmindalg@gmail.com</a>.</p>
-
-    <h2>14. Tus derechos</h2>
-    <p>Puedes solicitar información sobre el tratamiento, acceso, corrección o eliminación de los datos que nos hayas enviado por soporte escribiendo a <a href="mailto:aionelmindalg@gmail.com">aionelmindalg@gmail.com</a>. Responderemos en un plazo razonable y, cuando la ley lo exija, dentro de los 30 días siguientes.</p>
-
-    <h2>15. Cambios en esta política</h2>
-    <p>Si cambia la extensión o la ley, actualizaremos esta página e indicaremos la fecha y la versión. La versión vigente será siempre la publicada aquí.</p>
-
-    <h2>16. Contacto</h2>
+    <h2 id="borrar">12. Cómo borrar tus datos</h2>
     <ul>
-      <li><strong>Responsable:</strong> Aionel (Abraham Gamargo)</li>
-      <li><strong>Correo:</strong> <a href="mailto:aionelmindalg@gmail.com">aionelmindalg@gmail.com</a></li>
-      <li><strong>País:</strong> Venezuela</li>
+      <li>Borra un producto: va a la papelera y luego se elimina del todo.</li>
+      <li>Borra un cliente o un pedido desde su ficha.</li>
+      <li>Borra todo: desinstalando la extensión desde Chrome (Chrome elimina sus datos locales) o limpiando los datos del sitio.</li>
+    </ul>
+    <p class="muted">Como no tenemos servidores con tus datos, no hay nada que borrar de nuestro lado. Si nos escribiste por soporte, pide el borrado de tu correo en <a href="mailto:aionelmindalg@gmail.com">aionelmindalg@gmail.com</a>.</p>
+
+    <h2 id="derechos">13. Tus derechos y cómo reclamar</h2>
+    <p>Puedes pedirnos información, acceso, corrección o eliminación de <strong>lo que nos hayas enviado por soporte</strong>, escribiendo a <a href="mailto:aionelmindalg@gmail.com">aionelmindalg@gmail.com</a>.</p>
+    <ul>
+      <li>Respondemos en un plazo razonable y, cuando la ley lo exija, dentro de los 30 días siguientes.</li>
+      <li>En Venezuela puedes acudir a la autoridad de protección de datos competente.</li>
+      <li><strong>Nuestro compromiso:</strong> si algo de esto falla, responde Aionel, con nombre y correo directo. No hay un robot en medio.</li>
     </ul>
 
+    <h2 id="cambios">14. Si un día el producto cambia</h2>
+    <p>PorEstock es un negocio que seguirá creciendo. Puede que en el futuro existan funciones que <strong>necesiten una cuenta o un servidor</strong> (por ejemplo, sincronizar entre equipos, reportes en la nube, recordatorios automáticos o catálogo publicado en línea).</p>
+    <p><strong>Compromiso escrito:</strong> si eso pasa,</p>
+    <ol>
+      <li>esa función será <strong>una opción que tú eliges</strong>, nunca obligatoria para seguir vendiendo con PorEstock;</li>
+      <li>escribiremos aquí, <strong>antes de abrirla</strong>, qué datos saldrían de tu equipo, a dónde irían, quién los trataría y con qué garantías;</li>
+      <li>actualizaremos la fecha y la versión de esta política <strong>en el mismo momento</strong> en que cambie la aplicación.</li>
+    </ol>
+    <p class="muted">La versión vigente es siempre la publicada en esta página. El historial de versiones se conserva en el archivo del sitio.</p>
+
+    <h2 id="menores">15. Menores de edad</h2>
+    <p>PorEstock está pensada para mayores de 18 años que administran un negocio. No recopilamos datos de menores de 13 años de forma remota.</p>
+
+    <h2 id="contacto">16. Contacto</h2>
+    <table>
+      <tr><th>Para qué</th><th>A dónde</th></tr>
+      <tr><td>Que algo no funciona</td><td><a href="mailto:aionelmindalg@gmail.com">aionelmindalg@gmail.com</a></td></tr>
+      <tr><td>Privacidad, tus datos o tu respaldo</td><td><a href="mailto:aionelmindalg@gmail.com">aionelmindalg@gmail.com</a></td></tr>
+      <tr><td>Una idea o algo que te falta</td><td><a href="mailto:aionelmindalg@gmail.com">aionelmindalg@gmail.com</a></td></tr>
+    </table>
+    <p class="muted">Contesta <strong>Aionel</strong>. Soportamos en español.</p>
+
     <div class="en">
-      <h2>English summary</h2>
+      <h2 style="border:0">English summary</h2>
       <p class="muted">This is a summary; the Spanish version is the binding one.</p>
-      <p>Whatprex (formerly Wprex) is a Chrome extension that helps small Venezuelan businesses sell through WhatsApp: catalog, BCV/P2P/EUR exchange rates, orders, payments, customers, templates and reports.</p>
-      <p>It has no accounts and no servers. All data you enter is stored locally in your browser and is never sent to us. We do not process payments. The extension only connects to <code>ve.dolarapi.com</code> to fetch exchange rates and to <code>web.whatsapp.com</code> to open a chat. There is no analytics, advertising or tracking.</p>
-      <p>If you contact support at <a href="mailto:aionelmindalg@gmail.com">aionelmindalg@gmail.com</a>, we keep your message only to reply. You can delete all data from <strong>Settings → Data → Reset all</strong> or by uninstalling the extension.</p>
+      <p>PorEstock is a Chrome extension (version 2.0.1), published by <strong>Aionel</strong> (independent developer, Venezuela), that helps small businesses sell, quote and collect through messaging apps.</p>
+      <ul>
+        <li><strong>No account is needed.</strong> Your products, orders, customers and photos are stored <strong>only on your own computer</strong>, inside Chrome.</li>
+        <li>We do <strong>not</strong> sell, rent or share your data. There is no analytics, no tracking, no advertising.</li>
+        <li>The extension connects to <code>ve.dolarapi.com</code> (to fetch today's exchange rate) and, only when you press “Send by WhatsApp”, opens a <code>wa.me</code> link in your own browser.</li>
+        <li><strong>We never read your conversations.</strong> The WhatsApp, Facebook and Instagram buttons only <em>open</em> those sites in a tab. No site permissions are requested.</li>
+        <li><strong>No AI.</strong> The message you paste is understood locally with plain, written rules.</li>
+        <li>An optional PIN is stored only as a salted PBKDF2-SHA256 derivation; an optional password-protected backup is encrypted with AES-256-GCM on your computer.</li>
+        <li>We do <strong>not</strong> process payments and never ask for card or banking credentials.</li>
+        <li>Files (Excel, PNG, backups) are generated on your computer.</li>
+        <li>You can delete your data by deleting it in the app or by uninstalling the extension. We hold no copy of your business data.</li>
+        <li>If we ever release features that require an account or a server, they will be <strong>optional</strong>, and this page will be updated <strong>before</strong> they open.</li>
+      </ul>
+      <p>Support and privacy: <a href="mailto:aionelmindalg@gmail.com">aionelmindalg@gmail.com</a></p>
     </div>
 
     </div>
