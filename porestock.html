@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PorEstock — Vende, cotiza y cobra por WhatsApp</title>
+<meta name="description" content="PorEstock es la extensión de Chrome para vender, cotizar y cobrar por WhatsApp. Bandeja de ventas, pedidos en un minuto, catálogo listo para tus estados y tus tasas del día. Tus datos se quedan en tu equipo." />
+<meta name="theme-color" content="#0b0f13" />
+<meta name="color-scheme" content="dark" />
+<link rel="canonical" href="https://alg-abrahamgamargo.github.io/porestock.html" />
+
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="es_VE" />
+<meta property="og:site_name" content="PorEstock" />
+<meta property="og:title" content="PorEstock — Vende, cotiza y cobra por WhatsApp" />
+<meta property="og:description" content="La bandeja de ventas de tu negocio, en el panel de Chrome. Pedidos en un minuto y catálogo listo para tus estados." />
+<meta property="og:url" content="https://alg-abrahamgamargo.github.io/porestock.html" />
+<meta property="og:image" content="https://alg-abrahamgamargo.github.io/porestock/icono.png" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" type="image/png" href="porestock/icono.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" /></noscript>
+
+<style>
+  /* La paleta es la de la app (§17 del AGENTS.md): grafito + verde fintech. */
+  :root {
+    --fondo:#0b0f13; --capa:#181c22; --capa2:#1d222a; --capa3:#252b34;
+    --linea:#2b3440; --tinta:#f3f6f5; --tinta2:#c3ccc9; --gris:#8a9a95;
+    --verde:#00c07f; --verde-ok:#16c784; --ambar:#e8a33d; --rojo:#f6465d;
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    margin:0; background:var(--fondo); color:var(--tinta); line-height:1.65;
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a { color:var(--verde); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  .wrap { max-width:1060px; margin:0 auto; padding:0 22px; }
+
+  /* ---------- cabecera ---------- */
+  header {
+    position:sticky; top:0; z-index:20;
+    background:rgba(11,15,19,.86); backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--linea);
+  }
+  .barra { display:flex; align-items:center; justify-content:space-between; height:64px; }
+  .marca { display:flex; align-items:center; gap:11px; font-weight:800; letter-spacing:-.02em; color:var(--tinta); }
+  .marca img { width:32px; height:32px; border-radius:9px; display:block; object-fit:cover; flex:0 0 32px; }
+  .marca:hover { text-decoration:none; }
+  nav.enlaces { display:flex; align-items:center; gap:20px; font-size:14px; font-weight:600; }
+  nav.enlaces a { color:var(--tinta2); }
+  nav.enlaces a:hover { color:var(--tinta); }
+  .cta {
+    background:var(--verde); color:#0b0f13 !important; font-weight:800;
+    padding:9px 16px; border-radius:10px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.35), 0 6px 16px -10px rgba(0,192,127,.8);
+  }
+  .cta:hover { filter:brightness(1.06); text-decoration:none; }
+  @media (max-width:720px) { nav.enlaces a:not(.cta) { display:none; } }
+
+  /* ---------- héroe ---------- */
+  .heroe { padding:74px 0 54px; position:relative; overflow:hidden; }
+  .heroe::before {
+    content:""; position:absolute; inset:-30% -10% auto auto; width:760px; height:760px;
+    background:radial-gradient(circle at center, rgba(0,192,127,.16), rgba(0,192,127,0) 68%);
+    pointer-events:none;
+  }
+  .rejilla { display:grid; grid-template-columns:1.05fr .95fr; gap:46px; align-items:center; position:relative; }
+  @media (max-width:900px) { .rejilla { grid-template-columns:1fr; gap:34px; } }
+  .etiqueta {
+    display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:800;
+    letter-spacing:.08em; text-transform:uppercase; color:var(--verde);
+    background:rgba(0,192,127,.1); border:1px solid rgba(0,192,127,.28);
+    padding:5px 12px; border-radius:999px; margin-bottom:20px;
+  }
+  h1 { font-size:clamp(33px,5.2vw,54px); line-height:1.06; letter-spacing:-.035em; margin:0 0 18px; font-weight:900; }
+  h1 span { color:var(--verde); }
+  .sub { font-size:clamp(16px,2.1vw,19px); color:var(--tinta2); margin:0 0 28px; max-width:540px; }
+  .botones { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+  .boton {
+    display:inline-flex; align-items:center; gap:9px; font-weight:800; font-size:15px;
+    padding:13px 22px; border-radius:11px; transition:transform .15s ease, filter .15s ease;
+  }
+  .boton:active { transform:scale(.98); }
+  .boton.primario {
+    background:linear-gradient(to bottom, #3ad39b, var(--verde)); color:#0b0f13;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.4), 0 8px 22px -12px rgba(0,192,127,.9);
+  }
+  .boton.primario:hover { filter:brightness(1.06); text-decoration:none; }
+  .boton.secundario { border:1px solid var(--linea); background:var(--capa2); color:var(--tinta); }
+  .boton.secundario:hover { border-color:rgba(0,192,127,.4); text-decoration:none; }
+
+  /* La captura del panel en el héroe */
+  .panel-marco {
+    border-radius:18px; border:1px solid var(--linea); background:var(--capa);
+    padding:10px; box-shadow:0 24px 50px -30px rgba(0,0,0,.9);
+  }
+  .panel-marco img { display:block; width:100%; height:auto; border-radius:11px; }
+
+  /* ---------- cifras ---------- */
+  .cifras { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:46px; }
+  @media (max-width:720px) { .cifras { grid-template-columns:1fr; } }
+  .cifra { background:var(--capa); border:1px solid var(--linea); border-radius:14px; padding:18px 20px; }
+  .cifra b { display:block; font-size:26px; font-weight:900; letter-spacing:-.03em; font-variant-numeric:tabular-nums; }
+  .cifra span { color:var(--gris); font-size:13.5px; }
+
+  /* ---------- secciones ---------- */
+  section { padding:70px 0; border-top:1px solid var(--linea); }
+  .sobre { font-size:12px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--gris); margin:0 0 10px; }
+  h2 { font-size:clamp(25px,3.6vw,36px); line-height:1.16; letter-spacing:-.03em; margin:0 0 14px; font-weight:900; }
+  .intro { color:var(--tinta2); font-size:17px; max-width:640px; margin:0 0 38px; }
+
+  .tarjetas { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  @media (max-width:900px) { .tarjetas { grid-template-columns:1fr; } }
+  .tarjeta {
+    background:linear-gradient(to bottom, var(--capa2), var(--capa));
+    border:1px solid var(--linea); border-radius:16px; padding:22px;
+    box-shadow:0 1px 0 rgba(255,255,255,.03) inset;
+  }
+  .tarjeta .ico {
+    width:40px; height:40px; border-radius:11px; display:grid; place-items:center;
+    background:rgba(0,192,127,.12); border:1px solid rgba(0,192,127,.28);
+    color:var(--verde); margin-bottom:14px;
+  }
+  .tarjeta h3 { font-size:16.5px; margin:0 0 7px; letter-spacing:-.01em; }
+  .tarjeta p { margin:0; color:var(--tinta2); font-size:14.5px; }
+
+  /* ---------- pasos ---------- */
+  .pasos { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; counter-reset:paso; }
+  @media (max-width:900px) { .pasos { grid-template-columns:1fr; } }
+  .paso { background:var(--capa); border:1px solid var(--linea); border-radius:16px; padding:22px; }
+  .paso::before {
+    counter-increment:paso; content:counter(paso);
+    display:grid; place-items:center; width:30px; height:30px; border-radius:9px;
+    background:var(--verde); color:#0b0f13; font-weight:900; font-size:14px; margin-bottom:13px;
+  }
+  .paso h3 { font-size:16px; margin:0 0 6px; }
+  .paso p { margin:0; color:var(--tinta2); font-size:14.5px; }
+
+  /* ---------- galería ---------- */
+  .galeria { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  @media (max-width:900px) { .galeria { grid-template-columns:1fr; } }
+  .galeria figure { margin:0; border:1px solid var(--linea); border-radius:14px; overflow:hidden; background:var(--capa); }
+  .galeria img { display:block; width:100%; height:auto; }
+  .galeria figcaption { padding:10px 13px; font-size:13px; color:var(--gris); border-top:1px solid var(--linea); }
+
+  /* ---------- privacidad ---------- */
+  .privacidad {
+    display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:center;
+  }
+  @media (max-width:900px) { .privacidad { grid-template-columns:1fr; } }
+  .lista-check { list-style:none; padding:0; margin:0; display:grid; gap:11px; }
+  .lista-check li { display:flex; gap:11px; color:var(--tinta2); font-size:15px; }
+  .lista-check li::before {
+    content:"✓"; flex:0 0 auto; width:22px; height:22px; border-radius:7px;
+    display:grid; place-items:center; font-size:12px; font-weight:900;
+    background:rgba(0,192,127,.14); color:var(--verde); border:1px solid rgba(0,192,127,.3);
+  }
+
+  /* ---------- final ---------- */
+  .cierre {
+    text-align:center; border-radius:20px; padding:52px 26px;
+    background:linear-gradient(to bottom, var(--capa2), var(--capa));
+    border:1px solid var(--linea);
+  }
+  .cierre h2 { margin-bottom:10px; }
+  .cierre .botones { justify-content:center; margin-top:22px; }
+
+  footer { padding:44px 0 60px; border-top:1px solid var(--linea); color:var(--gris); font-size:13.5px; }
+  footer .pie { display:flex; flex-wrap:wrap; gap:16px; justify-content:space-between; align-items:center; }
+  footer a { color:var(--tinta2); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap barra">
+    <a class="marca" href="/porestock.html">
+      <img src="porestock/icono.png" alt="PorEstock" width="32" height="32" />
+      PorEstock
+    </a>
+    <nav class="enlaces">
+      <a href="#como">Cómo funciona</a>
+      <a href="#pantallas">Pantallas</a>
+      <a href="#privacidad">Tus datos</a>
+      <a href="/wprex-privacidad.html">Privacidad</a>
+      <a class="cta" href="https://chromewebstore.google.com/detail/porestock">Instalar gratis</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ================== HÉROE ================== -->
+  <div class="heroe">
+    <div class="wrap">
+      <div class="rejilla">
+        <div>
+          <span class="etiqueta">Extensión para Chrome</span>
+          <h1>Vende, cotiza y <span>cobra por WhatsApp</span></h1>
+          <p class="sub">
+            PorEstock es la bandeja de ventas de tu negocio dentro del panel de Chrome.
+            Sabes quién te debe, armas el pedido en un minuto y mandas el catálogo listo
+            para tus estados. Todo se queda en tu equipo.
+          </p>
+          <div class="botones">
+            <a class="boton primario" href="https://chromewebstore.google.com/detail/porestock">Instalar gratis</a>
+            <a class="boton secundario" href="#como">Ver cómo funciona</a>
+          </div>
+        </div>
+        <div class="panel-marco">
+          <img src="porestock/captura-atender.png" alt="Pantalla de Por atender: quién te debe y a quién hay que entregarle" width="700" height="438" />
+        </div>
+      </div>
+
+      <div class="cifras">
+        <div class="cifra"><b>Gratis</b><span>Vender y cobrar, sin límites</span></div>
+        <div class="cifra"><b>Sin cuenta</b><span>No hace falta registrarse</span></div>
+        <div class="cifra"><b>En tu equipo</b><span>Tus datos no salen de ahí</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================== QUÉ HACE ================== -->
+  <section>
+    <div class="wrap">
+      <p class="sobre">Para qué sirve</p>
+      <h2>La primera pregunta es «¿a quién cobro?»</h2>
+      <p class="intro">
+        No es un catálogo ni una hoja de cálculo: es la lista de lo que tienes que hacer hoy.
+        Quién te debe, a quién le toca entregarle y quién ya está al día.
+      </p>
+
+      <div class="tarjetas">
+        <div class="tarjeta">
+          <span class="ico" aria-hidden="true">▤</span>
+          <h3>El pedido en un minuto</h3>
+          <p>Eliges al cliente, agregas productos y el total sale solo, en dólares y en bolívares con tu tasa del día.</p>
+        </div>
+        <div class="tarjeta">
+          <span class="ico" aria-hidden="true">◈</span>
+          <h3>La cuenta cobrada</h3>
+          <p>Eliges el método de pago que tienes registrado y el mensaje se arma con su título y cada dato en su línea. Se copia solo.</p>
+        </div>
+        <div class="tarjeta">
+          <span class="ico" aria-hidden="true">▦</span>
+          <h3>Catálogo para tus estados</h3>
+          <p>Con tus fotos y precios, PorEstock prepara el catálogo en imagen para mandarlo y la ficha de cada producto.</p>
+        </div>
+        <div class="tarjeta">
+          <span class="ico" aria-hidden="true">◷</span>
+          <h3>Lo que te deben, al día</h3>
+          <p>Anotas los abonos con su método real, ves la deuda de cada cliente y sacas su estado de cuenta.</p>
+        </div>
+        <div class="tarjeta">
+          <span class="ico" aria-hidden="true">⇄</span>
+          <h3>Tus tasas, tú decides</h3>
+          <p>BCV, paralelo o euro del día. Cada pedido guarda la tasa con la que se cobró, para que nada cambie después.</p>
+        </div>
+        <div class="tarjeta">
+          <span class="ico" aria-hidden="true">✚</span>
+          <h3>Productos desde Excel</h3>
+          <p>Si ya tienes tu lista en un Excel, la importas con sus fotos. Y si quieres, la exportas de vuelta.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================== CÓMO FUNCIONA ================== -->
+  <section id="como">
+    <div class="wrap">
+      <p class="sobre">Cómo funciona</p>
+      <h2>Tres pasos y a vender</h2>
+      <p class="intro">Sin configuraciones raras. Cargas lo que vendes y ya estás trabajando.</p>
+
+      <div class="pasos">
+        <div class="paso">
+          <h3>Pones tu negocio</h3>
+          <p>El nombre, cómo cobras y al menos un producto. La tasa del día se lee sola.</p>
+        </div>
+        <div class="paso">
+          <h3>Armas el pedido</h3>
+          <p>Eliges al cliente y los productos. PorEstock calcula el total y te dice cuánto queda por cobrar.</p>
+        </div>
+        <div class="paso">
+          <h3>Lo mandas y cobras</h3>
+          <p>El mensaje sale con los datos de pago. Anotas el abono y el pedido pasa a «Entregar».</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================== PANTALLAS ================== -->
+  <section id="pantallas">
+    <div class="wrap">
+      <p class="sobre">Por dentro</p>
+      <h2>Así se ve en el panel</h2>
+      <p class="intro">Capturas de la app de verdad, sin montajes.</p>
+
+      <div class="galeria">
+        <figure>
+          <img src="porestock/captura-atender.png" alt="Bandeja de ventas: quién te debe" loading="lazy" />
+          <figcaption>Atender · quién te debe y qué hacer</figcaption>
+        </figure>
+        <figure>
+          <img src="porestock/captura-pedido.png" alt="Pedido con el mensaje del pago" loading="lazy" />
+          <figcaption>Pedido · el mensaje de pago listo</figcaption>
+        </figure>
+        <figure>
+          <img src="porestock/captura-productos.png" alt="Lista de productos" loading="lazy" />
+          <figcaption>Productos · tus cosas en orden</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================== PRIVACIDAD ================== -->
+  <section id="privacidad">
+    <div class="wrap">
+      <p class="sobre">Tus datos</p>
+      <h2>Tu negocio se queda contigo</h2>
+
+      <div class="privacidad">
+        <ul class="lista-check">
+          <li>Tus productos, pedidos y clientes se guardan en tu equipo, en el navegador.</li>
+          <li>No hace falta crear una cuenta ni pagar nada para vender.</li>
+          <li>Nada sale a un servidor: no hay analítica, ni rastreadores, ni publicidad.</li>
+          <li>Puedes descargar un respaldo cuando quieras, y protegerlo con contraseña.</li>
+          <li>Lo único que consulta internet es la tasa del día.</li>
+        </ul>
+        <div>
+          <p style="color:var(--tinta2);margin:0 0 16px">
+            Preferimos decirlo claro: si un día desinstalas la extensión, esos datos se van con ella.
+            Por eso el respaldo está a un toque.
+          </p>
+          <a class="boton secundario" href="/wprex-privacidad.html">Leer la política de privacidad</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================== CIERRE ================== -->
+  <section>
+    <div class="wrap">
+      <div class="cierre">
+        <h2>Empieza a cobrar hoy</h2>
+        <p style="color:var(--tinta2);margin:0">Gratis, sin cuenta y sin letra pequeña.</p>
+        <div class="botones">
+          <a class="boton primario" href="https://chromewebstore.google.com/detail/porestock">Instalar en Chrome</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap pie">
+    <span>PorEstock · hecho en Venezuela por Aionel</span>
+    <span>
+      <a href="/wprex-privacidad.html">Privacidad</a> ·
+      <a href="mailto:aionelmindalg@gmail.com">Soporte</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>

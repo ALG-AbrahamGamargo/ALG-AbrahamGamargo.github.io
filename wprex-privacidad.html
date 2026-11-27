@@ -27,10 +27,22 @@
   a:hover { text-decoration:underline; }
   .box { background:var(--papel); border:1px solid var(--linea); border-radius:18px; padding:30px; box-shadow:0 4px 16px rgba(15,27,23,.04); }
   .volver { display:inline-block; margin-bottom:18px; font-weight:700; }
+  /* Cabecera de marca de PorEstock (sin el botón de Aionel). */
+  .marca { display:flex; align-items:center; gap:9px; margin-bottom:18px; font-size:14px; }
+  .marca-link { display:inline-flex; align-items:center; gap:9px; color:#075243; font-weight:800; }
+  .marca-link img { display:block; border-radius:7px; }
+  .marca-sep { color:#b7c7c1; }
+  .marca-doc { color:var(--gris); font-weight:600; }
   .summary { background:#edf8f4; border:1px solid #a9dfd0; border-radius:14px; padding:16px 18px; margin:0 0 26px; }
   .summary strong { display:block; margin-bottom:6px; color:#075243; }
   .summary ul { margin:0; }
   .summary li strong { display:inline; margin:0; }
+  /*
+   * Las negritas DENTRO del párrafo también van en línea. Antes heredaban el
+   * `display:block` del título del recuadro y la frase salía partida en cinco
+   * renglones ("PorEstock es un / negocio de software / : te vendemos…").
+   */
+  .summary p strong { display:inline; margin:0; }
   .note { background:#f1f5f2; border-left:4px solid var(--verde2); border-radius:8px; padding:12px 14px; font-size:14px; color:#33413b; margin:12px 0; }
   .aviso { background:var(--ambar-fondo); border-left:4px solid #d9a53a; border-radius:8px; padding:12px 14px; font-size:14px; color:#4a3600; margin:12px 0; }
   .aviso strong { color:var(--ambar); }
@@ -47,13 +59,24 @@
 </head>
 <body>
   <div class="wrap">
-    <a class="volver" href="/">← Volver a Aionel</a>
+    <!--
+      SIN BOTÓN DE AIONEL (pedido de Abraham): esta página es de PorEstock y va
+      sola. La navegación es del producto: inicio y la app en la tienda.
+    -->
+    <nav class="marca">
+      <a href="porestock.html" class="marca-link">
+        <img src="porestock/icono.png" alt="" width="26" height="26" />
+        <span>PorEstock</span>
+      </a>
+      <span class="marca-sep">·</span>
+      <span class="marca-doc">Política de privacidad</span>
+    </nav>
 
     <div class="box">
 
     <h1>Política de Privacidad — PorEstock</h1>
-    <p class="fecha"><strong>Última actualización:</strong> 25 de noviembre de 2026</p>
-    <span class="version">Versión 4.0 · PorEstock 2.0.1</span>
+    <p class="fecha"><strong>Última actualización:</strong> 27 de noviembre de 2026</p>
+    <span class="version">Versión 4.1 · PorEstock 2.0.2</span>
 
     <div class="summary">
       <strong>En una frase</strong>
@@ -74,8 +97,8 @@
     <p>PorEstock lo publica y lo mantiene <strong>Aionel</strong>, desarrollador independiente con domicilio en Venezuela. Somos los responsables de la aplicación y, también, la persona con quien hablas si algo falla.</p>
     <table>
       <tr><th>Dato</th><th>Quién</th></tr>
-      <tr><td>Producto</td><td>PorEstock — vende, cotiza y cobra por mensaje, en todas tus redes (extensión de Chrome, versión 2.0.1)</td></tr>
-      <tr><td>Sitio</td><td><a href="https://alg-abrahamgamargo.github.io/">alg-abrahamgamargo.github.io</a></td></tr>
+      <tr><td>Producto</td><td>PorEstock — vende, cotiza y cobra por mensaje, en todas tus redes (extensión de Chrome, versión 2.0.2)</td></tr>
+      <tr><td>Sitio</td><td><a href="https://alg-abrahamgamargo.github.io/porestock.html">alg-abrahamgamargo.github.io/porestock.html</a></td></tr>
       <tr><td>Soporte, privacidad y reclamos</td><td><a href="mailto:aionelmindalg@gmail.com">aionelmindalg@gmail.com</a></td></tr>
       <tr><td>País</td><td>Venezuela</td></tr>
     </table>
@@ -163,7 +186,7 @@
     </div>
 
     <h2 id="permisos">8. Permisos de Chrome y por qué cada uno</h2>
-    <p>Estos son <strong>todos</strong> los permisos que pide la versión 2.0.1. No hay más.</p>
+    <p>Estos son <strong>todos</strong> los permisos que pide la versión 2.0.2. No hay más.</p>
     <table>
       <tr><th>Permiso</th><th>Para qué lo usamos</th></tr>
       <tr><td><code>storage</code> y <code>unlimitedStorage</code></td><td>Guardar productos, pedidos, clientes y ajustes en tu navegador.</td></tr>
@@ -241,7 +264,7 @@
     <div class="en">
       <h2 style="border:0">English summary</h2>
       <p class="muted">This is a summary; the Spanish version is the binding one.</p>
-      <p>PorEstock is a Chrome extension (version 2.0.1), published by <strong>Aionel</strong> (independent developer, Venezuela), that helps small businesses sell, quote and collect through messaging apps.</p>
+      <p>PorEstock is a Chrome extension (version 2.0.2), published by <strong>Aionel</strong> (independent developer, Venezuela), that helps small businesses sell, quote and collect through messaging apps.</p>
       <ul>
         <li><strong>No account is needed.</strong> Your products, orders, customers and photos are stored <strong>only on your own computer</strong>, inside Chrome.</li>
         <li>We do <strong>not</strong> sell, rent or share your data. There is no analytics, no tracking, no advertising.</li>
